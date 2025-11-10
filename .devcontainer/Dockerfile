@@ -19,7 +19,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
 RUN npm install -g @anthropic-ai/claude-code
 
 # Install additional R packages for the script
-#COPY ./install_packages.R /tmp/install_packages.R
-#RUN Rscript /tmp/install_packages.R
+#COPY ./packages.R /tmp/packages.R
+#RUN Rscript /tmp/packages.R
 
 EXPOSE 3838
