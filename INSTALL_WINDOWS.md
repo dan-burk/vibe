@@ -4,13 +4,12 @@ This guide will walk you through installing Claude Code on Windows using Windows
 
 ## Overview
 
-We will:
-- ✓ Install WSL(Windows subsystem for Linux) on Windows. This enables you to run Linux under Windows.
-- ✓ Set up Ubuntu Linux
-- ✓ Install Node.js
-- ✓ Install Claude Code
-- ✓ Configure your API key
-- ✓ Ready to use Claude Code!
+- Install WSL (Windows Subsystem for Linux)
+- Set up Ubuntu Linux
+- Install Node.js
+- Install Claude Code
+- Configure your API key
+- Ready to use Claude Code!
 
 ## What You'll Need
 
@@ -25,7 +24,7 @@ Before installing WSL, you need to verify that virtualization is enabled on your
 1. **Right-click** on the taskbar (the bar at the bottom of your screen)
 2. Click on **Task Manager** from the menu
 3. If Task Manager opens in a small window, click **More details** at the bottom
-4. Click on the **Performance** tab at the top left
+4. Click on the **Performance** tab at the top
 5. Click on **CPU** in the left sidebar
 6. Look at the bottom-right section of the window
 7. Find the line that says **Virtualization:** and check if it says **Enabled**
@@ -121,30 +120,37 @@ After your computer restarts, a terminal window with "Ubuntu" in the title shoul
 6. Press **Enter**
 7. Wait for all packages to upgrade (this may take 5-10 minutes)
 
-## Step 6: Install Node.js (Required for Claude Code)
+## Step 6: Install Node.js 
 
 Claude Code requires Node.js version 18 or higher. Follow these steps:
 
-1. In the Ubuntu terminal, type:
+1. In the Ubuntu terminal, type these commands one at a time:
+
+   First, download the nvm installer:
    ```
-   wget  https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh --no-check-certificate
+   wget https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh --no-check-certificate
+   ```
+
+   Then run the installer:
+   ```
    cat install.sh | bash
    ```
-2. Press **Enter**
-3. Wait for the setup script to complete
-4. Then type:
+
+2. Load nvm by typing:
    ```
    \. "$HOME/.nvm/nvm.sh"
+   ```
+
+3. Install Node.js version 24 by typing:
+   ```
    nvm install 24
    ```
-5. Press **Enter**
-6. Wait for Node.js to install (2-5 minutes)
-7. Verify installation by typing:
+4. Wait for Node.js to install (2-5 minutes)
+5. Verify installation by typing:
    ```
    node --version
    ```
-8. Press **Enter**
-9. You should see something like `v24.x.x` (the exact numbers may vary)
+6. You should see something like `v24.x.x` (the exact numbers may vary)
 
 ## Step 7: Install Claude Code
 
@@ -152,15 +158,13 @@ Claude Code requires Node.js version 18 or higher. Follow these steps:
    ```
    curl -fsSL https://claude.ai/install.sh | bash
    ```
-2. Press **Enter**
-3. Wait for Claude Code to install (2-5 minutes)
-4. You may see some warnings in yellow or red text - this is usually normal
+2. Wait for Claude Code to install (2-5 minutes)
+3. You may see some warnings in yellow or red text - this is usually normal
 5. When installation is complete, verify by typing:
    ```
    claude --version
    ```
-6. Press **Enter**
-7. You should see the version number of Claude Code
+6. You should see the version number of Claude Code
 
 ## Step 8: Link with Your Anthropic API
 
@@ -168,20 +172,21 @@ Claude Code requires Node.js version 18 or higher. Follow these steps:
 
 1. In the Ubuntu terminal, type:
    ```
-   claude 
+   claude
    ```
-2. Press **Enter**
-3. Claude tries to own an browser. If it cannot open automatically, hold Ctrl and click on the long URL to open it in a Browser. Alternatively, copy the URL and paste to an external browser. 
-4. Log in to your Claude.ai account, which may happen automatically on Chrome.
-5. Click **Authorize**
-6. Click **Copy Code** when a long code appears. 
-7. To paste in the terminal: **Right-click** and select **Paste**
-4. Press **Enter**
-5. You should see a success message
-6. Follow instruction to set it up.
+2. Claude tries to open a browser. If it cannot open automatically, hold **Ctrl** and click on the long URL to open it in a browser. Alternatively, copy the URL and paste it into an external browser.
+3. Log in to your Claude.ai account (this may happen automatically if you're using Chrome)
+4. Click **Authorize**
+5. Click **Copy Code** when a long code appears
+6. Go back to the terminal window
+7. To paste in the terminal: **Right-click** and select **Paste** (or press **Ctrl+Shift+V**)
+8. Press **Enter**
+9. You should see a success message
+10. Follow the instructions to complete the setup
 
 ### Option B. Use Anthropic API via Azure
-In the terminal window, paste these code to define environmental variables:
+
+In the terminal window, paste this code to define environment variables:
 ```
 # Enable Microsoft Foundry integration
 export CLAUDE_CODE_USE_FOUNDRY=1
@@ -192,7 +197,10 @@ export ANTHROPIC_DEFAULT_OPUS_MODEL=claude-opus-4-5
 export ANTHROPIC_DEFAULT_SONNET_MODEL=claude-sonnet-4-5
 export ANTHROPIC_FOUNDRY_API_KEY=AqJqe
 ```
-Then you should be able to use Claude Code using the Azure deployed Claude models. Note that the API key is not complete.
+
+Press **Enter** after pasting. You should now be able to use Claude Code with Azure-deployed Claude models.
+
+**Note:** The API key shown above is incomplete. You'll need to get your complete API key from your Azure portal.
 
 ## Step 9: Start Using Claude Code
 
@@ -204,10 +212,9 @@ You're all set! Here's how to use Claude Code:
    ```
 2. Press **Enter**
 3. You can now chat with Claude!
-4. To see if it works. Ask a general question such as 'Explain quantum computing.'
+4. To see if it works, ask a general question such as "Explain quantum computing."
 
-
-### Step 10: Navigate to Your Project
+## Step 10: Navigate to Your Project
 1. If you have a project in your Windows folders, you can access it:
    ```
    cd /mnt/c/Users/Username/Documents/YourProject
@@ -217,7 +224,9 @@ You're all set! Here's how to use Claude Code:
    ```
    claude
    ```
-3. Start by asking Claude to explain this code base to you. 
+3. Start by asking Claude to explain the codebase to you. 
+4. You can ask Claude to make changes. 
+5. Test your code in your prefered IDE.
 
 ## How to Open Ubuntu Terminal Again
 
@@ -256,9 +265,9 @@ This error means virtualization is not enabled:
 - Try the installation command again
 
 ### Claude Code commands not found
-- Make sure npm installation completed successfully
+- Make sure the installation completed successfully
 - Try closing and reopening the Ubuntu terminal
-- Run: `npm list -g @anthropic/claude-code` to verify installation
+- Try running the installation command again: `curl -fsSL https://claude.ai/install.sh | bash`
 
 ## Need Help?
 
