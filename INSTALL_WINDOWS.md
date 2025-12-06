@@ -2,6 +2,16 @@
 
 This guide will walk you through installing Claude Code on Windows using Windows Subsystem for Linux (WSL). Each step includes detailed instructions for beginners.
 
+## Overview
+
+We will:
+- ✓ Install WSL(Windows subsystem for Linux) on Windows. This enables you to run Linux under Windows.
+- ✓ Set up Ubuntu Linux
+- ✓ Install Node.js
+- ✓ Install Claude Code
+- ✓ Configure your API key
+- ✓ Ready to use Claude Code!
+
 ## What You'll Need
 
 - A Windows 10 (version 2004 or higher) or Windows 11 computer
@@ -56,9 +66,13 @@ A blue window with white text will open - this is PowerShell running as administ
    - Click the **Windows Start button**
    - Click the **Power icon**
    - Click **Restart**
-7. Wait for your computer to restart
+7. Your computer will restart - this takes about 1-2 minutes
 
-**Important:** After restart, wait for the Ubuntu terminal window to appear automatically. If it doesn't appear after 5 minutes, proceed to Step 4.
+**What happens after restart:**
+- After you log back into Windows, wait 2-5 minutes
+- An Ubuntu terminal window should **automatically appear** to continue the installation
+- This is normal! The window opens automatically to complete the setup
+- If the window doesn't appear after 5 minutes, don't worry - just manually open Ubuntu (instructions in Step 4)
 
 **Why restart is needed:** The restart allows Windows to enable the WSL and Virtual Machine Platform features that were just installed. Without restarting, WSL won't work properly.
 
@@ -66,7 +80,15 @@ A blue window with white text will open - this is PowerShell running as administ
 
 ## Step 4: Set Up Ubuntu (First Time Only)
 
-After your computer restarts, a terminal window with "Ubuntu" in the title should open automatically.
+After your computer restarts, a terminal window with "Ubuntu" in the title should open automatically within 2-5 minutes.
+
+**If the Ubuntu window did NOT open automatically:**
+1. Click the **Windows Start button**
+2. Type `Ubuntu` in the search box
+3. Click on **Ubuntu** (you'll see a circular orange icon)
+4. The Ubuntu terminal will open and continue the setup
+
+**Now complete the first-time setup:**
 
 1. Wait for the message: `Enter new UNIX username:`
 2. Type a username (use lowercase letters and numbers only, no spaces)
@@ -105,13 +127,15 @@ Claude Code requires Node.js version 18 or higher. Follow these steps:
 
 1. In the Ubuntu terminal, type:
    ```
-   curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+   wget  https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh --no-check-certificate
+   cat install.sh | bash
    ```
 2. Press **Enter**
 3. Wait for the setup script to complete
 4. Then type:
    ```
-   sudo apt install -y nodejs
+   \. "$HOME/.nvm/nvm.sh"
+   nvm install 24
    ```
 5. Press **Enter**
 6. Wait for Node.js to install (2-5 minutes)
@@ -120,13 +144,13 @@ Claude Code requires Node.js version 18 or higher. Follow these steps:
    node --version
    ```
 8. Press **Enter**
-9. You should see something like `v20.x.x` (the exact numbers may vary)
+9. You should see something like `v24.x.x` (the exact numbers may vary)
 
 ## Step 7: Install Claude Code
 
 1. In the Ubuntu terminal, type:
    ```
-   npm install -g @anthropic/claude-code
+   curl -fsSL https://claude.ai/install.sh | bash
    ```
 2. Press **Enter**
 3. Wait for Claude Code to install (2-5 minutes)
@@ -138,62 +162,62 @@ Claude Code requires Node.js version 18 or higher. Follow these steps:
 6. Press **Enter**
 7. You should see the version number of Claude Code
 
-## Step 8: Set Up Your Anthropic API Key
+## Step 8: Link with Your Anthropic API
 
-To use Claude Code, you need an API key from Anthropic.
-
-1. Open your web browser
-2. Go to [https://console.anthropic.com/](https://console.anthropic.com/)
-3. Sign in or create an account
-4. Click on **API Keys** in the left sidebar
-5. Click **Create Key**
-6. Give it a name (like "Claude Code")
-7. Click **Create**
-8. **Important:** Copy the key that appears (you won't be able to see it again!)
-
-Now, set up the API key in Ubuntu:
+### Option A. Use your Claude Pro or Max subscription
 
 1. In the Ubuntu terminal, type:
    ```
-   claude auth login
+   claude 
    ```
 2. Press **Enter**
-3. When prompted, paste your API key
-   - To paste in the terminal: **Right-click** and select **Paste**
-   - Or press **Shift + Insert**
+3. Claude tries to own an browser. If it cannot open automatically, hold Ctrl and click on the long URL to open it in a Browser. Alternatively, copy the URL and paste to an external browser. 
+4. Log in to your Claude.ai account, which may happen automatically on Chrome.
+5. Click **Authorize**
+6. Click **Copy Code** when a long code appears. 
+7. To paste in the terminal: **Right-click** and select **Paste**
 4. Press **Enter**
 5. You should see a success message
+6. Follow instruction to set it up.
+
+### Option B. Use Anthropic API via Azure
+In the terminal window, paste these code to define environmental variables:
+```
+# Enable Microsoft Foundry integration
+export CLAUDE_CODE_USE_FOUNDRY=1
+# Azure resource name
+export ANTHROPIC_FOUNDRY_RESOURCE=gexij-m7zjh4bo-eastus2
+# Set models to your resource's deployment names
+export ANTHROPIC_DEFAULT_OPUS_MODEL=claude-opus-4-5
+export ANTHROPIC_DEFAULT_SONNET_MODEL=claude-sonnet-4-5
+export ANTHROPIC_FOUNDRY_API_KEY=AqJqe
+```
+Then you should be able to use Claude Code using the Azure deployed Claude models. Note that the API key is not complete.
 
 ## Step 9: Start Using Claude Code
 
 You're all set! Here's how to use Claude Code:
 
-### Option 1: Start a Chat Session
 1. In the Ubuntu terminal, type:
    ```
    claude
    ```
 2. Press **Enter**
 3. You can now chat with Claude!
+4. To see if it works. Ask a general question such as 'Explain quantum computing.'
 
-### Option 2: Ask a Quick Question
-1. Type:
-   ```
-   claude "your question here"
-   ```
-2. Press **Enter**
-3. Claude will respond directly
 
-### Option 3: Navigate to Your Project
+### Step 10: Navigate to Your Project
 1. If you have a project in your Windows folders, you can access it:
    ```
-   cd /mnt/c/Users/YourWindowsUsername/Documents/YourProject
+   cd /mnt/c/Users/Username/Documents/YourProject
    ```
-   Replace `YourWindowsUsername` with your actual Windows username
+   Replace `Username` with your actual Windows username
 2. Then start Claude:
    ```
    claude
    ```
+3. Start by asking Claude to explain this code base to you. 
 
 ## How to Open Ubuntu Terminal Again
 
@@ -241,14 +265,5 @@ This error means virtualization is not enabled:
 - For WSL issues: [Microsoft WSL Documentation](https://docs.microsoft.com/en-us/windows/wsl/)
 - For Claude Code issues: [Claude Code GitHub](https://github.com/anthropics/claude-code)
 
-## Summary
 
-You've now:
-- ✓ Installed WSL on Windows
-- ✓ Set up Ubuntu Linux
-- ✓ Installed Node.js
-- ✓ Installed Claude Code
-- ✓ Configured your API key
-- ✓ Ready to use Claude Code!
 
-Enjoy using Claude Code on your Windows computer!
