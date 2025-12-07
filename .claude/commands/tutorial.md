@@ -96,7 +96,6 @@ It needs to be focused, hands-on, and succinct. Design a minimal set of hands-on
 
 **Add estimated time to completion and creation date** at the very end: "Estimated complation time: 20 minutes. Created by [Steven Ge](https://www.linkedin.com/in/steven-ge-ab016947/) on [date]."
 
-**Add link to GitHub repo** at the very end like this '[Other tutorials](https://gexijin.github.io/vibe)'
 ## Output
 
 Save the tutorial in the `docs/` folder with a descriptive filename:
