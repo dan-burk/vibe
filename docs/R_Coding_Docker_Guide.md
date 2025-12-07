@@ -150,7 +150,7 @@ titlePanel("My First R Docker App")
 - Refresh your browser (or it may refresh automatically)
 - The title now shows your custom text
 
-## Step 10: Understanding the Dockerfile
+## Step 10: Understanding the Dockerfile (Optional)
 
 - In VS Code Explorer, navigate to `.devcontainer/Dockerfile`
 - Click to open the file
@@ -198,7 +198,7 @@ EXPOSE 3838
 
 After changing the base image, rebuild the container to apply changes.
 
-## Step 11: Permanently Install R Packages in the Docker Image
+## Step 11: Install R Packages in the Docker Image (Optional)
 
 Packages installed via the R console (`install.packages()`) are temporary and disappear when you rebuild the container. To make packages permanent, add them to the Dockerfile.
 
