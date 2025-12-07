@@ -366,7 +366,43 @@ Add improved sound notification with better browser support
 - **Manual (Steps 6-7):** When you want to carefully review before committing, when learning, or when you want specific commit messages
 - **Automated (Step 11):** When you trust the changes, when working quickly, or when you want Claude to write descriptive messages
 
-## Step 12: View Complete History
+## Step 12: Ask Claude to Summarize Your Changes
+
+Claude Code can explain what changed in your project. This is helpful when you want to understand or review recent work.
+
+1. **Stay in Claude Code** (your terminal)
+
+2. **Ask Claude about recent changes:**
+   ```
+   what files have I changed?
+   ```
+
+3. Press **Enter**
+
+**What you'll see:** Claude will run `git status` and `git diff` to show you which files changed and what the changes are.
+
+**Example response:**
+```
+You've modified timer.html. Here's what changed:
+
+- Added Web Audio API implementation for sound notification
+- Created AudioContext and oscillator for beep sound
+- Added error handling for browser autoplay restrictions
+- Timer now plays a 440Hz tone for 200ms when countdown reaches zero
+```
+
+4. **Try other questions:**
+   ```
+   explain what the audio code does
+   ```
+
+   ```
+   show me the last 5 commits
+   ```
+
+**Why this is useful:** Claude can read your git history and explain changes in plain English. This helps you understand what you or others changed, making it easier to review code or write commit messages.
+
+## Step 13: View Complete History
 
 Let's see how your project evolved.
 
