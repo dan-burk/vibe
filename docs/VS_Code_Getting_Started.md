@@ -60,7 +60,7 @@ The Explorer sidebar now shows your folder's files:
 - In Explorer, click the **New File** icon (page with +)
 - Name it `README.md`
 - Add this content:
-```markdown
+```
 # My Project
 
 This is a **demo project** for learning VS Code.
