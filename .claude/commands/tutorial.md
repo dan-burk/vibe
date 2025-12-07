@@ -4,7 +4,7 @@ Create a beginner-friendly tutorial for: $ARGUMENTS
 
 It needs to be focused, hands-on, and succinct. Design a minimal set of hands-on activities through a demo project so that users can follow just to get the main idea. It is not a comprehensive tutorial. It is an introduction to a topic for completely new users.
 
-**Keep it short.** Aim for ~250 lines or less. Remove unnecessary explanations.
+**Keep it short.** Aim for ~400 lines or less. Remove unnecessary explanations.
 
 ## Phase 1: Research
 
@@ -32,7 +32,7 @@ It needs to be focused, hands-on, and succinct. Design a minimal set of hands-on
 
 1. **Title** - Clear, descriptive (e.g., "Installing Claude Code on Windows Using WSL")
 
-2. **Hook** (3-4 sentences max)
+2. **Hook** (4-6 sentences max)
    - One relatable problem scenario
    - One simple analogy
    - Why this matters
@@ -41,7 +41,7 @@ It needs to be focused, hands-on, and succinct. Design a minimal set of hands-on
    - One sentence per concept
    - Bold the term, then explain simply
 
-4. **What You'll Do** - Bullet list of main steps (5-8 items)
+4. **What You'll Do** - Bullet list of main steps (5-10 items)
 
 5. **What You'll Need** - Prerequisites (3-5 items)
 
@@ -59,12 +59,12 @@ It needs to be focused, hands-on, and succinct. Design a minimal set of hands-on
 
 9. **The Complete Workflow** - Summary of the cycle (optional)
 
-10. **Next Steps** - What to try next with example prompts
+10. **Next Steps** - What to try next using this setup to learn on your own(2-3 examples)
 
 ### Writing Rules
 
 **Be concise:**
-- Short paragraphs (2-3 sentences max)
+- Short paragraphs (3-5 sentences max)
 - Bullet points over prose
 - Remove "Why this matters", "Why this is powerful" etc. - one short sentence only when essential
 - No "What You've Learned" sections
@@ -87,8 +87,6 @@ It needs to be focused, hands-on, and succinct. Design a minimal set of hands-on
 **Add links inline:**
 - Link tool names to official sites on first mention
 - No separate "Sources" section
-
-**Include timing** only for long waits (5+ minutes)
 
 **Add creation date** at the very end: "Created on [date] with help from Claude Code."
 
