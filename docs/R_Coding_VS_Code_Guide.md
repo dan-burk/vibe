@@ -186,17 +186,14 @@ hist(iris$Sepal.Length)
 
 - Save the file by clicking **File > Save**
 
-This script uses the famous iris flower dataset, displays summary statistics, and creates a colorful scatter plot.
+This script uses the famous iris flower dataset, displays summary statistics, and creates a histogram.
 
 ## Step 8: Run R Code Interactively
 
-Execute your code and see results in VS Code.
-
-- With `analysis.R` open, select a line of code and press `Ctrl+Enter` to run it 
-- If you don't have a terminal open, the first `Ctrl+Enter` opens a R terminal. The second runs the code.
+- With `analysis.R` open, select a line of code and press `Ctrl+Enter` (Windows/Linux) or `Cmd+Enter` (Mac) to run it
+- If you don't have a terminal open, the first `Ctrl+Enter` / `Cmd+Enter` opens an R terminal. The second runs the code.
 - Watch the output appear in the terminal and the plot will open in a separate window
-
-You can also select all lines and run them the same way.
+- You can also select all lines and run them the same way.
 
 ## Step 9: Create a Simple Shiny App
 
