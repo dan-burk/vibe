@@ -111,13 +111,52 @@
             border-radius: 8px;
         }
 
-        .graph-hint {
+        /* Filter Buttons */
+        .filter-controls {
             position: absolute;
-            bottom: 12px;
-            right: 16px;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin: 0;
+            top: 12px;
+            left: 16px;
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .filter-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 10px;
+            background: #21262d;
+            border: 1px solid #6e7681;
+            color: var(--text);
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .filter-btn:hover {
+            background: #30363d;
+            border-color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #58a6ff 0%, #4493e6 100%);
+            border-color: #58a6ff;
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(88, 166, 255, 0.3);
+        }
+
+        .filter-btn.active.basics {
+            background: linear-gradient(135deg, #3fb950 0%, #2ea043 100%);
+            border-color: #3fb950;
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(63, 185, 80, 0.3);
         }
 
         .progress-counter {
@@ -263,8 +302,12 @@
         </header>
 
         <div class="graph-container">
+            <div class="filter-controls">
+                <button class="filter-btn active" id="filter-windows" data-platform="windows" title="Show Windows tutorials">🪟 Windows</button>
+                <button class="filter-btn" id="filter-mac" data-platform="mac" title="Show Mac tutorials">🍎 Mac</button>
+                <button class="filter-btn" id="filter-basics" data-type="basics" title="Basic tutorials. Hide coding related.">📚 Basics</button>
+            </div>
             <div id="network-graph"></div>
-            <p class="graph-hint">Click to learn</p>
             <p class="progress-counter" id="progress-counter"></p>
         </div>
 
@@ -436,7 +479,7 @@
             3: { x: 0, y: 120 },    // VS Code Basics
             // Level 1 - Intermediate
             11: { x: 160, y: -110 }, // Claude Code + Git (Win)
-            12: { x: 160, y: -50 },  // Claude Code + Git (Mac)
+            12: { x: 160, y: -70 },  // Claude Code + Git (Mac)
             5: { x: 160, y: 90 },   // R in VS Code
             6: { x: 160, y: 150 },  // Python in VS Code
             // Level 2 - Advanced
@@ -475,6 +518,7 @@
             Object.entries(tutorials).map(([id, t]) => ({
                 id: parseInt(id),
                 label: getNodeLabel(parseInt(id), t.label),
+                title: 'Click to start learning',
                 color: getNodeColor(parseInt(id), t.level),
                 font: { color: isCompleted(parseInt(id)) ? '#e6edf3' : '#0d1117', size: 12, face: 'system-ui' },
                 shape: 'box',
@@ -489,10 +533,21 @@
         // Update progress counter
         function updateProgress() {
             const completed = getCompleted();
-            const total = Object.keys(tutorials).length;
             const counter = document.getElementById('progress-counter');
-            if (completed.length > 0) {
-                counter.textContent = `${completed.length}/${total} completed`;
+
+            // Count only visible tutorials
+            const visibleNodes = nodes.get({
+                filter: node => !node.hidden
+            });
+            const visibleTotal = visibleNodes.length;
+            const visibleCompleted = completed.filter(id =>
+                visibleNodes.some(node => node.id === id)
+            ).length;
+
+            if (visibleCompleted > 0) {
+                counter.textContent = `${visibleCompleted}/${visibleTotal} completed`;
+            } else if (visibleTotal < Object.keys(tutorials).length) {
+                counter.textContent = `0/${visibleTotal} visible`;
             } else {
                 counter.textContent = '';
             }
@@ -505,6 +560,7 @@
             nodes.update({
                 id: id,
                 label: getNodeLabel(id, tutorial.label),
+                title: 'Click to start learning',
                 color: getNodeColor(id, tutorial.level),
                 font: { color: completed ? '#e6edf3' : '#0d1117', size: 12, face: 'system-ui' }
             });
@@ -584,6 +640,101 @@
         };
 
         const network = new vis.Network(container, data, options);
+
+        // Filter state
+        let currentPlatform = 'windows';
+        let basicsMode = false;
+
+        // Tutorial categorization
+        const tutorialCategories = {
+            windows: [1, 11],      // Install Win, Git Win
+            mac: [2, 12],          // Install Mac, Git Mac
+            basics: [1, 2, 11, 12], // All install and git tutorials
+            coding: [3, 4, 5, 6, 7, 8, 9, 10] // All coding tutorials
+        };
+
+        // Filter nodes based on current state
+        function applyFilters() {
+            const allNodes = Object.keys(tutorials).map(id => parseInt(id));
+            let visibleNodes = [];
+
+            if (basicsMode) {
+                // Basics mode: show only install + git for selected platform
+                visibleNodes = tutorialCategories[currentPlatform];
+            } else {
+                // Full mode: show platform-specific basics + all coding tutorials
+                visibleNodes = [
+                    ...tutorialCategories[currentPlatform],
+                    ...tutorialCategories.coding
+                ];
+            }
+
+            // Update node visibility
+            allNodes.forEach(id => {
+                const isVisible = visibleNodes.includes(id);
+                const node = nodes.get(id);
+
+                if (isVisible) {
+                    // Make node visible and interactive
+                    nodes.update({
+                        id: id,
+                        hidden: false,
+                        physics: false,
+                        title: 'Click to start learning'
+                    });
+                } else {
+                    // Hide node
+                    nodes.update({
+                        id: id,
+                        hidden: true
+                    });
+                }
+            });
+
+            // Update edge visibility - only show edges between visible nodes
+            edgeData.forEach(e => {
+                const fromVisible = visibleNodes.includes(e.from);
+                const toVisible = visibleNodes.includes(e.to);
+                edges.update({
+                    id: e.id,
+                    hidden: !(fromVisible && toVisible)
+                });
+            });
+
+            updateProgress();
+        }
+
+        // Platform filter buttons
+        const filterWindows = document.getElementById('filter-windows');
+        const filterMac = document.getElementById('filter-mac');
+        const filterBasics = document.getElementById('filter-basics');
+
+        filterWindows.addEventListener('click', () => {
+            if (currentPlatform !== 'windows') {
+                currentPlatform = 'windows';
+                filterWindows.classList.add('active');
+                filterMac.classList.remove('active');
+                applyFilters();
+            }
+        });
+
+        filterMac.addEventListener('click', () => {
+            if (currentPlatform !== 'mac') {
+                currentPlatform = 'mac';
+                filterMac.classList.add('active');
+                filterWindows.classList.remove('active');
+                applyFilters();
+            }
+        });
+
+        filterBasics.addEventListener('click', () => {
+            basicsMode = !basicsMode;
+            filterBasics.classList.toggle('active');
+            applyFilters();
+        });
+
+        // Apply initial filters
+        applyFilters();
 
         // Modal elements
         const modal = document.getElementById('tutorial-modal');
