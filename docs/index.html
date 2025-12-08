@@ -121,6 +121,15 @@
             z-index: 10;
         }
 
+        .filter-controls-right {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
         .filter-btn {
             display: inline-flex;
             align-items: center;
@@ -135,8 +144,6 @@
             cursor: pointer;
             transition: all 0.2s ease;
             user-select: none;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
         }
 
         .filter-btn:hover {
@@ -305,6 +312,10 @@
             <div class="filter-controls">
                 <button class="filter-btn active" id="filter-windows" data-platform="windows" title="Show Windows tutorials">🪟 Windows</button>
                 <button class="filter-btn" id="filter-mac" data-platform="mac" title="Show Mac tutorials">🍎 Mac</button>
+            </div>
+            <div class="filter-controls-right">
+                <button class="filter-btn active" id="filter-r" data-language="r" title="Show R tutorials. Hide Python.">📊 R</button>
+                <button class="filter-btn" id="filter-python" data-language="python" title="Show Python tutorials. Hide R.">🐍 Python</button>
                 <button class="filter-btn" id="filter-basics" data-type="basics" title="Basic tutorials. Hide coding related.">📚 Basics</button>
             </div>
             <div id="network-graph"></div>
@@ -643,13 +654,16 @@
 
         // Filter state
         let currentPlatform = 'windows';
-        let basicsMode = false;
+        let currentLanguage = 'r'; // null = all, 'r', 'python', 'basics'
 
         // Tutorial categorization
         const tutorialCategories = {
             windows: [1, 11],      // Install Win, Git Win
             mac: [2, 12],          // Install Mac, Git Mac
             basics: [1, 2, 11, 12], // All install and git tutorials
+            r: [5, 7, 10],         // R in VS Code, R via Docker, Vibe Coding in R
+            python: [6, 8],        // Python in VS Code, Python via Docker
+            shared: [3, 4, 9],     // VS Code, Version Control, GitHub Desktop (language-agnostic)
             coding: [3, 4, 5, 6, 7, 8, 9, 10] // All coding tutorials
         };
 
@@ -658,11 +672,25 @@
             const allNodes = Object.keys(tutorials).map(id => parseInt(id));
             let visibleNodes = [];
 
-            if (basicsMode) {
+            if (currentLanguage === 'basics') {
                 // Basics mode: show only install + git for selected platform
                 visibleNodes = tutorialCategories[currentPlatform];
+            } else if (currentLanguage === 'r') {
+                // R mode: show platform basics + R tutorials + shared tutorials
+                visibleNodes = [
+                    ...tutorialCategories[currentPlatform],
+                    ...tutorialCategories.r,
+                    ...tutorialCategories.shared
+                ];
+            } else if (currentLanguage === 'python') {
+                // Python mode: show platform basics + Python tutorials + shared tutorials
+                visibleNodes = [
+                    ...tutorialCategories[currentPlatform],
+                    ...tutorialCategories.python,
+                    ...tutorialCategories.shared
+                ];
             } else {
-                // Full mode: show platform-specific basics + all coding tutorials
+                // All mode: show platform-specific basics + all coding tutorials
                 visibleNodes = [
                     ...tutorialCategories[currentPlatform],
                     ...tutorialCategories.coding
@@ -704,11 +732,14 @@
             updateProgress();
         }
 
-        // Platform filter buttons
+        // Filter button elements
         const filterWindows = document.getElementById('filter-windows');
         const filterMac = document.getElementById('filter-mac');
+        const filterR = document.getElementById('filter-r');
+        const filterPython = document.getElementById('filter-python');
         const filterBasics = document.getElementById('filter-basics');
 
+        // Platform filter buttons
         filterWindows.addEventListener('click', () => {
             if (currentPlatform !== 'windows') {
                 currentPlatform = 'windows';
@@ -727,9 +758,46 @@
             }
         });
 
+        // Language filter buttons
+        filterR.addEventListener('click', () => {
+            if (currentLanguage !== 'r') {
+                currentLanguage = 'r';
+                filterR.classList.add('active');
+                filterPython.classList.remove('active');
+                filterBasics.classList.remove('active');
+            } else {
+                // Toggle off - show all
+                currentLanguage = null;
+                filterR.classList.remove('active');
+            }
+            applyFilters();
+        });
+
+        filterPython.addEventListener('click', () => {
+            if (currentLanguage !== 'python') {
+                currentLanguage = 'python';
+                filterPython.classList.add('active');
+                filterR.classList.remove('active');
+                filterBasics.classList.remove('active');
+            } else {
+                // Toggle off - show all
+                currentLanguage = null;
+                filterPython.classList.remove('active');
+            }
+            applyFilters();
+        });
+
         filterBasics.addEventListener('click', () => {
-            basicsMode = !basicsMode;
-            filterBasics.classList.toggle('active');
+            if (currentLanguage !== 'basics') {
+                currentLanguage = 'basics';
+                filterBasics.classList.add('active');
+                filterR.classList.remove('active');
+                filterPython.classList.remove('active');
+            } else {
+                // Toggle off - show all
+                currentLanguage = null;
+                filterBasics.classList.remove('active');
+            }
             applyFilters();
         });
 
