@@ -23,46 +23,60 @@ This guide will walk you through installing Claude Code on your Mac. Each step i
 
 Claude Code requires Node.js version 18 or higher.
 
-1. Open your web browser (Safari, Chrome, Firefox, etc.)
-2. Go to this website:
+**First, check if Node.js is already installed:**
+
+- Press **Command (⌘) + Space** on your keyboard
+- Type `Terminal` in the search box
+- Click on **Terminal** (a black square icon)
+- In Terminal, type:
+   ```
+   node --version
+   ```
+- Look at the results:
+   - **If you see a version number like `v18.x.x` or higher**: Node.js is already installed! Skip to Step 4.
+   - **If you see "command not found"**: Continue with the installation below.
+
+**To download Node.js:**
+
+- Open your web browser (Safari, Chrome, Firefox, etc.)
+- Go to this website:
    ```
    https://nodejs.org/
    ```
-3. You'll see the Node.js homepage
-4. Click on the green button that says **Get Node.js**
-5. Click the green button that says **macOS Installer (.pkg)** in the middle of the screen
-6. A file will download to your Downloads folder (usually takes 30-60 seconds)
+- You'll see the Node.js homepage
+- Click on the green button that says **Get Node.js**
+- Click the green button that says **macOS Installer (.pkg)** in the middle of the screen
+- A file will download to your Downloads folder (usually takes 30-60 seconds)
    - The file will be named something like `node-v24.x.x.pkg`
 
 ## Step 2: Install Node.js
 
-1. Open **Finder** (click the blue smiling face icon in your Dock)
-2. Click **Downloads** in the left sidebar
-3. Find the file you just downloaded (looks like `node-v24.x.x.pkg`)
-4. Double-click the file to open it
-5. An installer window will appear - click **Continue**
-6. Click **Continue** again on the License screen
-7. Click **Agree** to accept the license
-8. Click **Install**
-9. You'll be asked for your Mac password (the one you use to log in)
-10. Type your password and click **Install Software**
-11. Wait for installation to complete (1-2 minutes)
-12. Click **Close** when you see "The installation was successful"
-13. You can move the installer to Trash if asked
+- Open **Finder** (click the blue smiling face icon in your Dock)
+- Click **Downloads** in the left sidebar
+- Find the file you just downloaded (looks like `node-v24.x.x.pkg`)
+- Double-click the file to open it
+- An installer window will appear - click **Continue**
+- Click **Continue** again on the License screen
+- Click **Agree** to accept the license
+- Click **Install**
+- You'll be asked for your Mac password (the one you use to log in)
+- Type your password and click **Install Software**
+- Wait for installation to complete (1-2 minutes)
+- Click **Close** when you see "The installation was successful"
+- You can move the installer to Trash if asked
 
 ## Step 3: Verify Node.js Installation
 
-1. Press **Command (⌘) + Space** on your keyboard
-2. Type `Terminal` in the search box
-3. Click on **Terminal** (a black square icon)
-4. A window will open with white or black background and text - this is Terminal
-5. In Terminal, type:
+- Press **Command (⌘) + Space** on your keyboard
+- Type `Terminal` in the search box
+- Click on **Terminal** (a black square icon)
+- A window will open with white or black background and text - this is Terminal
+- In Terminal, type:
    ```
    node --version
    ```
-6. Press **Enter**
-7. You should see something like `v24.x.x` (the exact numbers may vary)
-8. If you see a version number, great! Node.js is installed correctly
+- You should see something like `v24.x.x` (the exact numbers may vary)
+- If you see a version number, great! Node.js is installed correctly
 
 **If you see "command not found":**
 - Close Terminal completely (press **Command (⌘) + Q**)
@@ -73,41 +87,60 @@ Claude Code requires Node.js version 18 or higher.
 
 ## Step 4: Install Claude Code
 
-1. In Terminal, type:
+- In Terminal, type:
    ```
    sudo npm install -g @anthropic/claude-code
    ```
-2. You'll be asked for your Mac password
-3. Type your password (you won't see it as you type) and press **Enter**
-4. Wait for Claude Code to install (2-5 minutes)
-5. You may see some warnings in yellow or red text - this is usually normal
-6. When installation is complete, verify by typing:
+- You'll be asked for your Mac password
+- Type your password (you won't see it as you type)
+- Wait for Claude Code to install (2-5 minutes)
+- You may see some warnings in yellow or red text - this is usually normal
+- When installation is complete, verify by typing:
    ```
    claude --version
    ```
-7. Press **Enter**
-8. You should see the version number of Claude Code
+- You should see the version number of Claude Code
 
 ## Step 5: Link with Your Anthropic API
 
 ### Option A. Use your Claude Pro or Max subscription
 
-1. In Terminal, type:
+- In Terminal, type:
    ```
    claude
    ```
-2. Press **Enter**
-3. Claude tries to open a browser. If it cannot open automatically, hold **Command (⌘)** and click on the long URL to open it in a browser. Alternatively, copy the URL and paste it into your browser.
-4. Log in to your Claude.ai account (this may happen automatically)
-5. Click **Authorize**
-6. Click **Copy Code** when a long code appears
-7. Go back to the Terminal window
-8. To paste in Terminal: **Right-click** and select **Paste** (or press **Command (⌘) + V**)
-9. Press **Enter**
-10. You should see a success message
-11. Follow the instructions to complete the setup
+- Claude tries to open a browser. If it cannot open automatically, hold **Command (⌘)** and click on the long URL to open it in a browser. Alternatively, copy the URL and paste it into your browser.
+- Log in to your Claude.ai account (this may happen automatically)
+- Click **Authorize**
+- Click **Copy Code** when a long code appears
+- Go back to the Terminal window
+- To paste in Terminal: **Right-click** and select **Paste** (or press **Command (⌘) + V**)
+- You should see a success message
+- Follow the instructions to complete the setup
 
-### Option B. Use Anthropic API via Azure
+### Option B. Use Anthropic API key
+
+If you have an Anthropic API key instead of a Claude subscription:
+
+- First, get your API key from the [Anthropic Console](https://console.anthropic.com/)
+- In Terminal, type:
+   ```
+   export ANTHROPIC_API_KEY="your-api-key-here"
+   ```
+   Replace `your-api-key-here` with your actual API key
+- To make this permanent (so you don't have to set it every time), add it to your shell profile:
+   ```
+   echo 'export ANTHROPIC_API_KEY="your-api-key-here"' >> ~/.zshrc
+   ```
+   Replace `your-api-key-here` with your actual API key
+- Close and reopen Terminal for the changes to take effect
+- You should now be able to use Claude Code with your API key
+
+**Important:** If you have a Claude Pro or Max subscription, do NOT set the ANTHROPIC_API_KEY environment variable. Leave it unset to use your subscription's included usage and avoid unexpected API charges.
+
+**Note:** If you're using an older Mac with bash instead of zsh, replace `~/.zshrc` with `~/.bash_profile` in the command above.
+
+### Option C. Use Anthropic API via Azure
 
 In the Terminal window, paste this code to define environment variables:
 ```
@@ -121,7 +154,7 @@ export ANTHROPIC_DEFAULT_SONNET_MODEL=claude-sonnet-4-5
 export ANTHROPIC_FOUNDRY_API_KEY=your_api_key
 ```
 
-Press **Enter** after pasting. You should now be able to use Claude Code with Azure-deployed Claude models.
+You should now be able to use Claude Code with Azure-deployed Claude models.
 
 **Note:** Replace `xxxx-eastus2` with your Foundry Resource name (do not use the entire base URL). Replace `your_api_key` with your complete API key from your Azure portal.
 
@@ -129,38 +162,37 @@ Press **Enter** after pasting. You should now be able to use Claude Code with Az
 
 You're all set! Here's how to use Claude Code:
 
-1. In Terminal, type:
+- In Terminal, type:
    ```
    claude
    ```
-2. Press **Enter**
-3. You can now chat with Claude!
-4. To see if it works, ask a general question such as "Explain quantum computing."
+- You can now chat with Claude!
+- To see if it works, ask a general question such as "Explain quantum computing."
 
 ## Step 7: Navigate to Your Project
 
-1. If you have a project in your Mac folders, you can navigate to it:
+- If you have a project in your Mac folders, you can navigate to it:
    ```
    cd ~/Documents/YourProject
    ```
    Replace `YourProject` with your actual project folder name
 
-2. Then start Claude:
+- Then start Claude:
    ```
    claude
    ```
-3. Start by asking Claude to explain the codebase to you.
-4. You can ask Claude to make changes.
-5. Test your code in your preferred IDE.
+- Start by asking Claude to explain the codebase to you.
+- You can ask Claude to make changes.
+- Test your code in your preferred IDE.
 
 ## How to Open Terminal Again
 
 After closing Terminal, here's how to open it again:
 
-1. Press **Command (⌘) + Space** (or click on **Launchpad** from the Dock)
-2. Type `Terminal`
-3. Click on **Terminal**
-4. The Terminal window will open
+- Press **Command (⌘) + Space** (or click on **Launchpad** from the Dock)
+- Type `Terminal`
+- Click on **Terminal**
+- The Terminal window will open
 
 ## Troubleshooting
 
@@ -196,9 +228,9 @@ After closing Terminal, here's how to open it again:
 
 ### Finding Project Paths
 To find the path to a folder:
-1. Open Finder
-2. Navigate to your project folder
-3. Drag and drop the folder into Terminal - the full path will appear!
+- Open Finder
+- Navigate to your project folder
+- Drag and drop the folder into Terminal - the full path will appear!
 
 ### Keyboard Shortcuts
 - **Command (⌘) + T**: Open new Terminal tab
