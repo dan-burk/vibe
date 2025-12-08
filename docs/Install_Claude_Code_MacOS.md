@@ -16,6 +16,8 @@ This guide will walk you through installing Claude Code on your Mac. Each step i
 - A Mac computer (macOS 10.15 Catalina or newer recommended)
 - Internet connection
 - Administrator access on your computer
+- Claude Pro/Max subscription or API key
+- 15 - 20 minutes
 
 ## Step 1: Download Node.js
 
