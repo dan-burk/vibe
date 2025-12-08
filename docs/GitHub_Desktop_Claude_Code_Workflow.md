@@ -61,21 +61,21 @@ You now have a local project and cloud backup on GitHub.
   ```
 - Type this request:
   ```
-  Create a simple countdown timer app in a single HTML file.
+  Create a simple countdown timer app in a single file called timer.html.
   It should have:
   - An input field to set minutes
   - Start and Stop buttons
   - Display showing time remaining in MM:SS format
-  - When timer reaches zero, display "Time's up!"
+  - When timer reaches zero, display 'Time's up!'
   Keep it simple with inline CSS and JavaScript.
   ```
 
-Claude creates the `index.html` file (takes 10-30 seconds).
+Claude creates the `timer.html` file (takes 10-30 seconds).
 
 ## Step 3: Test the Timer
 
 - In GitHub Desktop, click **Repository** → **Show in Finder/Explorer**
-- **Double-click** `index.html` to open it in your browser
+- **Double-click** `timer.html` to open it in your browser
 - Try the timer:
   - Type `1` in the input field
   - Click **Start**
