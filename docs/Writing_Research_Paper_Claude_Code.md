@@ -121,49 +121,25 @@ commit these changes
 Ask Claude to write the full draft:
 
 ```
-Using the outline and research, write a complete 2-page technical
-report in paper.md.
+Write a 1.5 page research paper based on the outline and research.
 
-Writing Style:
-- Clear and concise prose
-- Short, direct sentences (15-20 words average)
-- Analytical and objective tone
-- Active voice where possible
+Structure:
+- Introduction: Hook, context, thesis statement
+- Body: 2-3 sections with arguments, statistics, and examples
+- Conclusion: Summary and implications
 
-Content Requirements:
-- Strong opening hook in the introduction
-- Statistics woven naturally into prose (not bullet lists)
-- Concrete examples from the research to illustrate key points
-- Smooth transitions between sections
-- Each paragraph should have a clear topic sentence
+Style:
+- Clear, concise sentences (15-20 words average)
+- Active voice, analytical tone
+- Statistics woven into prose (no bullet lists)
+- Smooth transitions between paragraphs
 
-Structure it with:
+Citations:
+- Use numbered references [1], [2], etc. after claims
+- Include 5-15 references
+- Add a References section at the end
 
-1. Introduction
-   - Hook to grab attention
-   - Background context (2-3 sentences)
-   - Clear thesis statement
-
-2. Main Body (2-3 sections)
-   - Each section with a clear argument
-   - Key statistics/evidence to include
-   - Specific examples from the research
-
-3. Conclusion
-   - Summary of main points
-   - Implications or call to action
-
-For each section, note which sources [1], [2], etc. to cite.
-Aim for approximately 1,000 words total.
-
-Citations and References:
-- Add numbered references [1], [2], etc. for all citations
-- Place citations after relevant statements or quotes
-- 5-20 references
-- Create a "References" section at the end with full source details
-- List references in order [1], [2], [3]...
-
-Length: Approximately 1,400 words (fits 2 pages with standard formatting)
+Length: ~1,000 words
 
 Save as paper.md
 ```
@@ -184,7 +160,7 @@ Open `paper.md` in your text editor. Read through carefully and make your own re
 - Fix any awkward phrasing
 - Ensure citations are accurate
 
-Save your changes after editing, then commit:
+Save your changes after editing each paragraph, then commit:
 
 ```
 commit these changes
@@ -222,7 +198,7 @@ Add an abstract at the beginning of the paper. Write 4-5 sentences
 that summarize the main argument, key findings, and conclusion.
 ```
 
-Claude will add the abstract. Review to ensure it accurately captures your paper's essence. Then commit:
+Claude will add the abstract. Review and edit to ensure it accurately captures your paper's essence. Then commit:
 
 ```
 commit these changes
@@ -230,15 +206,29 @@ commit these changes
 
 **Seventh save point created!**
 
-## Step 10: Proofread with AI
+## Step 10: Immprove title
+
+Ask Claude to give you a few options for title:
+
+```
+Give me a few options for title. Make it more appealing.
+```
+
+Select a tile. Add your own touch. Edit the paper and commit:
+```
+I like the first option. But slightly change it to xxxx.  Edit the file and commit. 
+```
+
+## Step 11: Proofread with AI
 
 Ask Claude to do a final proofread:
 
 ```
-Do a final proofread of paper.md:
+Do a final proofread of  the paper:
 - Fix any spelling and grammar errors
 - Ensure consistent formatting throughout
 - Verify all reference numbers [1], [2]... match the References section
+- Verify all cited references actually exist.
 - Improve any awkward sentences for better flow
 ```
 
@@ -252,7 +242,7 @@ commit these changes
 
 To view your complete writing journey anytime, type: `show my commit history`
 
-## Step 11: Create a Slash Command for Future Papers
+## Step 12: Create a Slash Command for Future Papers
 
 Save this workflow as a reusable slash command for your next research paper:
 
