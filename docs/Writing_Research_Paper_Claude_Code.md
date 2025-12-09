@@ -75,10 +75,10 @@ Read through the research and decide on your perspective. Ask Claude to help bra
 
 ```
 Based on this research, brainstorm 3-4 different angles or perspectives
-I could take for this paper. Save as brainstorm.md
+I could take for this paper. 
 ```
 
-Review the angles in your editor and pick the one that interests you most. Add a note in `brainstorm.md` marking your choice.
+Review the angles and pick the one that interests you most. 
 
 ## Step 4: Focused Research
 
@@ -103,25 +103,9 @@ Ask Claude to create an outline based on your chosen angle:
 
 ```
 Create a brief outline for my 2-page paper based on the focused
-research and my chosen angle. Just give me main points for each paragraph in bullet points.
-Structure it with:
+research and my chosen angle. Just give me the narrative in bullet points.
 
-1. Introduction
-   - Hook to grab attention
-   - Background context (2-3 sentences)
-   - Clear thesis statement
-
-2. Main Body (2-3 sections)
-   - Each section with a clear argument
-   - Key statistics/evidence to include
-   - Specific examples from the research
-
-3. Conclusion
-   - Summary of main points
-   - Implications or call to action
-
-For each section, note which sources [1], [2], etc. to cite.
-Aim for approximately 1,400 words total.
+Give me a few options.
 ```
 
 Review the outline and **prompt to adjust** as needed. Then commit:
@@ -152,6 +136,25 @@ Content Requirements:
 - Concrete examples from the research to illustrate key points
 - Smooth transitions between sections
 - Each paragraph should have a clear topic sentence
+
+Structure it with:
+
+1. Introduction
+   - Hook to grab attention
+   - Background context (2-3 sentences)
+   - Clear thesis statement
+
+2. Main Body (2-3 sections)
+   - Each section with a clear argument
+   - Key statistics/evidence to include
+   - Specific examples from the research
+
+3. Conclusion
+   - Summary of main points
+   - Implications or call to action
+
+For each section, note which sources [1], [2], etc. to cite.
+Aim for approximately 1,000 words total.
 
 Citations and References:
 - Add numbered references [1], [2], etc. for all citations
