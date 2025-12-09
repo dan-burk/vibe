@@ -59,15 +59,18 @@ Git is now tracking changes in this folder. Claude Code is ready.
 Ask Claude to research your topic:
 
 ```
-I'm writing a 2-page research paper on AI adoption in the workplace.
+I'm writing a ~1,000 word research paper on AI adoption in the workplace.
 Search for recent data (2023-2025) on:
 - Productivity gains from AI tools
 - Job displacement concerns and statistics
 - Real-world case studies from companies
 
-Organize the findings with clear sections and cite all sources.
-Prioritize peer-reviewed research and credible industry reports.
-Avoid anecdotes and opinion pieces.
+Requirements:
+- Prioritize peer-reviewed research and credible industry reports
+- Avoid anecdotes and opinion pieces
+- List each source with a 1-3 sentence summary
+- Group sources by topic
+
 Save as general_research.md
 ```
 
