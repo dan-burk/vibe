@@ -28,8 +28,8 @@ We also configure git for version control before starting Claude Code.
 **Windows (WSL Ubuntu):**
 ```bash
 cd /mnt/c/Users/YOUR_USERNAME/Documents
-mkdir ai-workplace-research
-cd ai-workplace-research
+mkdir ai_research
+cd ai_research
 git init
 git config user.name "Your Name"
 git config user.email "your.email@example.com"
@@ -39,8 +39,8 @@ claude
 **Mac, Linux, or running inside Docker:**
 ```bash
 cd ~/Documents
-mkdir ai-workplace-research
-cd ai-workplace-research
+mkdir ai_research
+cd ai_research
 git init
 git config user.name "Your Name"
 git config user.email "your.email@example.com"
