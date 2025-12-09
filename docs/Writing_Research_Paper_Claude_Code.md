@@ -311,20 +311,4 @@ Remember: Research → Brainstorm → Focused Research → Plan → Draft → Re
 
 Claude handles research, writing, and Git operations through natural language—no commands to memorize!
 
-## Quick Summary
-
-- **Setup:** One-time project and Git initialization
-- **Research:** Claude searches for general information
-- **Brainstorm:** Pick your angle from the research
-- **Focused Research:** Claude finds targeted data for your angle
-- **Plan:** Claude creates outline based on your perspective
-- **Draft:** Claude writes the paper with references
-- **Revise Manually:** You add your voice and make changes
-- **Polish with AI:** Claude improves specific sections
-- **Add Abstract:** Claude creates executive summary
-- **Proofread with AI:** Claude fixes errors and improves flow
-- **Create Slash Command:** Save workflow for future papers
-- **Commit:** Save work at each phase with "commit these changes"
-- **Safety:** Return to any previous version anytime
-
 Created by [Steven Ge](https://www.linkedin.com/in/steven-ge-ab016947/) on December 9, 2025.
