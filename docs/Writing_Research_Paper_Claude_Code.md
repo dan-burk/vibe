@@ -156,6 +156,7 @@ Content Requirements:
 Citations and References:
 - Add numbered references [1], [2], etc. for all citations
 - Place citations after relevant statements or quotes
+- 5-20 references
 - Create a "References" section at the end with full source details
 - List references in order [1], [2], [3]...
 
