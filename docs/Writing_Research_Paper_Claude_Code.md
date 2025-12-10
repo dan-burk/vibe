@@ -18,7 +18,7 @@ Write research papers using Claude Code as an assistant for research, brainstorm
 - Git installed (comes with Mac/Linux, [Windows guide](https://git-scm.com/download/win))
 - VS Code installed ([download](https://code.visualstudio.com/))
 - Terminal access
-- 45-60 minutes
+- 25-35 minutes
 
 ## Step 1: Set Up Project and Start Claude Code
 
