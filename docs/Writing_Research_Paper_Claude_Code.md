@@ -2,70 +2,57 @@
 
 # Writing a Research Paper with Claude Code
 
-Write research papers using Claude Code as an assistant for research, brainstorming, planning, drafting, and editing. Use Git to track every version. See an [example paper](./example_paper.md) created using this workflow.
+Write research papers using Claude Code as an assistant for research, brainstorming, planning, drafting, and editing. See an [example paper](./example_paper.md) created using this workflow.
 
 ## Key Concepts
 
-- **Workflow** - Research → Brainstorm → Focused Research → Outline → Draft → Revise manually → Polish with AI → Add Abstract → Improve Title → Check references → Proofread with AI  
+- **Workflow** - Research → Brainstorm → Focused Research → Outline → Draft → Revise manually → Polish with AI → Add Abstract → Improve Title → Check references → Proofread with AI
 - **AI assistant** - Human makes key decisions while AI does the tedious work
-- **Claude Code** - Agentic AI system that searches the web, organizes research, drafts content, and handles version control through simple requests
-- **Git** - Tracks every change to your files, creating restore points (commits) you can return to anytime
+- **Claude Code** - Agentic AI system that searches the web, organizes research, and drafts content through simple requests
 - **slash command** - A customized, detailed prompt that can be reused in Claude Code
 
 ## What You'll Need
 
 - Claude Code installed ([Windows guide](./Install_CLAUDE_Code_Win.md) | [Mac guide](./Install_Claude_Code_MacOS.md))
-- Git installed (comes with Mac/Linux, [Windows guide](https://git-scm.com/download/win))
 - VS Code installed ([download](https://code.visualstudio.com/))
 - Terminal access
-- 25-35 minutes
+- 20-30 minutes
 
 ## Step 1: Set Up Project and Start Claude Code
 
-If you've completed the [Windows tutorial](./Claude_Code_Git_Windows.md) or [Mac tutorial](./Claude_Code_Git_Mac.md), you already have Git configured and can skip the `git config` commands below.
-
-First, start a terminal window and navigate to a user folder. 
+First, start a terminal window and navigate to a user folder.
 
 **Windows (WSL Ubuntu):**
 
-Start the **Ubuntu** app using the Windows **Start* button, and then search for Ubuntu. In the terminal:
+Start the **Ubuntu** app using the Windows **Start** button, and then search for Ubuntu. In the terminal:
 
 ```bash
 cd /mnt/c/Users/YOUR_USERNAME/Documents
 ```
-Replace `YOUR_USERNAME` with your actual Windows username. (To find it, type `whoami` in the terminal—it shows after the backslash.) 
+Replace `YOUR_USERNAME` with your actual Windows username. (To find it, type `whoami` in the terminal—it shows after the backslash.)
 
 **Mac:**
-Start a terminal window, and then: 
+Start a terminal window, and then:
 
 ```bash
 cd ~/Documents
 ```
 
 **Running VS Code inside Docker:**
-Start a terminal by clicking **Terminal --> New Terminal** from the main menu. Then:
+Start a terminal by clicking **Terminal → New Terminal** from the main menu. Then:
 ```bash
 cd ~
 ```
 
-For all platforms, we then create a new project folder for your research paper.
-We also configure git for version control before starting Claude Code.
+For all platforms, create a new project folder for your research paper and start Claude Code:
 
-```
-# Create a project folder
+```bash
 mkdir ai_research
-# Enter that folder and start working
 cd ai_research
-
-# Configure for version control
-git init
-git config user.name "Your Name"
-git config user.email "your.email@example.com"
-
-# Start Claude Code
 claude
 ```
-Git is now tracking changes in this folder. Claude Code is ready.
+
+Claude Code is ready.
 
 ## Step 2: Initial Research
 
@@ -87,18 +74,14 @@ Requirements:
 Save as general_research.md
 ```
 
-Claude searches the web and organizes findings. Review `general_research.md` in your text editor. Then commit:
-
-```
-commit these changes
-```
-**First save point created!** A commit is a snapshot of your work—like a save point in a video game. You can always return to this exact version later. 
+Claude searches the web and organizes findings. Review `general_research.md` in your text editor. Ask for a summary:
 
 ```
 Give me a brief summary.
 ```
+
 ## Step 3: Read the Sources
-Read through the research document and click through to the original sources to verify the information. Open the file in **VS Code**:
+Read through the research document and click through to the original sources to verify the information. You can use any text editor such as NotePad on Windows or TextEdit on Mac. We recommend **VS Code**:
 1. Go to File → **Open Folder** → navigate to the `ai_research` folder
 2. Click `general_research.md` in the Explorer panel on the left
 3. Preview the formatted document: **Ctrl + Shift + V** (Windows/Linux) or **Cmd + Shift + V** (Mac)
@@ -123,13 +106,7 @@ I want to focus on [your chosen angle]. Search for more specific data
 and examples that support this perspective. Save as focused_research.md
 ```
 
-Claude finds targeted information. Commit your work:
-
-```
-commit these changes
-```
-
-**Second save point created!**
+Claude finds targeted information.
 
 ## Step 6: Create Your Plan
 
@@ -141,13 +118,7 @@ research and my chosen angle. Use bullet points for the narrative flow.
 Save as outlines.md
 ```
 
-Review the outline and ask Claude to adjust as needed (e.g., "Make section 2 focus more on case studies" or "Add a section on limitations"). Then commit:
-
-```
-commit these changes
-```
-
-**Third save point created!** If you don't like the paper in the end, you can revert to this point to start over with a different outline. 
+Review the outline and ask Claude to adjust as needed (e.g., "Make section 2 focus more on case studies" or "Add a section on limitations"). 
 
 ## Step 7: Draft the Paper
 
@@ -177,13 +148,7 @@ Citations:
 Save as paper.md
 ```
 
-Claude writes the draft. Commit:
-
-```
-commit these changes
-```
-
-**Fourth save point created!**
+Claude writes the draft.
 
 ## Step 8: Revise Manually
 
@@ -193,11 +158,7 @@ Open `paper.md` in your text editor. Read through carefully and make your own re
 - Fix any awkward phrasing
 - Ensure citations are accurate
 
-Save your changes, then commit:
-
-```
-commit these changes
-```
+Save your changes in the editor.
 
 ## Step 9: Polish with AI
 
@@ -211,12 +172,7 @@ Make the introduction more engaging with a compelling hook.
 Strengthen the conclusion with a clear call to action. Do not increase its overall length.
 ```
 
-
-Review Claude's changes. If satisfied, commit:
-
-```
-commit these changes
-```
+Review Claude's changes.
 
 ## Step 10: Add an Abstract
 
@@ -227,11 +183,7 @@ Add an abstract at the beginning of the paper. Write 2-3 short sentences
 that summarize the paper.
 ```
 
-Claude will add the abstract. Review and edit to ensure it accurately captures your paper's essence. Then commit:
-
-```
-commit these changes
-```
+Claude will add the abstract. Review and edit to ensure it accurately captures your paper's essence.
 
 ## Step 11: Improve Title
 
@@ -241,10 +193,10 @@ Ask Claude to give you a few options for the title:
 Give me a few options for the title. Make it more appealing.
 ```
 
-Select a title. Add your own touch. Edit the paper and commit:
+Select a title. Add your own touch:
 
 ```
-I like option #2 [your choice]. Edit the file and commit.
+I like option #2 [your choice]. Edit the file.
 ```
 
 ## Step 12: Check References (Optional)
@@ -270,15 +222,7 @@ Do a final proofread of the paper:
 - Check flow and transition
 ```
 
-Review Claude's changes, then commit the final version:
-
-```
-commit these changes
-```
-
-**Final version saved!**
-
-To view your complete writing journey, type: `show my commit history`
+Review Claude's changes.
 
 **Export to Word:** In VS Code, open the markdown preview with **Ctrl + Shift + V** (Windows/Linux) or **Cmd + Shift + V** (Mac). Click inside the preview pane, press **Ctrl + A** (or **Cmd + A** on Mac) to select all, then **Ctrl + C** (or **Cmd + C**) to copy. Paste into Microsoft Word—the formatting will be retained.
 
@@ -329,26 +273,22 @@ Claude will critique your paper without being influenced by having written it. M
 13. **Create Slash Command** - Save the workflow for future papers
 14. **Get Fresh Feedback** - Clear memory for unbiased critique
 
-Commit at each phase to create restore points. Version control means you can experiment fearlessly—return to any previous version anytime.
-
 ## Next Steps
 
-Now that you have the `/research-paper` slash command, try writing more papers:
+- **Format:** Give me the paper in LaTex format. 
 
+Now that you have the `/research-paper` slash command, try writing more papers:
 - **Technology:** `/research-paper "Impact of social media on teen mental health"`
 - **Business:** `/research-paper "Remote work productivity"`
 - **Science:** `/research-paper "CRISPR gene editing ethics"`
-- **Longer papers:** Tell Claude to create a 5-page paper with more detailed sections
 
-The slash command will guide you through the entire workflow automatically! Don't forget to clear the memory when you are switching topics. 
+The slash command will guide you through the entire workflow automatically! Don't forget to clear the memory when you are switching topics.
 
 ## Troubleshooting
 
-- **"not a git repository" error:** Make sure you're in your project folder (`cd ~/Documents/ai_research` or equivalent)
 - **Claude search results seem outdated:** Specify "search for 2024-2025 data on [topic]"
 - **Draft is too long/short:** Tell Claude: "Make this approximately 1,000 words"
 - **Can't find files:** In terminal, type `ls` to list all files in current folder
-- **Want to see what changed:** In Claude Code, type `show me what changed since last commit`
 
 ## What You Can Ask Claude
 
@@ -356,8 +296,7 @@ The slash command will guide you through the entire workflow automatically! Don'
 - `summarize the key arguments in this paper` - Get overview
 - `make the conclusion more persuasive` - Improve specific sections
 - `cite all sources in APA format` - Format references
-- `go back to the previous commit` - Undo all changes since last commit
 
-Claude handles research, writing, and Git operations through natural language—no commands to memorize!
+Claude handles research and writing through natural language—no commands to memorize!
 
 Created by [Steven Ge](https://www.linkedin.com/in/steven-ge-ab016947/) on December 9, 2025.
