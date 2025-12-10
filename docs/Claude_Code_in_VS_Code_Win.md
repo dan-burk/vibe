@@ -15,7 +15,6 @@ You've installed WSL and Claude Code on your Windows machine - now you want a vi
 
 - Windows with WSL and Claude Code already installed (from the previous tutorial)
 - Claude Pro/Max subscription or API key (already configured)
-- Internet connection
 - 10-15 minutes
 
 ## Step 1: Create a Project Folder
@@ -27,7 +26,10 @@ You've installed WSL and Claude Code on your Windows machine - now you want a vi
 
 ## Step 2: Start VS Code
 
-- Windows Start button and search for VS Code
+- Click the **Windows Start button** (bottom-left corner of your screen)
+- Type `Visual Studio Code` or `VS Code` in the search box
+- Click on **Visual Studio Code** when it appears in the search results
+- VS Code opens with a Welcome tab - you can close this tab
 
 
 ## Step 3: Install the WSL Extension
@@ -52,7 +54,7 @@ The first time you connect, VS Code installs a small server in WSL. This takes a
 
 - In VS Code (still connected to WSL), click **File** in the menu bar, then **Open Folder**
 - A **Open Folder** dropdown appears in the top center. 
-- Type your folder by typing:
+- Find your folder by typing:
   ```
   /mnt/c/Users/YOUR_USERNAME/Documents/test_claude
   ```
@@ -82,7 +84,7 @@ Write a short article explaining why LLMs like to use Markdown format. Save it a
 - To preview the formatted article: right-click on the `article.md` tab and select **Open Preview**
 - You'll see the Markdown rendered with proper headings, bullet points, and formatting
 
-## Reopening VS Code Later
+## Reopening Claude in VS Code Later
 
 After closing VS Code, here's how to get back to your WSL projects:
 

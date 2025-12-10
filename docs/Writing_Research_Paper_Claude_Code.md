@@ -56,7 +56,7 @@ Claude Code is ready.
 
 ## Step 2: Initial Research
 
-Ask Claude to research your topic:
+Ask Claude to research your topic. Copy and paste this prompt into Claude Code, replacing the topic with your own:
 
 ```
 I'm writing a ~1,000 word research paper on AI adoption in the workplace.
@@ -74,14 +74,16 @@ Requirements:
 Save as general_research.md
 ```
 
-Claude searches the web and organizes findings. Review `general_research.md` in your text editor. Ask for a summary:
+Claude searches the web and organizes findings into a file called `general_research.md`. This may take a minute or two. When complete, ask for a summary:
 
 ```
 Give me a brief summary.
 ```
 
+Review Claude's summary to get a quick overview of the research landscape.
+
 ## Step 3: Read the Sources
-Read through the research document and click through to the original sources to verify the information. You can use any text editor such as NotePad on Windows or TextEdit on Mac. We recommend **VS Code**:
+Read through the research document and click through to the original sources to verify the information. You can use any text editor such as Notepad on Windows or TextEdit on Mac. We recommend **VS Code**:
 1. Go to File → **Open Folder** → navigate to the `ai_research` folder
 2. Click `general_research.md` in the Explorer panel on the left
 3. Preview the formatted document: **Ctrl + Shift + V** (Windows/Linux) or **Cmd + Shift + V** (Mac)
@@ -259,7 +261,7 @@ Claude will critique your paper without being influenced by having written it. M
 ## The Complete Workflow
 
 1. **Research** - Claude searches for general information on your topic
-2. **Read Sources** - Review the research in VS Code
+2. **Read Sources** - Review the research in your text editor
 3. **Brainstorm** - Pick your angle/perspective
 4. **Focused Research** - Claude finds targeted data for your chosen angle
 5. **Plan** - Claude creates outline options based on your perspective
@@ -275,12 +277,12 @@ Claude will critique your paper without being influenced by having written it. M
 
 ## Next Steps
 
-- **Format:** Give me the paper in LaTex format. 
-
 Now that you have the `/research-paper` slash command, try writing more papers:
+
 - **Technology:** `/research-paper "Impact of social media on teen mental health"`
 - **Business:** `/research-paper "Remote work productivity"`
 - **Science:** `/research-paper "CRISPR gene editing ethics"`
+- **Format:** Ask Claude to `Give me the paper in LaTeX format`
 
 The slash command will guide you through the entire workflow automatically! Don't forget to clear the memory when you are switching topics.
 
