@@ -89,7 +89,7 @@ Write a short article explaining why LLMs like to use Markdown format. Save it a
 After closing VS Code, here's how to get back to your WSL projects:
 
 - **Option A:** Open VS Code, click the bottom-left corner, select **Connect to WSL**, then **File > Open Recent**. Select '/mnt/c/Users/YOUR_USERNAME/Documents/test_claude[WSL:Ubuntu 24.01]`
-- **Option B:** Open Ubuntu App from Windows, at the terminal terminal, navigate to your project, and type `code .`
+- **Option B:** Open Ubuntu App from Windows, navigate to your project in the terminal, and type `code .`
 
 VS Code remembers your recent folders, so Option A with Open Recent is usually the quickest.
 
