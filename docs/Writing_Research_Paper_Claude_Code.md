@@ -2,7 +2,7 @@
 
 # Writing a Research Paper with Claude Code
 
-Write research papers using Claude Code as an assistant for research, brainstorming, planning, drafting, and editing. See an [example paper](./example_paper.md) created using this workflow.
+Write research papers using Claude Code as an assistant for research, brainstorming, planning, drafting, and editing. Then automate this process by creating a template slash command. See an [example paper](./example_paper.md) created using this workflow.
 
 ## Key Concepts
 
@@ -13,48 +13,65 @@ Write research papers using Claude Code as an assistant for research, brainstorm
 
 ## What You'll Need
 
-- Claude Code installed ([Windows guide](./Install_CLAUDE_Code_Win.md) | [Mac guide](./Install_Claude_Code_MacOS.md))
-- VS Code installed ([download](https://code.visualstudio.com/))
-- Terminal access
-- 20-30 minutes
+- VS Code with Claude Code set up ([Windows WSL guide](./Claude_Code_in_VS_Code_Win.md) | [Mac guide](./Claude_Code_in_VS_Code_Mac.md))
+- 30-40 minutes
 
-## Step 1: Set Up Project and Start Claude Code
+## Step 1: Create a Project Folder
 
-First, start a terminal window and navigate to a user folder.
+Create a folder for your research paper:
 
-**Windows (WSL Ubuntu):**
+- Open **File Explorer** (Windows) or **Finder** (Mac)
+- Navigate to **Documents**
+- Create a new folder called `ai_research`
 
-Start the **Ubuntu** app using the Windows **Start** button, and then search for Ubuntu. In the terminal:
+Everything about this project happens in this folder. 
 
-```bash
-cd /mnt/c/Users/YOUR_USERNAME/Documents
-```
-Replace `YOUR_USERNAME` with your actual Windows username. (To find it, type `whoami` in the terminal—it shows after the backslash.)
+## Step 2 Start VS Code
+For Windows:
+- Click the **Windows Start button** (bottom-left corner of your screen)
+- Type `Visual Studio Code` or `VS Code` in the search box
+- Click on **Visual Studio Code** when it appears in the search results
+- VS Code opens with a Welcome tab - you can close this tab
+- Look at the bottom-left corner of VS Code - you'll see a blue or green icon
+- Click this icon (or press `F1` and type "WSL")
+- Select **Connect to WSL** from the menu
+- VS Code will reload and connect to your Ubuntu installation
+- The bottom-left corner should now show **WSL: Ubuntu**
 
-**Mac:**
-Start a terminal window, and then:
+For Mac:
+- Open **Finder** and go to **Applications**
+- Find **Visual Studio Code** and double-click it
+- If you see a warning "Visual Studio Code is an app downloaded from the internet", click **Open**
+- VS Code opens with a Welcome tab - you can close this tab
 
-```bash
-cd ~/Documents
-```
+## Step 3: Open the Folder in VS Code
+For Windows via WSL:
+- In VS Code (still connected to WSL), click **File** in the menu bar, then **Open Folder**
+- A **Open Folder** dropdown appears in the top center. 
+- Find your folder by typing:
+  ```
+  /mnt/c/Users/YOUR_USERNAME/Documents/test_claude
+  ```
+  Replace `YOUR_USERNAME` with your Windows username (e.g., `John.Smith`)
+- Click **OK**. VS Code reloads with your `test_claude` folder 
 
-**Running VS Code inside Docker:**
-Start a terminal by clicking **Terminal → New Terminal** from the main menu. Then:
-```bash
-cd ~
-```
 
-For all platforms, create a new project folder for your research paper and start Claude Code:
+For Mac:
+- In VS Code, click **File** in the menu bar, then **Open Folder**
+- Navigate to and select the `ai_research` folder
+- Click **Open** (Mac) or **OK** (Windows)
+- If prompted "Do you trust the authors?", click **Yes, I trust the authors**
 
-```bash
-mkdir ai_research
-cd ai_research
-claude
-```
+## Step 4: Start Claude Code
 
-Claude Code is ready.
+- Open a terminal: click **Terminal** in the VS Code main menu, then **New Terminal**
+- In the terminal panel, type:
+  ```
+  claude
+  ```
+- Claude Code starts and is ready to help with your research paper
 
-## Step 2: Initial Research
+## Step 5: Initial Research
 
 Ask Claude to research your topic. Copy and paste this prompt into Claude Code, replacing the topic with your own:
 
@@ -82,14 +99,14 @@ Give me a brief summary.
 
 Review Claude's summary to get a quick overview of the research landscape.
 
-## Step 3: Read the Sources
-Read through the research document and click through to the original sources to verify the information. You can use any text editor such as Notepad on Windows or TextEdit on Mac. We recommend **VS Code**:
-1. Go to File → **Open Folder** → navigate to the `ai_research` folder
-2. Click `general_research.md` in the Explorer panel on the left
-3. Preview the formatted document: **Ctrl + Shift + V** (Windows/Linux) or **Cmd + Shift + V** (Mac)
-4. Click the source links to read the original articles and studies
+## Step 6: Read the Sources
+Read through the research document and click through to the original sources to verify the information:
 
-## Step 4: Brainstorm Your Angle
+1. Click `general_research.md` in the Explorer panel on the left
+2. Preview the formatted document: right-click on the `general_research.md` tab and select **Open Preview**
+3. Click the source links to read the original articles and studies
+
+## Step 7: Brainstorm Your Angle
 
 Ask Claude to help brainstorm:
 
@@ -99,7 +116,7 @@ Based on this research, suggest 3-4 angles I could take for this paper.
 
 Review the angles and pick the one that interests you most.
 
-## Step 5: Focused Research
+## Step 8: Focused Research
 
 Now that you have your angle, ask Claude for targeted research:
 
@@ -110,7 +127,7 @@ and examples that support this perspective. Save as focused_research.md
 
 Claude finds targeted information.
 
-## Step 6: Create Your Plan
+## Step 9: Create Your Plan
 
 Ask Claude to create an outline based on your chosen angle:
 
@@ -122,7 +139,7 @@ Save as outlines.md
 
 Review the outline and ask Claude to adjust as needed (e.g., "Make section 2 focus more on case studies" or "Add a section on limitations"). 
 
-## Step 7: Draft the Paper
+## Step 10: Draft the Paper
 
 Select your outline and ask Claude to write the full draft:
 
@@ -152,7 +169,7 @@ Save as paper.md
 
 Claude writes the draft.
 
-## Step 8: Revise Manually
+## Step 11: Revise Manually
 
 Open `paper.md` in your text editor. Read through carefully and make your own revisions:
 - Add your personal voice and insights
@@ -162,7 +179,7 @@ Open `paper.md` in your text editor. Read through carefully and make your own re
 
 Save your changes in the editor.
 
-## Step 9: Polish with AI
+## Step 12: Polish with AI
 
 Ask Claude to improve specific sections:
 
@@ -170,13 +187,7 @@ Ask Claude to improve specific sections:
 Make the introduction more engaging with a compelling hook.
 ```
 
-```
-Strengthen the conclusion with a clear call to action. Do not increase its overall length.
-```
-
-Review Claude's changes.
-
-## Step 10: Add an Abstract
+## Step 13: Add an Abstract
 
 Ask Claude to add a short executive summary at the beginning:
 
@@ -187,7 +198,7 @@ that summarize the paper.
 
 Claude will add the abstract. Review and edit to ensure it accurately captures your paper's essence.
 
-## Step 11: Improve Title
+## Step 14: Improve Title
 
 Ask Claude to give you a few options for the title:
 
@@ -201,7 +212,7 @@ Select a title. Add your own touch:
 I like option #2 [your choice]. Edit the file.
 ```
 
-## Step 12: Check References (Optional)
+## Step 15: Check References (Optional)
 Ask Claude to verify your citations are consistent and complete:
 ```
 Check all references in my paper:
@@ -213,7 +224,7 @@ Check all references in my paper:
 
 Note: Claude can only verify publicly accessible sources. For paywalled articles, manually check that your citations match what you read.
 
-## Step 13: Proofread with AI
+## Step 16: Proofread with AI
 
 Ask Claude to do a final proofread:
 
@@ -228,7 +239,7 @@ Review Claude's changes.
 
 **Export to Word:** In VS Code, open the markdown preview with **Ctrl + Shift + V** (Windows/Linux) or **Cmd + Shift + V** (Mac). Click inside the preview pane, press **Ctrl + A** (or **Cmd + A** on Mac) to select all, then **Ctrl + C** (or **Cmd + C**) to copy. Paste into Microsoft Word—the formatting will be retained.
 
-## Step 14: Create a Slash Command for Future Papers
+## Step 16: Create a Slash Command for Future Papers
 
 Save this workflow as a reusable slash command for your next research paper:
 
@@ -239,7 +250,7 @@ this entire workflow. Save it so I can use it for future research papers on vari
 
 Claude will create a custom slash command in your `.claude/commands/` folder. It is a Markdown file containing a prompt. You can start your next research paper by simply typing `/research-paper [your topic]`!
 
-## Step 15: Get Feedback
+## Step 18: Get Feedback
 
 LLMs have no memory. For each response, we have to send all our previous conversations in the chat session for context. As the interaction gets longer, we need to be aware of the length of the context. If it is unrelated, or we can provide a cleaner context, we will benefit from a fresh start.
 
@@ -260,20 +271,23 @@ Claude will critique your paper without being influenced by having written it. M
 
 ## The Complete Workflow
 
-1. **Research** - Claude searches for general information on your topic
-2. **Read Sources** - Review the research in your text editor
-3. **Brainstorm** - Pick your angle/perspective
-4. **Focused Research** - Claude finds targeted data for your chosen angle
-5. **Plan** - Claude creates outline options based on your perspective
-6. **Draft** - Claude writes the full paper with references
-7. **Revise Manually** - You add your voice and make changes
-8. **Polish with AI** - Claude improves specific sections
-9. **Add Abstract** - Claude creates executive summary
-10. **Improve Title** - Claude suggests title options, you customize
-11. **Check References** - (Optional) Claude verifies all citations
-12. **Proofread with AI** - Claude fixes errors and improves flow
-13. **Create Slash Command** - Save the workflow for future papers
-14. **Get Fresh Feedback** - Clear memory for unbiased critique
+1. **Create Folder** - Set up your project folder in Documents
+2. **Open in VS Code** - Open the folder in VS Code
+3. **Start Claude Code** - Launch Claude Code from the terminal
+4. **Research** - Claude searches for general information on your topic
+5. **Read Sources** - Review the research in your text editor
+6. **Brainstorm** - Pick your angle/perspective
+7. **Focused Research** - Claude finds targeted data for your chosen angle
+8. **Plan** - Claude creates outline options based on your perspective
+9. **Draft** - Claude writes the full paper with references
+10. **Revise Manually** - You add your voice and make changes
+11. **Polish with AI** - Claude improves specific sections
+12. **Add Abstract** - Claude creates executive summary
+13. **Improve Title** - Claude suggests title options, you customize
+14. **Check References** - (Optional) Claude verifies all citations
+15. **Proofread with AI** - Claude fixes errors and improves flow
+16. **Create Slash Command** - Save the workflow for future papers
+17. **Get Fresh Feedback** - Clear memory for unbiased critique
 
 ## Next Steps
 

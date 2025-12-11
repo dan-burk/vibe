@@ -359,6 +359,7 @@
                 <li><a href="Claude_Code_in_VS_Code_Win">Claude Code in VS Code on Windows</a></li>
                 <li><a href="Claude_Code_Git_Windows">Claude Code with local version control for Windows</a></li>
                 <li><a href="Install_Claude_Code_MacOS">Installing Claude Code on Mac</a></li>
+                <li><a href="Claude_Code_in_VS_Code_Mac">Claude Code in VS Code on Mac</a></li>
                 <li><a href="Claude_Code_Git_Mac">Claude Code with local version control for Mac</a></li>
                 <li><a href="VS_Code_Getting_Started">Getting Started with VS Code</a></li>
                 <li><a href="Github_desktop">Getting Started with Version Control</a></li>
@@ -492,8 +493,10 @@
         // Tutorial data
         const tutorials = {
             1: { label: 'Install Claude Code\n(Win)', url: 'Install_CLAUDE_Code_Win', desc: 'Step-by-step guide to install Claude Code on Windows using WSL, Ubuntu, and Node.js', level: 0 },
+            14: { label: 'Claude Code\nin VS Code (Win)', url: 'Claude_Code_in_VS_Code_Win', desc: 'Set up VS Code to work with Claude Code on Windows WSL—edit files visually while running AI in the terminal', level: 1 },
             11: { label: 'Claude Code\n+ Git (Win)', url: 'Claude_Code_Git_Windows', desc: 'Learn version control basics using Git locally with Claude Code—no GitHub account needed', level: 1 },
             2: { label: 'Install Claude Code\n(Mac)', url: 'Install_Claude_Code_MacOS', desc: 'Quick setup guide for Claude Code on macOS with Node.js and npm', level: 0 },
+            15: { label: 'Claude Code\nin VS Code (Mac)', url: 'Claude_Code_in_VS_Code_Mac', desc: 'Set up VS Code to work with Claude Code on Mac—edit files visually while running AI in the terminal', level: 1 },
             12: { label: 'Claude Code\n+ Git (Mac)', url: 'Claude_Code_Git_Mac', desc: 'Learn version control basics using Git locally with Claude Code on Mac—no GitHub account needed', level: 1 },
             3: { label: 'VS Code\nBasics', url: 'VS_Code_Getting_Started', desc: 'Learn the fundamentals of Visual Studio Code—installation, interface navigation, extensions, and AI-powered coding with GitHub Copilot', level: 0 },
             4: { label: 'Version\nControl', url: 'Github_desktop', desc: 'Introduction to Git and GitHub Desktop for managing your code', level: 0 },
@@ -518,21 +521,23 @@
         const positions = {
             // Level 0 - Basic (left column)
             1: { x: 0, y: -90 },    // Install Claude Code Win
-            2: { x: 0, y: -30 },    // Install Claude Code Mac
-            4: { x: 0, y: 30 },     // Version Control
-            3: { x: 0, y: 120 },    // VS Code Basics
-            // Level 1 - Intermediate
-            11: { x: 160, y: -110 }, // Claude Code + Git (Win)
-            12: { x: 160, y: -70 },  // Claude Code + Git (Mac)
-            5: { x: 160, y: 90 },   // R in VS Code
-            6: { x: 160, y: 150 },  // Python in VS Code
+            2: { x: 0, y: 0 },      // Install Claude Code Mac
+            4: { x: 0, y: 90 },     // Version Control
+            // Level 1 - Intermediate (first branch point)
+            11: { x: 160, y: -120 }, // Claude Code + Git (Win)
+            12: { x: 160, y: -60 },  // Claude Code + Git (Mac)
+            3: { x: 160, y: 30 },    // VS Code Basics
+            5: { x: 160, y: 120 },   // R in VS Code
+            6: { x: 160, y: 180 },   // Python in VS Code
             // Level 2 - Advanced
-            9: { x: 320, y: -30 },  // GitHub Desktop + Claude
-            7: { x: 320, y: 60 },   // R via Docker
-            8: { x: 320, y: 120 },  // Python via Docker
-            13: { x: 320, y: -90 }, // Research Paper with Claude
-            // Level 3 - Capstone
-            10: { x: 480, y: 45 }   // Vibe Coding in R
+            14: { x: 320, y: -90 },  // Claude Code in VS Code (Win)
+            15: { x: 320, y: -30 },  // Claude Code in VS Code (Mac)
+            9: { x: 320, y: 30 },    // GitHub Desktop + Claude
+            7: { x: 320, y: 120 },   // R via Docker
+            8: { x: 320, y: 180 },   // Python via Docker
+            // Level 3 - Projects & Capstone
+            13: { x: 480, y: -60 },  // Research Paper with Claude
+            10: { x: 480, y: 120 }   // Vibe Coding in R
         };
 
         // Get label with checkmark if completed
@@ -615,8 +620,8 @@
 
         // Edge definitions
         const edgeData = [
-            { id: 'e1', from: 3, to: 5 },   // VS Code → R in VS Code
-            { id: 'e2', from: 3, to: 6 },   // VS Code → Python in VS Code
+            { id: 'e1', from: 3, to: 5 },   // VS Code Basics → R in VS Code
+            { id: 'e2', from: 3, to: 6 },   // VS Code Basics → Python in VS Code
             { id: 'e3', from: 5, to: 7 },   // R in VS Code → R via Docker
             { id: 'e4', from: 6, to: 8 },   // Python in VS Code → Python via Docker
             { id: 'e5', from: 1, to: 9 },   // Claude (Win) → GitHub + Claude
@@ -627,8 +632,13 @@
             { id: 'e10', from: 9, to: 10 }, // GitHub + Claude → Vibe Coding
             { id: 'e11', from: 1, to: 11 }, // Claude (Win) → Claude Code + Git (Win)
             { id: 'e12', from: 2, to: 12 }, // Claude (Mac) → Claude Code + Git (Mac)
-            { id: 'e13', from: 11, to: 13 }, // Claude Code + Git (Win) → Research Paper
-            { id: 'e14', from: 12, to: 13 }  // Claude Code + Git (Mac) → Research Paper
+            // VS Code path: Install → VS Code Basics → Claude in VS Code → Research Paper
+            { id: 'e13', from: 1, to: 3 },   // Install (Win) → VS Code Basics
+            { id: 'e14', from: 2, to: 3 },   // Install (Mac) → VS Code Basics
+            { id: 'e15', from: 3, to: 14 },  // VS Code Basics → Claude in VS Code (Win)
+            { id: 'e16', from: 3, to: 15 },  // VS Code Basics → Claude in VS Code (Mac)
+            { id: 'e17', from: 14, to: 13 }, // Claude in VS Code (Win) → Research Paper
+            { id: 'e18', from: 15, to: 13 }  // Claude in VS Code (Mac) → Research Paper
         ];
 
         // Get edge color based on connected nodes completion
@@ -695,12 +705,12 @@
 
         // Tutorial categorization
         const tutorialCategories = {
-            windows: [1, 11],      // Install Win, Git Win
-            mac: [2, 12],          // Install Mac, Git Mac
-            basics: [1, 2, 11, 12, 13], // All install, git, and research paper tutorials
+            windows: [1, 14, 11],      // Install Win, VS Code Win, Git Win
+            mac: [2, 15, 12],          // Install Mac, VS Code Mac, Git Mac
+            basics: [1, 2, 3, 14, 15, 11, 12, 13], // All install, VS Code Basics, VS Code platform, git, and research paper tutorials
             r: [5, 7, 10],         // R in VS Code, R via Docker, Vibe Coding in R
             python: [6, 8],        // Python in VS Code, Python via Docker
-            shared: [3, 4, 9, 13], // VS Code, Version Control, GitHub Desktop, Research Paper (language-agnostic)
+            shared: [3, 4, 9, 13], // VS Code Basics, Version Control, GitHub Desktop, Research Paper (language-agnostic)
             coding: [3, 4, 5, 6, 7, 8, 9, 10, 13] // All coding tutorials
         };
 
@@ -710,8 +720,8 @@
             let visibleNodes = [];
 
             if (currentLanguage === 'basics') {
-                // Basics mode: show install + git for selected platform + research paper
-                visibleNodes = [...tutorialCategories[currentPlatform], 13];
+                // Basics mode: show VS Code Basics + install/git/VS Code for selected platform + research paper
+                visibleNodes = [...tutorialCategories[currentPlatform], 3, 13];
             } else if (currentLanguage === 'r') {
                 // R mode: show platform basics + R tutorials + shared tutorials
                 visibleNodes = [

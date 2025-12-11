@@ -61,7 +61,7 @@ The first time you connect, VS Code installs a small server in WSL. This takes a
   Replace `YOUR_USERNAME` with your Windows username (e.g., `John.Smith`)
 - Click **OK**. VS Code reloads with your `test_claude` folder 
 - If prompted "Do you trust the authors?", click **Yes, I trust the authors**
-- Close the original VS Code window
+
 
 ## Step 6: Start Claude Code
 
