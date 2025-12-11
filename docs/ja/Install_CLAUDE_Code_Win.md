@@ -2,300 +2,215 @@
 
 # WSLを使ってWindowsにClaude Codeをインストール
 
-このガイドでは、Windows Subsystem for Linux（WSL）を使ってWindowsにClaude Codeをインストールする方法を説明します。WSLを使うと、WindowsマシンでLinuxオペレーティングシステム（OS）を実行する仮想マシンが有効になります。Claude CodeはWindows上でネイティブにインストールすることもできますが、多くのコマンドにアクセスできるため、Linux環境の方がはるかに効率的に動作します。
+このガイドでは、Windows Subsystem for Linux（WSL）を使ってWindowsにClaude Codeを導入する手順を最初から最後まで説明します。WSLはWindows上でLinuxを動かす仮想環境です。Claude CodeはWindowsでも動作しますが、多くの開発コマンドをそのまま使えるLinux環境の方が高速で安定します。
 
 ## 概要
 
-- WSLのインストール
-- Ubuntu Linuxのセットアップ
-- Node.jsのインストール
-- Claude Codeのインストール
-- APIキーの設定
-- Claude Codeを使う準備完了！
+- WSLをインストール
+- Ubuntu Linuxをセットアップ
+- Node.jsをインストール
+- Claude Codeをインストール
+- APIキー（またはサブスクリプション）を設定
+- Claude Codeを使って作業開始
 
-## 必要なもの
+## 用意するもの
 
-- Windows 10（バージョン2004以降）またはWindows 11のコンピュータ
+- Windows 10（バージョン2004以降）またはWindows 11 PC
 - インターネット接続
-- コンピュータの管理者権限
-- Claude Pro/Maxサブスクリプションまたはe APIキー
-- 15〜20分
+- 管理者権限のあるアカウント
+- Claude Pro/MaxサブスクリプションまたはAnthropic APIキー
+- 作業時間の目安：15〜20分
 
-## ステップ1：仮想化が有効かチェック
+## ステップ1：仮想化が有効か確認
 
-WSLをインストールする前に、コンピュータで仮想化が有効になっていることを確認する必要があります。これはWSLが動作するために必要です。
+WSLを使うには、PCで仮想化が有効になっている必要があります。
 
-- タスクバー（画面下部のバー）を**右クリック**
-- メニューから**タスクマネージャー**をクリック
-- タスクマネージャーが小さいウィンドウで開いた場合は、下部の**詳細**をクリック
-- 上部の**パフォーマンス**タブをクリック
-- 左サイドバーの**CPU**をクリック
-- ウィンドウの右下セクションを確認
-- **仮想化:**と書かれた行を見つけ、**有効**と表示されているか確認
+1. タスクバー（画面下部）を右クリックし、**タスクマネージャー**を開く
+2. コンパクト表示の場合は左下の**詳細**をクリック
+3. 上部の**パフォーマンス**タブを開き、左の**CPU**を選択
+4. 右下にある **仮想化:** の表示を確認
+   - **「有効」** と表示 → 次のステップへ
+   - **「無効」** と表示 → PCのBIOSで仮想化（Intel VT-x / AMD-V / SVMなど）を有効にしてから再起動
 
-**「有効」と表示されている場合：** 素晴らしい！ステップ2に進んでください。
+## ステップ2：管理者権限でPowerShellを開く
 
-**「無効」と表示されている場合：** コンピュータのBIOS設定で仮想化を有効にする必要があります：
-- コンピュータを再起動
-- 起動中にBIOSキーを押す（通常は**F2**、**F10**、**Del**、または**Esc** - コンピュータメーカーによって異なります）
-- 「Virtualization Technology」、「Intel VT-x」、「AMD-V」、または「SVM Mode」に関連する設定を探す
-- これらの設定を有効にする
-- BIOSを保存して終了（通常は**F10**）
-- コンピュータが通常通り再起動します
-
-## ステップ2：管理者としてPowerShellを開く
-
-- **Windowsスタートボタン**をクリック（左下のWindowsアイコン）
-- 検索ボックスに`PowerShell`と入力
-- 検索結果に**Windows PowerShell**が表示されます
-- **Windows PowerShell**を**右クリック**
-- メニューから**管理者として実行**をクリック
-- 「このアプリがデバイスに変更を加えることを許可しますか？」というウィンドウがポップアップします
-- **はい**をクリック
-
-白いテキストの青いウィンドウが開きます - これが管理者として実行されているPowerShellです。
+1. **Windowsスタートボタン**をクリックし、`PowerShell`と入力
+2. 検索結果の **Windows PowerShell** を右クリック
+3. **管理者として実行** を選択し、UACの確認は **はい** をクリック
+4. 白文字の青いウィンドウ（管理者PowerShell）が起動します
 
 ## ステップ3：WSLをインストール
 
-**まず、WSLとUbuntuがすでにインストールされているか確認：**
+**インストール済みか確認：**
+```powershell
+wsl --list --verbose
+```
+- `Ubuntu` が `Running` / `Stopped` 状態で表示 → すでにインストール済みなのでステップ4へ
+- エラーや「ディストリビューションがありません」と表示 → 次のインストール手順へ
 
-- PowerShellウィンドウで以下を入力：
-   ```
-   wsl --list --verbose
-   ```
-- 結果を確認：
-   - **「Ubuntu」が「Running」または「Stopped」のSTATEでリストされている場合**：WSLとUbuntuはすでにインストールされています！ステップ4に進んでください。
-   - **エラーメッセージが表示される場合**、または「Windows Subsystem for Linuxにはインストールされているディストリビューションがありません」：以下のインストールを続行してください。
+**WSLとUbuntuをまとめてインストール：**
+```powershell
+wsl --install
+```
+- 「Installing: Windows Subsystem for Linux」「Installing: Ubuntu」などの表示が出ます
+- 完了メッセージが出たら、スタート > 電源アイコン > **再起動** を選択
+- 再起動後、2〜5分ほどでUbuntuウィンドウが自動で開き、セットアップが続行されます
+  - もし自動で開かない場合は、後述の手順でUbuntuを手動起動すれば問題ありません
 
-**WSLとUbuntuをインストール：**
+> **補足：** コマンドが認識されない場合は、Windowsのバージョンが古い可能性があります。Windows UpdateでWindows 10 バージョン2004以降、またはWindows 11に更新してください。
 
-- PowerShellウィンドウで以下を入力：
-   ```
-   wsl --install
-   ```
-- 「Installing: Windows Subsystem for Linux」や「Installing: Ubuntu」などのメッセージが表示されることがあります
-- インストール完了のメッセージが表示されたら、コンピュータを再起動する必要があります：
-   - **Windowsスタートボタン**をクリック
-   - **電源アイコン**をクリック
-   - **再起動**をクリック
-- コンピュータが再起動します - 約1〜2分かかります
+## ステップ4：Ubuntuの初期設定（初回のみ）
 
-**再起動後の動作：**
-- Windowsに再ログインした後、2〜5分待ちます
-- インストールを続行するためにUbuntuターミナルウィンドウが**自動的に表示**されるはずです
-- これは正常です！セットアップを完了するためにウィンドウが自動的に開きます
-- 5分経ってもウィンドウが表示されない場合は、心配しないでください - Ubuntuを手動で開きましょう（ステップ4の手順）
+再起動後に表示されるUbuntuターミナル、またはスタートメニューから起動したUbuntuで以下を実行します。
 
-**再起動が必要な理由：** 再起動により、WindowsはインストールされたばかりのWSLと仮想マシンプラットフォーム機能を有効にできます。再起動しないと、WSLは正しく動作しません。
+1. `Enter new UNIX username:` が表示されたら、小文字と数字のみのユーザー名を入力（例：`myname`）
+2. `New password:` が表示されたらパスワードを入力（画面には表示されません）
+3. `Retype new password:` に同じパスワードを再入力
+4. `Installation successful!` などのメッセージが出れば完了
 
-**注意：** コマンドが認識されないというエラーが表示された場合、Windowsのバージョンが古すぎる可能性があります。Windows 10バージョン2004以降、またはWindows 11であることを確認してください。Windows Updateを実行して最新バージョンを取得してください。
+> このユーザー名とパスワードはUbuntu内でコマンドを実行する際に必要なので、必ず控えておきましょう。
 
-## ステップ4：Ubuntuのセットアップ（初回のみ）
+## ステップ5：Ubuntuを最新に更新
 
-コンピュータの再起動後、2〜5分以内に「Ubuntu」というタイトルのターミナルウィンドウが自動的に開くはずです。
-
-**Ubuntuウィンドウが自動的に開かなかった場合：**
-- **Windowsスタートボタン**をクリック
-- 検索ボックスに`Ubuntu`と入力
-- **Ubuntu**をクリック（オレンジ色の丸いアイコンが表示されます）
-- Ubuntuターミナルが開き、セットアップが続行されます
-
-**初回セットアップを完了：**
-
-- `Enter new UNIX username:`というメッセージを待ちます
-- ユーザー名を入力（小文字とーのみ、スペースなし）
-   - 例：`myname`または`john123`
-- `New password:`と表示されます
-- パスワードを入力（入力中は文字が表示されません - セキュリティのため正常です）
-- `Retype new password:`と表示されます
-- 同じパスワードをもう一度入力
-- セットアップが完了するのを待ちます - `Installation successful!`のようなメッセージが表示されます
-
-**重要：** このユーザー名とパスワードを覚えておいてください - 後で必要になります。
-
-## ステップ5：Ubuntuを更新
-
-- Ubuntuターミナルウィンドウで以下を入力：
-   ```
-   sudo apt update
-   ```
-- プロンプトが表示されたら、パスワード（作成したもの）を入力
-   - 再度、入力中は文字が表示されません
-- 更新が完了するまで待ちます（1〜3分）
-- 次に、以下を入力：
-   ```
-   sudo apt upgrade -y
-   ```
-- すべてのパッケージがアップグレードされるまで待ちます（5〜10分かかる場合があります）
+```bash
+sudo apt update
+sudo apt upgrade -y
+```
+- パスワード入力を求められたら、先ほど設定したUbuntuのパスワードを入力（表示されなくてもOK）
+- 更新とアップグレードには5〜10分ほどかかる場合があります
 
 ## ステップ6：Node.jsをインストール
 
-Claude CodeにはNode.jsバージョン18以上が必要です。以下の手順に従ってください：
+Claude CodeにはNode.js 18以上が必要です。nvm（Node Version Manager）を使うと管理が簡単です。
 
-- Ubuntuターミナルで、以下のコマンドを1つずつ入力：
-
-   まず、nvmインストーラーをダウンロード：
-   ```
+1. nvmインストーラーをダウンロード：
+   ```bash
    wget https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh --no-check-certificate
    ```
-
-   次にインストーラーを実行：
-   ```
+2. インストーラーを実行：
+   ```bash
    cat install.sh | bash
    ```
-
-- nvmを読み込むために以下を入力：
-   ```
+3. 現在のシェルにnvmを読み込む：
+   ```bash
    \. "$HOME/.nvm/nvm.sh"
    ```
-
-- Node.jsバージョン24をインストール：
-   ```
+4. Node.js 24をインストール：
+   ```bash
    nvm install 24
    ```
-- Node.jsがインストールされるまで待ちます（2〜5分）
-- インストールを確認：
-   ```
+5. 動作確認：
+   ```bash
    node --version
    ```
-- `v24.x.x`のような表示が見えるはずです（正確な数字は異なる場合があります）
+   `v24.x.x` と表示されれば成功です
 
 ## ステップ7：Claude Codeをインストール
 
-- Ubuntuターミナルで以下を入力：
-   ```
-   curl -fsSL https://claude.ai/install.sh | bash
-   ```
-- Claude Codeがインストールされるまで待ちます（2〜5分）
-- 黄色や赤色のテキストで警告が表示されることがありますが、通常は正常です
-- インストールが完了したら、以下を入力して確認：
-   ```
-   claude --version
-   ```
-- Claude Codeのバージョン番号が表示されるはずです
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+claude --version
+```
+- 2〜5分で完了します。黄色や赤の警告は情報表示である場合がほとんどです。
+- `claude --version` でバージョン番号が表示されればOKです。
 
-## ステップ8：Anthropic APIとリンク
+## ステップ8：Anthropic APIに接続
 
-### オプションA. Claude ProまたはMaxサブスクリプションを使用
+### オプションA：Claude Pro/Maxサブスクリプションを使う
 
-- Ubuntuターミナルで以下を入力：
-   ```
-   claude
-   ```
-- Claudeがブラウザを開こうとします。自動的に開かない場合は、**Ctrl**を押しながら長いURLをクリックしてブラウザで開きます。または、URLをコピーして外部ブラウザに貼り付けます。
-- Claude.aiアカウントにログイン（Chromeを使用している場合、自動的に行われることがあります）
-- **認証**をクリック
-- 長いコードが表示されたら**コードをコピー**をクリック
-- ターミナルウィンドウに戻る
-- ターミナルに貼り付けるには：**右クリック**して**貼り付け**を選択（または**Ctrl+Shift+V**を押す）
-- 成功メッセージが表示されるはずです
-- 指示に従ってセットアップを完了
+```bash
+claude
+```
+- Claudeがブラウザを自動で開こうとします。開かない場合は、ターミナルに表示された長いURLを **Ctrl + クリック** するかコピーしてブラウザに貼り付けます。
+- Claude.aiにログインし、**Authorize** をクリック
+- 表示されたコードで **Copy Code** をクリックし、ターミナルに戻って右クリック > **貼り付け**（または **Ctrl + Shift + V**）
+- 成功メッセージが出れば接続完了です。
 
-### オプションB. Anthropic APIキーを使用
+### オプションB：Anthropic APIキーを使う
 
-Claudeサブスクリプションの代わりにAnthropic APIキーがある場合：
-
-- まず、[Anthropicコンソール](https://console.anthropic.com/)からAPIキーを取得
-- Ubuntuターミナルで以下を入力：
-   ```
+1. [Anthropic Console](https://console.anthropic.com/) でAPIキーを取得
+2. Ubuntuターミナルで以下を実行（`your-api-key-here`を実際のキーに置き換え）：
+   ```bash
    export ANTHROPIC_API_KEY="your-api-key-here"
    ```
-   `your-api-key-here`を実際のAPIキーに置き換えてください
-- これを永続的にする（毎回設定しなくて済むように）には、シェルプロファイルに追加：
-   ```
+3. 毎回設定したくない場合は、`~/.bashrc` に追記：
+   ```bash
    echo 'export ANTHROPIC_API_KEY="your-api-key-here"' >> ~/.bashrc
    ```
-   `your-api-key-here`を実際のAPIキーに置き換えてください
-- 変更を有効にするには、Ubuntuターミナルを閉じて再度開く
-- これでAPIキーでClaude Codeを使用できるはずです
+4. ターミナルを閉じて再起動すると設定が反映され、Claude CodeがAPIキーを自動で読み込みます。
 
-**重要：** Claude ProまたはMaxサブスクリプションがある場合、ANTHROPIC_API_KEY環境変数を設定しないでください。サブスクリプションの使用量を使用し、予期しないAPI料金を避けるために、未設定のままにしてください。
+> **重要：** Claude Pro/Maxサブスクリプションを使っている場合は `ANTHROPIC_API_KEY` を設定しないでください。サブスクリプションの利用枠が優先され、予期しないAPI課金を避けられます。
 
-### オプションC. Azure経由でAnthropic APIを使用
+### オプションC：Azure（Microsoft Foundry）経由でAnthropic APIを使う
 
-ターミナルウィンドウで、環境変数を定義するために以下のコードを貼り付けます：
+AzureでAnthropicモデルを使っている場合は、以下の環境変数を設定します：
 ```
 # Microsoft Foundry統合を有効化
 export CLAUDE_CODE_USE_FOUNDRY=1
-# Azureリソース名
+# Azureリソース名（例: myfoundry-eastus2）
 export ANTHROPIC_FOUNDRY_RESOURCE=xxx-eastus2
-# モデルをリソースのデプロイメント名に設定
+# リソースにデプロイしたモデル名
 export ANTHROPIC_DEFAULT_OPUS_MODEL=claude-opus-4-5
 export ANTHROPIC_DEFAULT_SONNET_MODEL=claude-sonnet-4-5
-export ANTHROPIC_FOUNDRY_API_KEY=AqJqe
+export ANTHROPIC_FOUNDRY_API_KEY=your_full_api_key
 ```
+`xxx-eastus2` と `your_full_api_key` をAzureポータルの値で置き換えてください。
 
-これでAzureにデプロイされたClaudeモデルでClaude Codeを使用できるはずです。
+## ステップ9：Claude Codeを試してみる
 
-**注意：** 上記のAPIキーは不完全です。Azureポータルから完全なAPIキーを取得する必要があります。
+```bash
+claude
+```
+- 動作確認として「量子コンピューティングについて説明して」などの質問を投げてみましょう。
 
-## ステップ9：Claude Codeを使い始める
+## ステップ10：Windows側のプロジェクトで作業する
 
-準備完了です！Claude Codeの使い方：
+```bash
+cd /mnt/c/Users/YourUserName/Documents/YourProject
+claude
+```
+- `YourUserName` と `YourProject` を自分の環境に合わせて置き換えます。
+- Windows上のファイルでも、`/mnt/c/...` 経由で開けばUbuntuから直接編集できます。
+- まずは「このコードベースの概要を教えて」と聞き、状況を把握しましょう。その後、変更の依頼やテストを繰り返します。
 
-- Ubuntuターミナルで以下を入力：
-   ```
-   claude
-   ```
-- これでClaudeとチャットできます！
-- 動作を確認するには、「量子コンピューティングについて説明してください」などの一般的な質問をしてみてください。
+## Ubuntuターミナルを再度開くには
 
-## ステップ10：プロジェクトに移動
-- Windowsフォルダにプロジェクトがある場合、アクセスできます：
-   ```
-   cd /mnt/c/Users/Username/Documents/YourProject
-   ```
-   `Username`を実際のWindowsユーザー名に置き換えてください
-- その後、Claudeを起動：
-   ```
-   claude
-   ```
-- まずClaudeにコードベースを説明してもらうことから始めましょう。
-- Claudeに変更を依頼できます。
-- お好みのIDEでコードをテストしてください。
-
-## 再びUbuntuターミナルを開く方法
-
-ターミナルを閉じた後、再び開く方法：
-
-- **Windowsスタートボタン**をクリック
-- 検索ボックスに`Ubuntu`と入力
-- **Ubuntu**をクリック（オレンジ色の丸いアイコンが表示されます）
-- Ubuntuターミナルが開きます
+1. Windowsスタートボタンをクリック
+2. `Ubuntu` と入力
+3. オレンジ色のアイコンの **Ubuntu** アプリをクリック
+4. これで新しいUbuntuターミナルが開きます
 
 ## トラブルシューティング
 
-### 「Please enable the Virtual Machine Platform Windows feature and ensure virtualization is enabled in the BIOS」
-このエラーは仮想化が有効になっていないことを意味します：
-- ステップ1に戻り、タスクマネージャーで仮想化が有効か確認
-- 無効の場合、コンピュータのBIOSで有効にする必要があります（ステップ1の手順を参照）
-- 仮想化を有効にした後、コンピュータを再起動して`wsl --install`を再度試してください
+### 「Please enable the Virtual Machine Platform ...」と表示される
+- 仮想化が無効です。ステップ1の手順に従ってBIOSで有効にしてから再度 `wsl --install` を実行してください。
 
-### 「wsl --install」が動作しない
-- 管理者としてPowerShellを実行していることを確認
-- Windows 10バージョン2004以降、またはWindows 11であることを確認
-- まず`wsl --update`を実行してから、`wsl --install`を再度試してください
+### `wsl --install` が失敗する
+- PowerShellを管理者権限で開いているか確認
+- Windows 10 バージョン2004以降／Windows 11であるか確認
+- `wsl --update` を先に実行し、その後 `wsl --install` を再実行
 
-### 再起動後にUbuntuウィンドウが開かない
-- Windowsスタートをクリック
-- `Ubuntu`と入力
-- Ubuntuアプリをクリックして手動で起動
+### 再起動後にUbuntuが自動で開かない
+- スタートメニューで `Ubuntu` を検索し、アプリを手動で起動してください
 
-### 「sudo: apt: command not found」
-- WSLが正しくインストールされていない可能性があります
-- PowerShell（管理者として）で`wsl --unregister Ubuntu`と入力
-- その後、`wsl --install`を再度実行
+### `sudo: apt: command not found`
+- WSLが壊れている可能性があります。
+  ```powershell
+  wsl --unregister Ubuntu
+  wsl --install
+  ```
+  を管理者PowerShellで再実行します。
 
-### Node.jsのインストールが失敗
-- 最初に`sudo apt update`を実行したことを確認
-- インストールコマンドを再度試してください
+### Node.jsのインストールに失敗する
+- 先に `sudo apt update` を実行したか確認
+- コマンドを入力し直し、タイポがないかチェック
 
 ### Claude Codeコマンドが見つからない
-- インストールが正常に完了したことを確認
-- Ubuntuターミナルを閉じて再度開いてみてください
-- インストールコマンドを再度実行してみてください：`curl -fsSL https://claude.ai/install.sh | bash`
+- インストール完了メッセージが出たか確認
+- Ubuntuターミナルを閉じて再起動
+- もう一度 `curl -fsSL https://claude.ai/install.sh | bash` を実行
 
-## ヘルプが必要ですか？
+## サポートリソース
 
-- WSLの問題について：[Microsoft WSLドキュメント](https://docs.microsoft.com/en-us/windows/wsl/)
-- Claude Codeの問題について：[Claude Code GitHub](https://github.com/anthropics/claude-code)
+- WSL全般：[Microsoft WSLドキュメント](https://docs.microsoft.com/en-us/windows/wsl/)
+- Claude Code全般：[Claude Code GitHub](https://github.com/anthropics/claude-code)
