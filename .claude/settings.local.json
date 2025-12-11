@@ -22,7 +22,8 @@
       "Bash(git config:*)",
       "Bash(git diff:*)",
       "WebFetch(domain:aimaker.substack.com)",
-      "WebFetch(domain:www.producttalk.org)"
+      "WebFetch(domain:www.producttalk.org)",
+      "Bash(ls:*)"
     ],
     "deny": [],
     "ask": []
