@@ -416,6 +416,8 @@
                 <li><a href="Vibe_Coding_R_Docker_Guide">Vibe Coding in R with Claude Code</a></li>
                 <li><a href="Vibe_Coding_Python_Docker_Guide">Vibe Coding in Python with Claude Code</a></li>
                 <li><a href="Writing_Research_Paper_Claude_Code">Write a Research Paper with Claude Code</a></li>
+                <li><a href="Claude_Code_RStudio_Mac">Using Claude Code with RStudio on Mac</a></li>
+                <li><a href="Claude_Code_WSL_RStudio_Windows">Using Claude Code from WSL with RStudio on Windows</a></li>
             </ol>
         </section>
 
@@ -553,7 +555,9 @@
             9: { label: 'Claude Code\n+ GitHub Desktop', url: 'GitHub_Desktop_Claude_Code_Workflow', desc: 'Combine AI-assisted coding with professional version control workflows', level: 2 },
             10: { label: 'Vibe Coding\nin R', url: 'Vibe_Coding_R_Docker_Guide', desc: 'Build a real NBA stats dashboard using natural language requests—the complete vibe coding experience', level: 3 },
             13: { label: 'Research Paper\nwith Claude', url: 'Writing_Research_Paper_Claude_Code', desc: 'Write research papers faster using Claude Code for research and drafting while Git tracks every version', level: 2 },
-            16: { label: 'Vibe Coding\nin Python', url: 'Vibe_Coding_Python_Docker_Guide', desc: 'Analyze the Iris dataset using natural language requests—describe visualizations and watch them appear', level: 3 }
+            16: { label: 'Vibe Coding\nin Python', url: 'Vibe_Coding_Python_Docker_Guide', desc: 'Analyze the Iris dataset using natural language requests—describe visualizations and watch them appear', level: 3 },
+            17: { label: 'RStudio\n(Mac)', url: 'Claude_Code_RStudio_Mac', desc: 'Use Claude Code with RStudio on Mac—create R projects and enhance them with AI while RStudio runs your code', level: 2 },
+            18: { label: 'RStudio\n(Windows)', url: 'Claude_Code_WSL_RStudio_Windows', desc: 'Use Claude Code from WSL with RStudio on Windows—bridge the gap between Windows RStudio and Linux-based AI assistance', level: 2 }
         };
 
         // Color scheme by level
@@ -585,7 +589,10 @@
             // Level 3 - Projects & Capstone
             13: { x: 480, y: -60 },  // Research Paper with Claude
             10: { x: 480, y: 90 },   // Vibe Coding in R
-            16: { x: 480, y: 120 }   // Vibe Coding in Python
+            16: { x: 480, y: 120 },  // Vibe Coding in Python
+            // Level 2 - RStudio
+            17: { x: 320, y: 60 },   // RStudio (Mac)
+            18: { x: 320, y: 75 }    // RStudio (Windows)
         };
 
         // Get label with checkmark if completed
@@ -688,7 +695,13 @@
             { id: 'e17', from: 14, to: 13 }, // Claude in VS Code (Win) → Research Paper
             { id: 'e18', from: 15, to: 13 }, // Claude in VS Code (Mac) → Research Paper
             { id: 'e19', from: 8, to: 16 },  // Python via Docker → Vibe Coding in Python
-            { id: 'e20', from: 9, to: 16 }   // GitHub + Claude → Vibe Coding in Python
+            { id: 'e20', from: 9, to: 16 },  // GitHub + Claude → Vibe Coding in Python
+            { id: 'e21', from: 2, to: 17 },  // Install (Mac) → RStudio (Mac)
+            { id: 'e22', from: 1, to: 18 },  // Install (Win) → RStudio (Windows)
+            { id: 'e23', from: 5, to: 17 },  // R in VS Code → RStudio (Mac)
+            { id: 'e24', from: 5, to: 18 },  // R in VS Code → RStudio (Windows)
+            { id: 'e25', from: 17, to: 10 }, // RStudio (Mac) → Vibe Coding in R
+            { id: 'e26', from: 18, to: 10 }  // RStudio (Windows) → Vibe Coding in R
         ];
 
         // Get edge color based on connected nodes completion
@@ -758,10 +771,12 @@
             windows: [1, 14, 11],      // Install Win, VS Code Win, Git Win
             mac: [2, 15, 12],          // Install Mac, VS Code Mac, Git Mac
             basics: [1, 2, 3, 14, 15, 11, 12, 13], // All install, VS Code Basics, VS Code platform, git, and research paper tutorials
-            r: [5, 7, 10],         // R in VS Code, R via Docker, Vibe Coding in R
-            python: [6, 8, 16],    // Python in VS Code, Python via Docker, Vibe Coding in Python
-            shared: [3, 4, 9, 13], // VS Code Basics, Version Control, GitHub Desktop, Research Paper (language-agnostic)
-            coding: [3, 4, 5, 6, 7, 8, 9, 10, 13, 16] // All coding tutorials
+            r: [5, 7, 10],             // R in VS Code, R via Docker, Vibe Coding in R
+            rstudio_mac: [17],         // RStudio (Mac)
+            rstudio_windows: [18],     // RStudio (Windows)
+            python: [6, 8, 16],        // Python in VS Code, Python via Docker, Vibe Coding in Python
+            shared: [3, 4, 9, 13],     // VS Code Basics, Version Control, GitHub Desktop, Research Paper (language-agnostic)
+            coding: [3, 4, 5, 6, 7, 8, 9, 10, 13, 16, 17, 18] // All coding tutorials
         };
 
         // Filter nodes based on current state
@@ -773,10 +788,12 @@
                 // Basics mode: show VS Code Basics + install/git/VS Code for selected platform + research paper
                 visibleNodes = [...tutorialCategories[currentPlatform], 3, 13];
             } else if (currentLanguage === 'r') {
-                // R mode: show platform install + R tutorials + coding shared (no git, no research paper)
+                // R mode: show platform install + R tutorials + platform-specific RStudio + coding shared (no git, no research paper)
+                const rstudioTutorial = currentPlatform === 'mac' ? tutorialCategories.rstudio_mac : tutorialCategories.rstudio_windows;
                 visibleNodes = [
                     tutorialCategories[currentPlatform][0], // Install only (first item)
                     ...tutorialCategories.r,
+                    ...rstudioTutorial, // Add platform-specific RStudio tutorial
                     3, 4, 9 // VS Code Basics, Version Control, GitHub Desktop (exclude Research Paper 13)
                 ];
             } else if (currentLanguage === 'python') {
