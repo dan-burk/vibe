@@ -13,9 +13,7 @@ You're coding with AI assistance. It makes changes to your files. Sometimes the 
 
 ## What You'll Need
 
-- Mac running macOS 10.15 (Catalina) or later
-- Terminal (built into macOS)
-- Claude Code installed ([installation guide](https://code.claude.com/docs/en/installation))
+- Finished [Installing Claude Code on Mac](./Install_Claude_Code_MacOS)
 - 20 minutes
 
 ## Step 1: Open Terminal

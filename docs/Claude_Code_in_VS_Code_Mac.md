@@ -12,8 +12,8 @@ You've installed Claude Code on your Mac - now you want a visual editor to work 
 
 ## What You'll Need
 
-- Mac with Claude Code already installed (from the previous tutorial)
-- Claude Pro/Max subscription or API key (already configured)
+- Finished [Installing Claude Code on Mac](./Install_Claude_Code_MacOS)
+- Finished [VS Code Basics](./VS_Code_Getting_Started)
 - 10-15 minutes
 
 ## Step 1: Start VS Code

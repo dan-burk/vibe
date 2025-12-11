@@ -13,10 +13,8 @@ You've written R code by typing every line yourself. But what if you could descr
 
 ## What You'll Need
 
-- Completed the [R Coding in Docker tutorial](./R_Coding_Docker_Guide.md)
-- [GitHub Desktop](https://desktop.github.com/) installed and logged in
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/) running in the background
-- The vibe project already cloned locally (from previous tutorial)
+- Finished [R Coding in VS Code via Docker](./R_Coding_Docker_Guide)
+- Finished [Using GitHub Desktop with Claude Code](./GitHub_Desktop_Claude_Code_Workflow)
 - 25-30 minutes
 
 ## Step 1: Create New GitHub Repository

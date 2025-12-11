@@ -13,10 +13,9 @@ You want to write Python code but aren't sure which editor to use, or you're loo
 
 ## What You'll Need
 
-- VS Code already installed
+- Finished [VS Code Basics](./VS_Code_Getting_Started)
 - Internet connection to download Python and packages
 - 15-20 minutes
-- Basic familiarity with installing software
 
 ## Step 1: Install Python
 

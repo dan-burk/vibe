@@ -13,7 +13,7 @@ Write research papers using Claude Code as an assistant for research, brainstorm
 
 ## What You'll Need
 
-- VS Code with Claude Code set up ([Windows WSL guide](./Claude_Code_in_VS_Code_Win.md) | [Mac guide](./Claude_Code_in_VS_Code_Mac.md))
+- Finished [Claude Code in VS Code on Windows](./Claude_Code_in_VS_Code_Win) or [Claude Code in VS Code on Mac](./Claude_Code_in_VS_Code_Mac)
 - 30-40 minutes
 
 ## Step 1: Create a Project Folder

@@ -335,7 +335,7 @@
     <div class="container">
         <header>
             <h1>Vibe Working for Beginners</h1>
-            <p class="subtitle">Quick 15-minute tutorials to run powerful AI agents locally</p>
+            <p class="subtitle">Quick 15-minute tutorials to run Claude Code, a powerful AI agents, locally</p>
         </header>
 
         <div class="graph-container">
@@ -369,6 +369,7 @@
                 <li><a href="Python_Coding_Docker_Guide">Python Coding in VS Code via Docker</a></li>
                 <li><a href="GitHub_Desktop_Claude_Code_Workflow">Using GitHub Desktop with Claude Code</a></li>
                 <li><a href="Vibe_Coding_R_Docker_Guide">Vibe Coding in R with Claude Code</a></li>
+                <li><a href="Vibe_Coding_Python_Docker_Guide">Vibe Coding in Python with Claude Code</a></li>
                 <li><a href="Writing_Research_Paper_Claude_Code">Writing a Research Paper with Claude Code</a></li>
             </ol>
         </section>
@@ -506,7 +507,8 @@
             8: { label: 'Python via\nDocker', url: 'Python_Coding_Docker_Guide', desc: 'Run Python in isolated, reproducible containers with pre-built Docker images', level: 2 },
             9: { label: 'Claude Code\n+ GitHub Desktop', url: 'GitHub_Desktop_Claude_Code_Workflow', desc: 'Combine AI-assisted coding with professional version control workflows', level: 2 },
             10: { label: 'Vibe Coding\nin R', url: 'Vibe_Coding_R_Docker_Guide', desc: 'Build a real NBA stats dashboard using natural language requests—the complete vibe coding experience', level: 3 },
-            13: { label: 'Research Paper\nwith Claude', url: 'Writing_Research_Paper_Claude_Code', desc: 'Write research papers faster using Claude Code for research and drafting while Git tracks every version', level: 2 }
+            13: { label: 'Research Paper\nwith Claude', url: 'Writing_Research_Paper_Claude_Code', desc: 'Write research papers faster using Claude Code for research and drafting while Git tracks every version', level: 2 },
+            16: { label: 'Vibe Coding\nin Python', url: 'Vibe_Coding_Python_Docker_Guide', desc: 'Analyze the Iris dataset using natural language requests—describe visualizations and watch them appear', level: 3 }
         };
 
         // Color scheme by level
@@ -528,16 +530,17 @@
             12: { x: 160, y: -60 },  // Claude Code + Git (Mac)
             3: { x: 160, y: 20 },    // VS Code Basics
             5: { x: 160, y: 120 },   // R in VS Code
-            6: { x: 160, y: 180 },   // Python in VS Code
+            6: { x: 160, y: 165 },   // Python in VS Code
             // Level 2 - Advanced
             14: { x: 320, y: -90 },  // Claude Code in VS Code (Win)
             15: { x: 320, y: -30 },  // Claude Code in VS Code (Mac)
             9: { x: 320, y: 30 },    // GitHub Desktop + Claude
             7: { x: 320, y: 120 },   // R via Docker
-            8: { x: 320, y: 180 },   // Python via Docker
+            8: { x: 320, y: 165 },   // Python via Docker
             // Level 3 - Projects & Capstone
             13: { x: 480, y: -60 },  // Research Paper with Claude
-            10: { x: 480, y: 120 }   // Vibe Coding in R
+            10: { x: 480, y: 90 },   // Vibe Coding in R
+            16: { x: 480, y: 150 }   // Vibe Coding in Python
         };
 
         // Get label with checkmark if completed
@@ -638,7 +641,9 @@
             { id: 'e15', from: 3, to: 14 },  // VS Code Basics → Claude in VS Code (Win)
             { id: 'e16', from: 3, to: 15 },  // VS Code Basics → Claude in VS Code (Mac)
             { id: 'e17', from: 14, to: 13 }, // Claude in VS Code (Win) → Research Paper
-            { id: 'e18', from: 15, to: 13 }  // Claude in VS Code (Mac) → Research Paper
+            { id: 'e18', from: 15, to: 13 }, // Claude in VS Code (Mac) → Research Paper
+            { id: 'e19', from: 8, to: 16 },  // Python via Docker → Vibe Coding in Python
+            { id: 'e20', from: 9, to: 16 }   // GitHub + Claude → Vibe Coding in Python
         ];
 
         // Get edge color based on connected nodes completion
@@ -709,9 +714,9 @@
             mac: [2, 15, 12],          // Install Mac, VS Code Mac, Git Mac
             basics: [1, 2, 3, 14, 15, 11, 12, 13], // All install, VS Code Basics, VS Code platform, git, and research paper tutorials
             r: [5, 7, 10],         // R in VS Code, R via Docker, Vibe Coding in R
-            python: [6, 8],        // Python in VS Code, Python via Docker
+            python: [6, 8, 16],    // Python in VS Code, Python via Docker, Vibe Coding in Python
             shared: [3, 4, 9, 13], // VS Code Basics, Version Control, GitHub Desktop, Research Paper (language-agnostic)
-            coding: [3, 4, 5, 6, 7, 8, 9, 10, 13] // All coding tutorials
+            coding: [3, 4, 5, 6, 7, 8, 9, 10, 13, 16] // All coding tutorials
         };
 
         // Filter nodes based on current state

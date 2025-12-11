@@ -13,9 +13,7 @@ You're coding with AI assistance. It makes changes to your files. Sometimes the 
 
 ## What You'll Need
 
-- Windows 10 or 11 with WSL installed ([installation guide](https://learn.microsoft.com/en-us/windows/wsl/install))
-- Ubuntu running in WSL
-- Claude Code installed ([installation guide](https://code.claude.com/docs/en/installation))
+- Finished [Installing Claude Code on Windows](./Install_CLAUDE_Code_Win)
 - 20 minutes
 
 ## Step 1: Open Ubuntu Terminal

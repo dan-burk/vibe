@@ -13,9 +13,7 @@ Ever tried to share your Python code with a colleague, only to spend hours debug
 
 ## What You'll Need
 
-- [VS Code](https://code.visualstudio.com/) already installed
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running
-- [GitHub Desktop](https://desktop.github.com/) already installed (optional, for cloning projects)
+- Finished [Python Coding in VS Code](./Python_Coding_VS_Code_Guide)
 - 20-25 minutes
 
 ## Step 1: Install Docker Desktop

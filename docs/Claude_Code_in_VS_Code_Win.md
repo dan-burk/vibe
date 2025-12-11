@@ -13,8 +13,8 @@ You've installed WSL and Claude Code on your Windows machine - now you want a vi
 
 ## What You'll Need
 
-- Windows with WSL and Claude Code already installed (from the previous tutorial)
-- Claude Pro/Max subscription or API key (already configured)
+- Finished [Installing Claude Code on Windows](./Install_CLAUDE_Code_Win)
+- Finished [VS Code Basics](./VS_Code_Getting_Started)
 - 10-15 minutes
 
 ## Step 1: Create a Project Folder
