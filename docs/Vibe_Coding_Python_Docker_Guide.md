@@ -252,19 +252,6 @@ This tutorial combined several technologies into one workflow:
 
 The magic isn't any single tool—it's how vibe coding lets you describe what you want and iterate rapidly. You went from empty project to complete data analysis with multiple visualizations in 20 minutes without writing a single line of code manually.
 
-## Everyday Workflow
-
-After this initial setup, your daily vibe coding routine becomes:
-
-1. **Start Docker Desktop** - Launch the app, wait for green status
-2. **Open VS Code** - Open your project, reopen in container if needed
-3. **Start Claude Code** - Type `claude` in the terminal
-4. **Describe your goal** - "Add a feature that..." or "Analyze the data by..."
-5. **Test the changes** - Run your script, check the output and visualizations
-6. **Iterate or commit** - If broken, describe the fix; if working, commit with GitHub Desktop
-7. **Push regularly** - Click **Push origin** to back up to GitHub
-
-The more you practice, the better you get at describing what you want. Vibe coding is a skill—you learn what kinds of descriptions work best and how to break big ideas into testable pieces.
 
 ---
 
