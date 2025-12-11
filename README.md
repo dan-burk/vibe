@@ -19,9 +19,11 @@ This minimal setup enables both Claude Code and OpenAI's Codex to run inside a D
 
 6. From GitHub Desktop, clone this repo locally to a different folder (C:\work\vibe).
 
-7. Copy the .devcontainer folder from the vibe repo (C:\work\vibe) to your repo (C:\work\myproject). Copy the entire folder. It has two files. The Dockerfile defines the container image, and the devcontainer.json includes settings.
+7. Copy the .devcontainer folder from the vibe repo (C:\work\vibe) to your repo (C:\work\myproject). Copy the entire folder. It contains subfolders for amd64 and arm64 architectures. Each has two files. The Dockerfile defines the container image, and the devcontainer.json includes settings.
 
-8. Start VS Code. File --> Open Folder--> (C:\work\myproject).   When prompted, click “Reopen in Container”. 
+8. Start VS Code. File --> Open Folder--> (C:\work\myproject). When prompted, click "Reopen in Container". VS Code will ask you to choose between **amd64** or **arm64**. Most people will select amd64.
+
+   **Note for ARM64 users:** The first build takes ~17 minutes (1050 seconds) as packages compile from source. Subsequent opens use the cached image and are fast. 
 
 9. Open a terminal in VS Code, and type in ```claude``` to start Claude Code. Login through the browser. I recommend create a Claude.me file first.
 
