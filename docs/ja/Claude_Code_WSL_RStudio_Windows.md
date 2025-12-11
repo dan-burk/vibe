@@ -2,7 +2,7 @@
 
 # WindowsでWSLとRStudioを使ってClaude Codeを使用する
 
-WindowsにRコード実行用のRStudioと、AI搭載のコーディング支援用のWSL内のClaude Codeがあります。このチュートリアルでは、同じプロジェクトファイルで両方のツールを一緒に使用する方法を説明します。Windowsでプロジェクトを作成し、手動でコードを書いた後、Ubuntuターミナルからclaude codeを使用して可視化と分析を追加します。その間、RStudioを開いたままコードを実行してテストできます。
+WindowsにRコード実行用のRStudioと、AI搭載のコーディング支援用のWSL内のClaude Codeがあります。このチュートリアルでは、同じプロジェクトファイルで両方のツールを一緒に使用する方法を説明します。Windowsでプロジェクトを作成し、手動でコードを書いた後、UbuntuターミナルからClaude Codeを使用して可視化と分析を追加します。その間、RStudioを開いたままコードを実行してテストできます。
 
 ## 主要な概念
 
