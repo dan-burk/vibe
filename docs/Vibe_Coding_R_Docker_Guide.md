@@ -13,7 +13,7 @@
 
 - Finished [R Coding in VS Code via Docker](./R_Coding_Docker_Guide)
 - Finished [Using GitHub Desktop with Claude Code](./GitHub_Desktop_Claude_Code_Workflow)
-- Docker Deskop installed and started
+- Docker Desktop installed and started
 - 25-30 minutes
 
 ## Step 1: Create New GitHub Repository
@@ -34,7 +34,8 @@ You now have a local Git repository and a backup on GitHub.
 
 ## Step 2: Copy Docker Configuration
 
-- Go to https://github.com/gexijin/vibe. For laptops with ARM64 CPU, https://github.com/gexijin/vibe/tree/ARM64
+- Go to https://github.com/gexijin/vibe
+  - **Note for ARM64 users (Apple Silicon Macs):** Use https://github.com/gexijin/vibe/tree/ARM64 instead
 - Click **Code** and Download Zip
 - Open File Explorer (Windows) or Finder (Mac)
 - Unzip the file in Download folder
@@ -55,7 +56,7 @@ Your `nba-dashboard` folder should now contain:
 - Open VS Code
 - Click **File > Open Folder**
 - Navigate to `nba-dashboard` folder
-- Click **Select Folder**
+- Click **Select Folder** (Windows) or **Open** (Mac)
 - A notification appears in the bottom right: **Folder contains a Dev Container configuration file**
 - Click **Reopen in Container**
 - If you don't see the notification, click the green icon in bottom-left corner and select **Reopen in Container**
@@ -101,10 +102,11 @@ Install the hoopR package and load current NBA player statistics. Show me the to
 
 You just used vibe coding! No searching documentation, no trial and error—just describe and test.
 
-Ask Claude to commit using Git. Or do this yourself from GitHub Desktop.
+**Save your progress:** Ask Claude to commit using Git, or do this yourself from GitHub Desktop:
 ```
 Commit these changes.
 ```
+
 ## Step 6: Second Vibe - Explore the Data
 
 Before building a dashboard, understand what data you have.
@@ -121,7 +123,7 @@ Show me what columns are available in this NBA data. Then create a summary showi
 
 This exploration helps you decide what to put in your dashboard.
 
-Ask Claude to commit using Git. Or do this yourself from GitHub Desktop.
+**Save your progress:** Ask Claude to commit, or use GitHub Desktop.
 
 ## Step 7: Third Vibe - Create Basic Shiny App
 
@@ -149,7 +151,7 @@ Test your dashboard to see if it works.
 - The NBA dashboard opens in your web browser
 - Try moving the points slider—the table filters in real-time
 - Scroll through the player data
-- Commit changes if the app work.
+- Commit changes if the app works
 
 If something doesn't work, copy any error messages and paste them to Claude to fix.
 
@@ -165,7 +167,7 @@ Add a bar chart below the table showing the top 15 players by points. Use differ
 
 - Press Enter
 - Claude updates `app.R` with visualization code
-- The Shiny app automatically reloads (or click **Run Shiny App** again)
+- Click **Run Shiny App** again to reload the app
 - Refresh your browser
 - You now see a colorful bar chart and scatter plot
 - Move the slider—all visualizations update together
@@ -267,7 +269,7 @@ This tutorial combined several technologies into one workflow:
 - **hoopR package** - NBA data source with simple API
 - **Shiny framework** - Interactive web apps in R
 
-The magic isn't any single tool—it's how vibe coding lets you describe what you want and iterate rapidly. You went from empty project to working sports dashboard in 30 minutes without writing a single line of code manually.
+The magic isn't any single tool—it's how vibe coding lets you describe what you want and iterate rapidly. You went from empty project to working sports dashboard in under 30 minutes without writing a single line of code manually.
 
 ## Everyday Workflow
 
