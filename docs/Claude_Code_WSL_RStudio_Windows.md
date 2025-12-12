@@ -12,7 +12,7 @@ You have RStudio on Windows for running R code and Claude Code in WSL for AI-pow
 
 ## What You'll Need
 
-- Completed the [Install Claude Code on Windows](./Install_CLAUDE_Code_Win.md) guide
+- Completed the [Install Claude Code on Windows](./Install_CLAUDE_Code_Win) guide
 - RStudio installed on Windows
 - 20-30 minutes
 
@@ -85,7 +85,7 @@ summary(iris)
   claude
   ```
 - Claude Code starts and shows a welcome message
-- You may have to login again. See previous tutorial.
+- You may need to sign in again - see the [Install Claude Code on Windows](./Install_CLAUDE_Code_Win) guide for authentication steps
 - You're now ready to use AI assistance for your R project
 
 ## Step 8: Ask Claude for a Scatter Plot
@@ -96,7 +96,7 @@ If Claude Code is slow or unresponsive, just wait for it to initialize. Then, ty
 Add code to iris.R to create a scatter plot of sepal length vs. width, colored by species. Use ggplot2. 
 ```
 - Claude Code will read your `iris.R` file and add the visualization code
-- When asked, give Claude permission to edit the iris.R file by selecting 2.
+- When asked, give Claude permission to edit the iris.R file by selecting the appropriate option
 - Wait for Claude to finish (you'll see a confirmation message)
 
 
@@ -201,4 +201,4 @@ The workflow is simple: write or edit code with Claude in the Ubuntu terminal, t
 
 ---
 
-Created by [Steven Ge](https://www.linkedin.com/in/steven-ge-ab016947/) on December 11, 2024.
+Created by [Steven Ge](https://www.linkedin.com/in/steven-ge-ab016947/) on December 11, 2025.

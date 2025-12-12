@@ -12,7 +12,7 @@ You have RStudio on Mac for running R code and Claude Code for AI-powered coding
 
 ## What You'll Need
 
-- Completed the [Install Claude Code on Mac](./Install_Claude_Code_MacOS.md) guide
+- Completed the [Install Claude Code on Mac](./Install_Claude_Code_MacOS) guide
 - RStudio installed on Mac
 - 20-30 minutes
 
@@ -60,9 +60,9 @@ summary(iris)
 
 ## Step 5: Open Terminal
 
-- Press **Command (⌘) + Space** on your keyboard
-- Type `Terminal` in the search box
-- Click on **Terminal** (a black square icon)
+- Open **Finder** and click **Applications** in the left sidebar
+- Open the **Utilities** folder
+- Double-click **Terminal**
 - The Terminal window opens
 
 ## Step 6: Navigate to Your Project Folder
@@ -174,7 +174,7 @@ Add code to iris.R to create a scatter plot of sepal length vs. width, colored b
 ## Troubleshooting
 
 - **RStudio doesn't show file changes** - Click **File > Reopen with Encoding > UTF-8** to manually reload the file, or close and reopen the file.
-- **"claude: command not found"** - Make sure you completed the [installation guide](./Install_Claude_Code_MacOS.md). Try opening a fresh Terminal window, or close Terminal completely (**Command (⌘) + Q**) and reopen it.
+- **"claude: command not found"** - Make sure you completed the [installation guide](./Install_Claude_Code_MacOS). Try opening a fresh Terminal window, or close Terminal completely (**Command (⌘) + Q**) and reopen it.
 - **Plots not appearing** - Make sure ggplot2 is installed. Run `install.packages("ggplot2")` in RStudio Console if needed.
 - **"No such file or directory"** - Check that you typed the path correctly in Step 6. Try using the drag-and-drop trick: drag the test_claude folder from Finder into Terminal after typing `cd ` (with a space).
 - **Claude Code is slow on first request** - Wait 30-60 seconds for Claude to initialize. Subsequent requests will be faster.

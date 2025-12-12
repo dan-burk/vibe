@@ -99,8 +99,8 @@ After your computer restarts, a terminal window with "Ubuntu" in the title shoul
    - Example:  `john`
 - You'll see: `New password:`
 - Type a simple password (even the same as the user name `john`)
-- you won't see the characters as you type - this is normal
-- Type the same password again when prompt
+- You won't see the characters as you type - this is normal
+- Type the same password again when prompted
 
 **Important:** Remember this username and password - you'll need them later.
 
@@ -201,7 +201,7 @@ export ANTHROPIC_DEFAULT_SONNET_MODEL=claude-sonnet-4-5
 export ANTHROPIC_FOUNDRY_API_KEY=your_api_key
 ```
 
-**Note:** **Note:** Replace `xxxx-eastus2` with your Foundry Resource name (do not use the entire base URL). Replace `your_api_key` with your complete API key from your Azure portal.
+**Note:** Replace `xxxx-eastus2` with your Foundry Resource name (do not use the entire base URL). Replace `your_api_key` with your complete API key from your Azure portal.
  
 Then start Claude Code:
 ``` 
@@ -233,9 +233,9 @@ You're all set! To see if it works, ask a general question such as "Explain quan
 
 ## Next Steps
 
-- **Set up VS Code**: Follow the [VS Code Getting Started](VS_Code_Getting_Started.md) guide, then connect it to Claude Code with [Claude Code in VS Code (Windows)](Claude_Code_in_VS_Code_Win.md)
-- **Learn Git basics**: Add version control to your projects with [Claude Code Git on Windows](Claude_Code_Git_Windows.md)
-- **Try a project**: Work through [Writing a Research Paper with Claude Code](Writing_Research_Paper_Claude_Code.md) to see Claude Code in action
+- **Set up VS Code**: Follow the [VS Code Getting Started](VS_Code_Getting_Started) guide, then connect it to Claude Code with [Claude Code in VS Code (Windows)](Claude_Code_in_VS_Code_Win)
+- **Learn Git basics**: Add version control to your projects with [Claude Code Git on Windows](Claude_Code_Git_Windows)
+- **Try a project**: Work through [Writing a Research Paper with Claude Code](Writing_Research_Paper_Claude_Code) to see Claude Code in action
 
 ## Troubleshooting
 
@@ -279,4 +279,4 @@ This error means virtualization is not enabled:
 
 ---
 
-Created by [Steven Ge](https://www.linkedin.com/in/steven-ge-ab016947/) on December 11 2024.
+Created by [Steven Ge](https://www.linkedin.com/in/steven-ge-ab016947/) on December 11, 2025.

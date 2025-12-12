@@ -163,6 +163,4 @@ Review the entire script for correctness. Add comments when necessary.
 
 ---
 
-Estimated completion time: 30 minutes. Created by [Steven Ge](https://www.linkedin.com/in/steven-ge-ab016947/) on December 11, 2025.
-
-[Other tutorials](https://github.com/gexijin/vibe)
+Created by [Steven Ge](https://www.linkedin.com/in/steven-ge-ab016947/) on December 11, 2025.
