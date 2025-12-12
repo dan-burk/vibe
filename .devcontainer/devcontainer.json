@@ -4,10 +4,10 @@
     "dockerfile": "Dockerfile"
   },
 # pass API keys and other environment variables to the container
-#  "runArgs": [
-#    "--env-file",
-#    ".devcontainer/api.env"
-#  ],
+  "runArgs": [
+    "--env-file",
+    ".devcontainer/api.env"
+  ],
   "customizations": {
     "vscode": {
       "extensions": [
