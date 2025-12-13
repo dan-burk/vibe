@@ -66,12 +66,11 @@ Include:
 - Management team news 
 - Recent financial reports 
 - Analyst reports 
-
 ```
 When asked, grant Claude permission to create the file.
 Claude will create a detailed prompt and save it as `stock-report.md` to the `.claude/commands/` folder.
 
-**Note:** We use Markdown format a lot: in the prompt above, reports, and the slash command. It is friendly to AI. 
+**Note:** We use Markdown format throughout: in prompts, reports, and slash commands. Markdown is AI-friendly and can be easily edited as plain text files. 
 
 ## Step 4: Review the Command 
 
@@ -84,7 +83,7 @@ If you have VS Code installed (recommended):
 
 Review the prompt and make changes to the instructions if you want.
 
-**Note:** Claude is incredibly good at writing prompts. You can see that its prompts is structured well using markdown format. Clearly written. Learn to write prompts like this. When I run this, it even has instructions to ask for clarification if the identifier is ambiguous.
+**Note:** Claude is incredibly good at writing prompts. You can see that its prompt is structured well using markdown format and clearly written. Learn to write prompts like this. It sometimes even includes instructions to ask for clarification if the identifier is ambiguous.
 
 ## Step 5: Test the Command
 
@@ -110,13 +109,13 @@ Claude creates a report in the command line. Review the output:
 
 ## Step 7: Save report to file
 
-Let's modify the slash command to automatically save reports as HTML files. Append this to the slash command markdown file manually.
+Let's modify the slash command to automatically save reports as markdown files. Append this to the slash command markdown file manually.
 
 - Open the `stock-report.md` file from the `.claude/commands/` folder
 - Append this to the end.
-```
-Save the report as a markdown file. File name has company name and date.
-```
+  ```
+  Save the report as a markdown file. File name has company name and date.
+  ```
 - Save the file. 
 
 ## Step 8: Rerun Command
@@ -127,9 +126,9 @@ Save the report as a markdown file. File name has company name and date.
   ```
 - Now test your new command with a real stock ticker:
 
-```
-/stock-report AAPL
-```
+  ```
+  /stock-report AAPL
+  ```
 - Open the report
 
 Claude generates the report and saves it as an markdown file named something like `Apple_2025-12-13.md`. Click the file in VS Code to view it.
@@ -142,7 +141,7 @@ You can ask Claude to edit the slash commands:
 Revise the stock-report slash command to save the report as a html file.
 ```
 
-Claude opens the command file and adds the competitive edge analysis section.
+Claude updates the command file. You can verify from the editor.
 
 ## Step 10: Test the Updated Command
 
@@ -151,15 +150,15 @@ Claude opens the command file and adds the competitive edge analysis section.
   claude
   ```
 
-Test the enhanced command:
+- Test the enhanced command:
 
-```
-/stock-report AAPL
-```
+  ```
+  /stock-report AAPL
+  ```
 
-Claude creates a html file named something like `Apple_2025-12-13.md`. Click on this file from File Explorer on Windows or Mac to open it in your default browser.
+Claude creates a file named something like `Apple_2025-12-13.html`. Click on this file from File Explorer on Windows or Mac to open it in your default browser.
 
-## Step 9: Understand How Arguments Work (Optional)
+## Step 11: Reuse slash command (Optional)
 
 The `$ARGUMENTS` keyword in your slash command acts as a placeholder. When you type `/stock-report AAPL`, Claude replaces `$ARGUMENTS` with `AAPL` before executing the prompt.
 
@@ -187,10 +186,9 @@ Then run the research paper command:
 /research-paper AI in schools
 ```
 
-Claude guides you through the entire research paper workflow. There are two key differences:
-- This slash command was created at the end of an interactive session, essentially capturing what we want through an example.
-- This slash command is interactive. It ask for input during the process before drafting a paper.
-
+Two key differences:
+- /research-paper was created at the end of an session by capturing human interaction, whereas /stock-report is created from scratch.
+- /research-paper interactively asks for inputs before drafting a paper.
 
 ## Next Steps
 
