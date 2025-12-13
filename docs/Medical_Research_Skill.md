@@ -4,7 +4,7 @@
 
 Keeping up with medical research means wading through dense scientific papers filled with jargon. A Claude Skill is like having a research assistant that reads hundreds of papers and explains them in plain English - instead of spending hours searching PubMed and decoding technical language, you ask a simple question and get a clear summary based on the latest science.
 
-In this tutorial, you'll create a Claude Skill that searches PubMed and provides plain-language summaries of medical research. By the end, you'll be able to ask questions like "Can I lose weight via keto diet?" and get clear answers based on current scientific literature.
+In this tutorial, you'll create a Claude Skill that searches peer-reviewed medical literature, which is very different from web searches. To do this we create a Python script to query PubMed. 
 
 ## Key Concepts
 
@@ -172,6 +172,18 @@ Now that you've built a medical research skill, try creating other skills:
 - **Self-contained packaging** - Scripts live inside skill folders, making them portable and shareable
 - **Automatic activation** - Skills trigger based on question patterns (research questions activate medical-research)
 - **Plain-language interface** - Ask natural questions without knowing the technical details
+
+## Skills vs Slash Commands
+
+| Feature | Skills | Slash Commands |
+|---------|--------|----------------|
+| **What it contains** | Prompts, code, data, and documentation | Prompts only |
+| **Activation** | Automatically loaded when relevant | Manually triggered with `/command` |
+| **Use case** | Complex workflows requiring code execution | Quick prompt templates and workflows |
+| **File location** | `.claude/skills/skill-name/` | `.claude/commands/` |
+| **Structure** | Multiple files (SKILL.md, README.md, code files) | Single `.md` file per command |
+
+**Key Takeaway:** Slash Commands just injects prompts from the UI. It is useful, but limited.
 
 ---
 
