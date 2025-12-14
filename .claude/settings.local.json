@@ -25,7 +25,7 @@
       "WebFetch(domain:www.producttalk.org)",
       "Bash(ls:*)",
       "SlashCommand(/tutorial:*)",
-      "Skill(generating-stock-reports)",
+      "Skill(generate-stock-reports)",
       "Skill(medical-research)",
       "WebFetch(domain:pmc.ncbi.nlm.nih.gov)",
       "WebFetch(domain:pubmed.ncbi.nlm.nih.gov)",
@@ -37,7 +37,9 @@
       "Bash(do if [ -f \"$dirSKILL.md\" ])",
       "Bash(fi)",
       "Bash(done)",
-      "Bash(head:*)"
+      "Bash(head:*)",
+      "Bash(claude doctor)",
+      "SlashCommand(/review-translation:*)"
     ],
     "deny": [],
     "ask": []
