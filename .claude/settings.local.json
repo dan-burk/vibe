@@ -37,7 +37,8 @@
       "Bash(do if [ -f \"$dirSKILL.md\" ])",
       "Bash(fi)",
       "Bash(done)",
-      "Bash(head:*)"
+      "Bash(head:*)",
+      "Bash(claude doctor)"
     ],
     "deny": [],
     "ask": []
