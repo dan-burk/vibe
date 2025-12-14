@@ -1,6 +1,6 @@
 [Home](./)
 
-# Creating a Stock Picker Agent in Claude Code
+# Creating an Agent in Claude Code
 
 You want to compare investment opportunities, but researching multiple companies and scoring them takes hours. Think of an agent like hiring a financial analyst who knows exactly how to use your research tools—you give them company names, and they gather reports, score each company across key metrics, and recommend the best investment. This tutorial shows you how to build that analyst.
 
@@ -79,13 +79,14 @@ Your stock-picker agent will:
 2. Score companies across categories (financials, growth, management, sentiment)
 3. Compare scores and recommend the best investment
 
-## Step 4: Open the Agents Command
-
+## Step 4: Create the agent
+First start the /agents command
 Type this command:
 
-```
-/agents
-```
+  ```
+  /agents
+  ```
+
 
 You'll see the [Claude Code](https://code.claude.com) agents interface showing:
 - List of existing agents (if any)
@@ -93,91 +94,35 @@ You'll see the [Claude Code](https://code.claude.com) agents interface showing:
 
 ## Step 5: Create the Stock Picker Agent
 
-Ask Claude to create the agent:
+Under the /agents command
+- Select **Create new agent**
+- Select **Project**
+- Select **Generate with Claude (recommended)**
+- Paste the following for instructions: 
+  ```
+  Create a markdown file for a new agent called stock-picker:
+  - It takes two or more stocks 
+  - Uses the generate-stock-report Skill to do research
+  - Score cards are created based on the categeries of data collected
+  - A final recommendation is given. 
+  ```
+- Click **Enter** on **[Continue]** to use **All tools**
+- Select **Sonnet** for model
+- click **Enter** to randomly pick a color. 
 
+
+## Step 6: Review What You Built (Reflection Checkpoint)
+
+Open the .claude/agents/stock-picker.md in a text editor such as VS Code.
+
+Or you can ask Claude to:
 ```
-Create a new agent called stock-picker
+Show me the stock-picker agent file.
 ```
-
-Claude will guide you through the setup. When prompted, provide:
-
-**Agent name:**
-```
-stock-picker
-```
-
-**Description** (when Claude should invoke this agent):
-```
-Compares multiple companies for investment decisions. Use when users want to know which stock is a better investment or need comparative analysis of 2 or more companies.
-```
-
-**Skills to enable:**
-```
-generating-stock-reports
-```
-
-This tells the agent it can use your existing stock report skill.
-
-## Step 6: Write the Agent's System Prompt
-
-The system prompt defines the agent's goal and methodology. When Claude asks for the system prompt, provide:
-
-```
-You are a stock analysis expert who helps investors compare companies and make informed decisions.
-
-## Your Goal
-
-Compare 2 or more companies and recommend which is the better investment based on systematic scoring.
-
-## Process
-
-1. **Gather Data**: Use the generating-stock-reports skill to get comprehensive reports for each company
-2. **Score Each Company**: Evaluate across four categories:
-   - Financial Performance (40%): Revenue growth, profitability, margins
-   - Growth Potential (30%): Product pipeline, market expansion, innovation
-   - Management Quality (20%): Leadership stability, strategic vision, execution
-   - Analyst Sentiment (10%): Ratings, price targets, consensus
-
-3. **Present Comparison**: Create a table showing:
-   - Company name and ticker
-   - Score for each category (0-10 scale)
-   - Weighted total score (out of 10)
-   - Key strengths and concerns
-
-4. **Make Recommendation**: Identify the highest-scoring company and explain why it's the better investment based on the data
-
-## Scoring Guidelines
-
-- Be objective—base scores on concrete evidence from the reports
-- A score of 7-10 is strong, 4-6 is moderate, 0-3 is weak
-- Weight financial performance highest (40%) because fundamentals matter most
-- If companies are very close (within 0.5 points), note it's a toss-up
-
-## Output Format
-
-Present your analysis as:
-1. Brief summary of each company (2-3 sentences)
-2. Comparison table with scores
-3. Recommendation paragraph with rationale
-4. Risk factors to consider
-
-Always ground your recommendation in the data from the skill reports—no speculation.
-```
-
-Grant Claude permission to create the agent file.
-
-## Step 7: Review What You Built (Reflection Checkpoint)
-
-Before testing, let's verify the agent configuration. Type:
-
-```
-Show me the stock-picker agent file
-```
-
 Claude will display the agent file located at `.claude/agents/stock-picker.md`. You'll see:
 
-**YAML frontmatter** at the top:
-```yaml
+There is a **YAML frontmatter** at the top:
+```
 ---
 name: stock-picker
 description: Compares multiple companies for investment decisions...
@@ -185,16 +130,16 @@ skills: generating-stock-reports
 ---
 ```
 
-**System prompt** below the frontmatter with your scoring methodology.
+There is a **System prompt**  with your scoring methodology.
 
 **Confirm these key elements:**
 - Agent has access to the `generating-stock-reports` skill
-- System prompt explains the 40/30/20/10 scoring breakdown
+- System prompt explains the scoring breakdown
 - Agent's goal is clear: compare companies and recommend one
 
-If something looks wrong, you can edit the file directly or ask Claude to update it.
+You can edit the file directly or ask Claude to update it.
 
-## Step 8: Test the Agent
+## Step 7: Test the Agent
 
 Now test your agent with a real comparison. Type:
 
@@ -210,7 +155,7 @@ Which is a better investment: Apple or Microsoft?
 
 The agent will automatically activate based on your description.
 
-## Step 9: Watch the Agent Work
+## Step 8: Watch the Agent Work
 
 As the agent runs, you'll see it:
 1. **Invoke the skill twice** - First for Apple, then for Microsoft
@@ -220,30 +165,20 @@ As the agent runs, you'll see it:
 
 This may take 2-3 minutes since web research is involved.
 
-## Step 10: Review the Output
+## Step 9: Review the Output
 
-The agent returns:
-
-**Company Summaries**: Brief overview of each company's current state
-
-**Comparison Table**:
-| Company | Financial (40%) | Growth (30%) | Management (20%) | Sentiment (10%) | **Total** |
-|---------|----------------|--------------|------------------|-----------------|-----------|
-| Apple | 8.5 | 7.0 | 9.0 | 8.0 | **8.1** |
-| Microsoft | 9.0 | 8.5 | 8.5 | 9.0 | **8.8** |
-
-**Recommendation**: "Microsoft is the stronger investment with a score of 8.8 vs 8.1 for Apple. Key advantages: stronger cloud growth trajectory (Azure), higher analyst confidence, and more diversified revenue streams across enterprise and consumer markets..."
-
-**Risk Factors**: Considerations for both companies
+The agent returns lots of information. Sometimes it generates a report in markdown file.
 
 Check that scores match evidence from the reports and the recommendation is well-reasoned.
+
+You can go back and revise some of the instructions if you want to customize the report.
+
 
 ## Next Steps
 
 Now that you have a working stock-picker agent, try these extensions:
 
 - **Compare 3+ stocks**: "Compare AAPL, MSFT, and GOOGL" to see how the agent handles more options
-- **Sector analysis**: "Compare AMD vs NVDA in the chip industry" for domain-specific comparisons
 - **Adjust scoring weights**: Edit the agent file to change the 40/30/20/10 breakdown (e.g., make growth 40% if you prefer growth stocks)
 - **Create other agents**: Build a "code-reviewer" agent, "bug-hunter" agent, or "document-writer" agent for different tasks
 
