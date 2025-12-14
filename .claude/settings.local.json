@@ -38,7 +38,8 @@
       "Bash(fi)",
       "Bash(done)",
       "Bash(head:*)",
-      "Bash(claude doctor)"
+      "Bash(claude doctor)",
+      "SlashCommand(/review-translation:*)"
     ],
     "deny": [],
     "ask": []
