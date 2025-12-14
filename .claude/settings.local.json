@@ -25,7 +25,7 @@
       "WebFetch(domain:www.producttalk.org)",
       "Bash(ls:*)",
       "SlashCommand(/tutorial:*)",
-      "Skill(generating-stock-reports)",
+      "Skill(generate-stock-reports)",
       "Skill(medical-research)",
       "WebFetch(domain:pmc.ncbi.nlm.nih.gov)",
       "WebFetch(domain:pubmed.ncbi.nlm.nih.gov)",

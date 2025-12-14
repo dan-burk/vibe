@@ -1,6 +1,6 @@
 [Home](./)
 
-# Creating an Agent in Claude Code
+# Create an Agent in Claude Code
 
 You want to compare investment opportunities, but researching multiple companies and scoring them takes hours. Think of an agent like hiring a financial analyst who knows exactly how to use your research tools—you give them company names, and they gather reports, score each company across key metrics, and recommend the best investment. Once you learn to build agents, you can automate any repetitive multi-step workflow in your work. This tutorial shows you how to build that analyst.
 
@@ -14,7 +14,7 @@ You want to compare investment opportunities, but researching multiple companies
 ## What You'll Need
 
 - Completed [Claude Code in VS Code on Windows](./Claude_Code_in_VS_Code_Win.md) or [Claude Code in VS Code on Mac](./Claude_Code_in_VS_Code_Mac.md)
-- The stock report skill already installed (in `.claude/skills/generating-stock-reports/`)
+- The stock report skill already installed (in `.claude/skills/generate-stock-report/`)
 - VS Code or another text editor
 - 20-25 minutes
 
@@ -59,8 +59,7 @@ List all available skills
 
 You should see `generate-stock-report` in the output. This skill researches companies and generates reports covering product news, management updates, financial performance, and analyst insights.
 
-If you don't see it, the skill files should be in `.claude/skills/generate-stock-report/` (project level) or `~/.claude/skills/generating-stock-report/` (global level).
-
+If you don't see it, the skill files should be in `.claude/skills/generate-stock-report/` (project level).
 ## Step 3: Understand Agent vs Skill Architecture
 
 Here's how agents and skills work together:
@@ -97,7 +96,7 @@ Now create your agent:
   ```
   Create a markdown file for a new agent called stock-picker:
   - It takes two or more stocks
-  - Uses the generating-stock-reports Skill to do research
+  - Uses the generate-stock-report Skill to do research
   - Score cards are created based on the categories of data collected
   - A final recommendation is given.
   ```
@@ -120,7 +119,7 @@ There is a **YAML frontmatter** at the top:
 ---
 name: stock-picker
 description: Compares multiple companies for investment decisions...
-skills: generating-stock-reports
+skills: generate-stock-report
 ---
 ```
 
@@ -129,7 +128,7 @@ This frontmatter (the section between `---` markers) tells Claude Code when to a
 There is a **System prompt** below the frontmatter with your scoring methodology.
 
 **Confirm these key elements:**
-- Agent has access to the `generating-stock-reports` skill
+- Agent has access to the `generate-stock-report` skill
 - System prompt explains the scoring breakdown
 - Agent's goal is clear: compare companies and recommend one
 
@@ -154,7 +153,7 @@ The agent will automatically activate based on your description.
 ## Step 7: Watch the Agent Work
 
 As the agent runs, you'll see it:
-1. **Invoke the skill twice** - Call the generating-stock-reports skill once for Apple, then for Microsoft
+1. **Invoke the skill twice** - Call the generate-stock-report skill once for Apple, then for Microsoft
 2. **Gather data** - Each skill call searches the web and generates a company report
 3. **Score companies** - Applies the 40/30/20/10 weighting across categories
 4. **Generate output** - Creates comparison table and recommendation
@@ -183,7 +182,7 @@ Now that you have a working stock-picker agent, try these extensions:
 ## Troubleshooting
 
 - **Agent not activating**: Make sure your request mentions comparing companies or investment decisions. Try: "Use the stock-picker agent to compare..."
-- **Skill not found**: Verify `.claude/skills/generating-stock-reports/SKILL.md` exists. Restart Claude Code if you just added it.
+- **Skill not found**: Verify `.claude/skills/generate-stock-report/SKILL.md` exists. Restart Claude Code if you just added it.
 - **Incomplete scores**: Ask the agent to "continue" or "explain the scores for each category in more detail"
 - **Error creating agent**: Check that the `.claude/agents/` folder exists. Claude Code should create it automatically.
 

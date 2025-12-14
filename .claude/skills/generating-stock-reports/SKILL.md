@@ -1,5 +1,5 @@
 ---
-name: generating-stock-reports
+name: generate-stock-reports
 description: Generates comprehensive reports on recent company developments using web search. Use when analyzing stocks, researching companies, evaluating investments, or when users mention company names, stock tickers, market analysis, or financial research.
 ---
 
