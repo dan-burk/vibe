@@ -17,14 +17,14 @@ This Skill converts the `/stock-report` slash command into an autonomous capabil
 
 ## Installation
 
-This is a **project skill** located in `.claude/skills/generating-stock-reports/`. It's automatically available to all team members who clone this repository.
+This is a **project skill** located in `.claude/skills/generat-stock-reports/`. It's automatically available to all team members who clone this repository.
 
 ### For Personal Use
 
 To make this Skill available across all your projects:
 
 ```bash
-cp -r .claude/skills/generating-stock-reports ~/.claude/skills/
+cp -r .claude/skills/generate-stock-reports ~/.claude/skills/
 ```
 
 ## Usage Examples
@@ -33,7 +33,7 @@ The Skill activates automatically when you mention companies or stocks:
 
 ```
 User: What's happening with Apple lately?
-Claude: [Activates generating-stock-reports Skill]
+Claude: [Activates generate-stock-reports Skill]
         [Researches Apple Inc.]
         [Generates comprehensive report]
         [Saves as Apple_2025-12-13.md]
@@ -149,7 +149,7 @@ To test if the Skill is working:
 
 **Solutions**:
 - Make sure you're asking about specific companies (not general market questions)
-- Check that SKILL.md exists in `.claude/skills/generating-stock-reports/`
+- Check that SKILL.md exists in `.claude/skills/generate-stock-reports/`
 - Verify YAML frontmatter has proper syntax
 - Try more explicit phrasing: "Generate a report on Apple"
 

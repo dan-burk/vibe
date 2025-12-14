@@ -2,7 +2,7 @@
 
 # Creating an Agent in Claude Code
 
-You want to compare investment opportunities, but researching multiple companies and scoring them takes hours. Think of an agent like hiring a financial analyst who knows exactly how to use your research tools—you give them company names, and they gather reports, score each company across key metrics, and recommend the best investment. This tutorial shows you how to build that analyst.
+You want to compare investment opportunities, but researching multiple companies and scoring them takes hours. Think of an agent like hiring a financial analyst who knows exactly how to use your research tools—you give them company names, and they gather reports, score each company across key metrics, and recommend the best investment. Once you learn to build agents, you can automate any repetitive multi-step workflow in your work. This tutorial shows you how to build that analyst.
 
 ## Key Concepts
 
@@ -57,9 +57,9 @@ Before building your agent, confirm the skill is available. Type:
 List all available skills
 ```
 
-You should see `generating-stock-reports` in the output. This skill researches companies and generates reports covering product news, management updates, financial performance, and analyst insights.
+You should see `generate-stock-report` in the output. This skill researches companies and generates reports covering product news, management updates, financial performance, and analyst insights.
 
-If you don't see it, the skill files should be in `.claude/skills/generating-stock-reports/` (project level) or `~/.claude/skills/generating-stock-reports/` (global level).
+If you don't see it, the skill files should be in `.claude/skills/generate-stock-report/` (project level) or `~/.claude/skills/generating-stock-report/` (global level).
 
 ## Step 3: Understand Agent vs Skill Architecture
 
@@ -79,39 +79,33 @@ Your stock-picker agent will:
 2. Score companies across categories (financials, growth, management, sentiment)
 3. Compare scores and recommend the best investment
 
-## Step 4: Create the agent
-First start the /agents command
+## Step 4: Create the Stock Picker Agent
+
 Type this command:
 
-  ```
-  /agents
-  ```
+```
+/agents
+```
 
+You'll see the Claude Code agents interface showing existing agents (if any) and options to **Create**, **Edit**, or **Delete** agents.
 
-You'll see the [Claude Code](https://code.claude.com) agents interface showing:
-- List of existing agents (if any)
-- Options to **Create**, **Edit**, or **Delete** agents
-
-## Step 5: Create the Stock Picker Agent
-
-Under the /agents command
+Now create your agent:
 - Select **Create new agent**
 - Select **Project**
 - Select **Generate with Claude (recommended)**
-- Paste the following for instructions: 
+- Paste the following for instructions:
   ```
   Create a markdown file for a new agent called stock-picker:
-  - It takes two or more stocks 
-  - Uses the generate-stock-report Skill to do research
-  - Score cards are created based on the categeries of data collected
-  - A final recommendation is given. 
+  - It takes two or more stocks
+  - Uses the generating-stock-reports Skill to do research
+  - Score cards are created based on the categories of data collected
+  - A final recommendation is given.
   ```
-- Click **Enter** on **[Continue]** to use **All tools**
+- Press **Enter** on **[Continue]** to use **All tools**
 - Select **Sonnet** for model
-- click **Enter** to randomly pick a color. 
+- Press **Enter** to randomly pick a color
 
-
-## Step 6: Review What You Built (Reflection Checkpoint)
+## Step 5: Review What You Built (Reflection Checkpoint)
 
 Open the .claude/agents/stock-picker.md in a text editor such as VS Code.
 
@@ -130,7 +124,9 @@ skills: generating-stock-reports
 ---
 ```
 
-There is a **System prompt**  with your scoring methodology.
+This frontmatter (the section between `---` markers) tells Claude Code when to activate this agent and which skills it can use.
+
+There is a **System prompt** below the frontmatter with your scoring methodology.
 
 **Confirm these key elements:**
 - Agent has access to the `generating-stock-reports` skill
@@ -139,7 +135,7 @@ There is a **System prompt**  with your scoring methodology.
 
 You can edit the file directly or ask Claude to update it.
 
-## Step 7: Test the Agent
+## Step 6: Test the Agent
 
 Now test your agent with a real comparison. Type:
 
@@ -155,24 +151,26 @@ Which is a better investment: Apple or Microsoft?
 
 The agent will automatically activate based on your description.
 
-## Step 8: Watch the Agent Work
+## Step 7: Watch the Agent Work
 
 As the agent runs, you'll see it:
-1. **Invoke the skill twice** - First for Apple, then for Microsoft
-2. **Gather data** - Each skill invocation searches the web and generates a company report
+1. **Invoke the skill twice** - Call the generating-stock-reports skill once for Apple, then for Microsoft
+2. **Gather data** - Each skill call searches the web and generates a company report
 3. **Score companies** - Applies the 40/30/20/10 weighting across categories
 4. **Generate output** - Creates comparison table and recommendation
 
 This may take 2-3 minutes since web research is involved.
 
-## Step 9: Review the Output
+## Step 8: Review the Output
 
-The agent returns lots of information. Sometimes it generates a report in markdown file.
+The agent returns a detailed analysis including:
+- **Individual company reports** - Product updates, financial metrics, management changes, analyst sentiment for each stock
+- **Comparison scorecard** - Numerical scores across categories (Financial Health, Growth Potential, Management Quality, Market Sentiment)
+- **Final recommendation** - Which stock to invest in and why
 
-Check that scores match evidence from the reports and the recommendation is well-reasoned.
+The agent may display this in the terminal or generate a markdown file with the full report.
 
-You can go back and revise some of the instructions if you want to customize the report.
-
+Check that scores match evidence from the reports and the recommendation is well-reasoned. You can edit the agent file to customize scoring weights or output format.
 
 ## Next Steps
 
