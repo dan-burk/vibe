@@ -64,7 +64,7 @@ Claude: [Activates Skill for both companies]
 ## Files in This Skill
 
 ```
-generating-stock-reports/
+generate-stock-reports/
 ├── SKILL.md          # Main skill instructions (what Claude reads)
 ├── EXAMPLES.md       # Sample reports showing expected output
 └── README.md         # This file (documentation for humans)
