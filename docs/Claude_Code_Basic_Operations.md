@@ -33,19 +33,19 @@ We'll use a real data science project to explore Claude Code's features. You can
 **Option A: Clone with Git (if you have Git installed):**
 
 ```
-git clone https://github.com/gexijin/data-projects
+git clone https://github.com/gexijin/data_projects
 cd data-projects
 ```
 
 **Option B: Download without Git:**
 
-- Visit [https://github.com/gexijin/data-projects](https://github.com/gexijin/data-projects) in your web browser
+- Visit [https://github.com/gexijin/data_projects](https://github.com/gexijin/data_projects) in your web browser
 - Click the green **Code** button near the top right
 - Click **Download ZIP**
 - Extract the ZIP file to a location you'll remember (like your Desktop or Documents folder)
 - In your terminal, navigate to the extracted folder:
-  - **Windows**: `cd C:\Users\YourName\Downloads\data-projects-main`
-  - **Mac/Linux**: `cd ~/Downloads/data-projects-main`
+  - **Windows**: `cd C:\Users\YourName\Downloads\data_projects-main`
+  - **Mac/Linux**: `cd ~/Downloads/data_projects-main`
 
 Replace `YourName` with your actual username and adjust the path if you extracted it elsewhere.
 
@@ -57,13 +57,7 @@ In your terminal (make sure you're inside the data-projects folder), type:
 claude
 ```
 
-You'll see a welcome message and the Claude Code prompt. The prompt looks like this:
-
-```
-You:
-```
-
-This means Claude is ready and listening.
+You'll see a welcome message and the Claude Code prompt.
 
 ## Step 4: Ask Questions About Your Project
 
@@ -109,25 +103,24 @@ This displays a menu of all slash commands. Use arrow keys to browse, press Ente
 /help
 ```
 Shows documentation about using Claude Code.
-```
-?
-```
 
-**Clear conversation history:**
 
-```
-/clear
-```
-
-Wipes the current conversation and starts fresh. Use this when you want to change topics or when your conversation gets too long.
 
 **Check context usage:**
+It is important to manage the context, Claude's "working memory". 
 
 ```
 /context
 ```
 
-Shows how much of Claude's "working memory" you've used. When context fills up, start a new conversation with `/clear`.
+**Clear conversation history:**
+
+When context fills up, start a new conversation with `/clear`.
+```
+/clear
+```
+Wipes the current conversation and starts fresh. Use this when you want to change topics or when your conversation gets too long. It is essential to manage context.
+
 
 **Exit Claude Code:**
 
@@ -135,13 +128,13 @@ Shows how much of Claude's "working memory" you've used. When context fills up, 
 /exit
 ```
 
-Ends your session and returns to your normal terminal prompt.
+Ends your session and returns to your normal terminal prompt. You can also hit **Ctrl + C** twice.
 
 ## Step 6: Keyboard Shortcuts
 
 These shortcuts make working with Claude Code faster:
 
-- **Shift+Tab** - Switch between, plan, edit, or normal mode
+- **Shift+Tab** - Switch between, plan, edit, or normal mode - Plan first for complex tasks
 - **Alt+Enter** (Windows/Linux) or **Option+Return** (Mac) - Add a new line in your message without sending it
 - **Ctrl+C** - Cancel the current operation or Claude's response
 - **Ctrl+D** - Approve file changes when Claude asks for permission
@@ -159,8 +152,6 @@ The CLAUDE.md file is your project's instruction manual for Claude. It persists 
 
 Claude will create the file with a summary of your project. This file stays in your project root and Claude reads it automatically every time you start a new session.
 
-**View what Claude created:**
-
 You can edit CLAUDE.md in the project folder anytime to add project-specific instructions, coding conventions, or important context such as purpose of files, etc.
 
 ## Step 8: Referring to files or lines of code
@@ -168,7 +159,7 @@ You can edit CLAUDE.md in the project folder anytime to add project-specific ins
 You can use `@` to refer to a specific file:
 
 ```
-Explain the code in @2. Visualization/1. Matplotlib_Graphs/Nested_Pie_Chart.ipynb
+Explain the code in @Visualization/Matplotlib/Nested_Pie_Chart.ipynb
 ```
 
 Claude will read the notebook and explain what it does, how it works, and what the code accomplishes. This effectively brings the file to the context. 
@@ -178,13 +169,9 @@ If you working with Claude Code from VS Code and has the Claude Code extension i
 Furthermore, you can select a few lines of code and Claude will show **3 lines selected**. You can ask Claude to make quick changes to these lines or ask questions. Therefore, I highly recommend using Claude Code from VS Code. 
 
 
-## Step 9: Claude help run Linux Commands
+## Step 9: Claude takes actions by runing Linux commands
 By running commands, Claude can take 'actions' in many forms. 
 
-- Execute code
-  ```
-  Execute the nested pie chart code. Render the notebook in the same folder.
-  ```  
 - Install software
   ```
   Install the pandas library
@@ -201,8 +188,15 @@ By running commands, Claude can take 'actions' in many forms.
   ```
   Find and download the Social Security baby names dataset. Put it in a new folder called "baby_names".
   ```
+  - Execute code
+  ```
+  Execute the nested pie chart code. Render the notebook in the same folder.
+  ```  
+  We can ask this vage question because we just asked it to explain the code. Lot's of things happens after this. Claudes installs software, trouble shoots errors, solves environments - all on its own.
 
-And much more. You essentially has an expert Linux bash commands in your disposal. As long as you manage permissions and communications, you can be very productive. 
+
+
+You essentially has an expert Linux bash commands in your disposal. As long as you manage permissions and communications, you can be very productive. 
 
 ## Next Steps
 
