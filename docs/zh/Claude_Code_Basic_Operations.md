@@ -13,16 +13,15 @@
 
 ## 你需要准备什么
 
-- [已安装Claude Code](https://code.claude.com/docs/en/quickstart)，并拥有有效的Claude Pro/Max订阅或API密钥
+- 已从[Windows](Install_CLAUDE_Code_Win.md)或[Mac](Install_Claude_Code_MacOS.md)教程安装Claude Code
 - 基本熟悉使用Terminal或命令提示符
 - 互联网连接
 - 15-20分钟
 
 ## 步骤1：打开你的Terminal
 
-- **Windows**：按Windows键，输入`Terminal`或`PowerShell`，然后按Enter
+- **Windows**：按Windows键，输入`Ubuntu`，然后按Enter打开WSL终端
 - **Mac**：按`Cmd+Space`，输入`Terminal`，然后按Enter
-- **Linux**：按`Ctrl+Alt+T`或在应用程序菜单中找到Terminal
 
 将打开一个文本窗口，你可以在其中输入命令。
 
