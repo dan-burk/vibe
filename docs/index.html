@@ -428,34 +428,43 @@
             including Git for version control, Visual Studio Code for coding and editing, WSL 
             (Windows Subsystem for Linux) for running on Windows, and Docker for isolated 
             development environments. </p>
-        <p> &nbsp;&nbsp;&nbsp; Follow the learning path or pick tutorials that interest you!</p>  
+        <p> &nbsp;&nbsp;&nbsp; Follow the learning path or pick tutorials that interest you!</p>
         <br>
+            <h2>Getting Started</h2>
             <ol class="tutorial-list">
                 <li><a href="Install_CLAUDE_Code_Win">Install Claude Code on Windows</a></li>
-                <li><a href="Claude_Code_in_VS_Code_Win">Set Up VS Code for Claude Code on Windows</a></li>
-                <li><a href="Claude_Code_Git_Windows">Claude Code with local version control for Windows</a></li>
-                <li><a href="Claude_Code_Basic_Operations">Claude Code: Basic Operations</a></li>
                 <li><a href="Install_Claude_Code_MacOS">Install Claude Code on Mac</a></li>
-                <li><a href="Claude_Code_in_VS_Code_Mac">Use Claude Code from VS Code on Mac</a></li>
-                <li><a href="Claude_Code_Git_Mac">Claude Code with local version control for Mac</a></li>
                 <li><a href="VS_Code_Getting_Started">Get Started with VS Code</a></li>
+                <li><a href="Claude_Code_Basic_Operations">Claude Code: Basic Operations</a></li>
+                <li><a href="Claude_Code_in_VS_Code_Win">Set Up VS Code for Claude Code on Windows</a></li>
+                <li><a href="Claude_Code_in_VS_Code_Mac">Use Claude Code from VS Code on Mac</a></li>
+                <li><a href="Claude_Code_Git_Windows">Claude Code with local version control for Windows</a></li>
+                <li><a href="Claude_Code_Git_Mac">Claude Code with local version control for Mac</a></li>
+                <li><a href="Claude_Code_RStudio_Mac">Using Claude Code with RStudio on Mac</a></li>
+                <li><a href="Claude_Code_WSL_RStudio_Windows">Using Claude Code from WSL with RStudio on Windows</a></li>
+            </ol>
+
+            <h2>Building Skills</h2>
+            <ol class="tutorial-list" start="11">
                 <li><a href="Github_desktop">Get Started with Version Control</a></li>
                 <li><a href="R_Coding_VS_Code_Guide">Run R in VS Code</a></li>
                 <li><a href="Python_Coding_VS_Code_Guide">Run Python in VS Code</a></li>
+                <li><a href="Claude_Code_R_VS_Code_Mac">Use Claude Code for R in VS Code on Mac</a></li>
+                <li><a href="Claude_Code_Python_VS_Code_Mac">Use Claude Code for Python in VS Code on Mac</a></li>
+                <li><a href="GitHub_Desktop_Claude_Code_Workflow">Use GitHub Desktop with Claude Code</a></li>
+                <li><a href="Writing_Research_Paper_Claude_Code">Write a Research Paper with Claude Code</a></li>
+            </ol>
+
+            <h2>Expert Topics</h2>
+            <ol class="tutorial-list" start="18">
                 <li><a href="R_Coding_Docker_Guide">R Coding in VS Code via Docker</a></li>
                 <li><a href="Python_Coding_Docker_Guide">Python Coding in VS Code via Docker</a></li>
-                <li><a href="GitHub_Desktop_Claude_Code_Workflow">Use GitHub Desktop with Claude Code</a></li>
                 <li><a href="Vibe_Coding_R_Docker_Guide">Vibe Coding in R with Claude Code</a></li>
                 <li><a href="Vibe_Coding_Python_Docker_Guide">Vibe Coding in Python with Claude Code</a></li>
-                <li><a href="Writing_Research_Paper_Claude_Code">Write a Research Paper with Claude Code</a></li>
                 <li><a href="Reuse_Prompts_via_Slash_Commands">Create Custom Slash Commands</a></li>
                 <li><a href="Create_Your_First_Claude_Skill">Create Your First Claude Skill</a></li>
                 <li><a href="Medical_Research_Skill">Create a Claude Skill for Medical Research</a></li>
                 <li><a href="Creating_Stock_Picker_Agent">Creating an Agent in Claude Code</a></li>
-                <li><a href="Claude_Code_RStudio_Mac">Using Claude Code with RStudio on Mac</a></li>
-                <li><a href="Claude_Code_WSL_RStudio_Windows">Using Claude Code from WSL with RStudio on Windows</a></li>
-                <li><a href="Claude_Code_R_VS_Code_Mac">Use Claude Code for R in VS Code on Mac</a></li>
-                <li><a href="Claude_Code_Python_VS_Code_Mac">Use Claude Code for Python in VS Code on Mac</a></li>
             </ol>
         </section>
 
@@ -829,16 +838,14 @@
         function createSkillLevelBars() {
             const graphContainer = document.getElementById('network-graph');
 
-            // Define bars: [x-start, x-end, color, label]
+            // Define bars with same color, increasing brightness
             const bars = [
-                { xStart: -50, xEnd: 170, color: '#58a6ff', label: 'Beginner' },
-                { xStart: 180, xEnd: 420, color: '#a371f7', label: 'Intermediate' },
-                { xStart: 430, xEnd: 580, color: '#f78166', label: 'Advanced' }
+                { xStart: -50, xEnd: 170, color: '#3a5f8f' },
+                { xStart: 180, xEnd: 420, color: '#4a7faf' },
+                { xStart: 430, xEnd: 580, color: '#58a6ff' }
             ];
 
             const yPosition = 180;
-
-            console.log('Creating skill level bars...');
 
             bars.forEach(bar => {
                 // Convert network coordinates to DOM positions
@@ -846,9 +853,6 @@
                 const endPos = network.canvasToDOM({ x: bar.xEnd, y: yPosition });
 
                 const width = endPos.x - startPos.x;
-                const centerX = (startPos.x + endPos.x) / 2;
-
-                console.log(`Bar ${bar.label}: left=${startPos.x}, top=${startPos.y}, width=${width}`);
 
                 // Create bar element
                 const barDiv = document.createElement('div');
@@ -858,18 +862,7 @@
                 barDiv.style.width = width + 'px';
                 barDiv.style.backgroundColor = bar.color;
                 graphContainer.appendChild(barDiv);
-
-                // Create label element (positioned above bar)
-                const labelDiv = document.createElement('div');
-                labelDiv.className = 'skill-label';
-                labelDiv.textContent = bar.label;
-                labelDiv.style.left = (centerX - 35) + 'px'; // Center label (approximate width)
-                labelDiv.style.top = (startPos.y - 18) + 'px'; // 18px above bar
-                labelDiv.style.width = '70px';
-                graphContainer.appendChild(labelDiv);
             });
-
-            console.log('Skill level bars created');
         }
 
         // Create bars after a short delay to ensure network is fully rendered
