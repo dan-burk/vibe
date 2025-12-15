@@ -13,16 +13,15 @@ AIアシスタントを使ったコーディングは、最初は圧倒される
 
 ## 必要なもの
 
-- [Claude Codeがインストール済み](https://code.claude.com/docs/en/quickstart)で、Claude Pro/MaxサブスクリプションまたはAPIキーが有効
+- [Windows](Install_CLAUDE_Code_Win.md)または[Mac](Install_Claude_Code_MacOS.md)のチュートリアルからClaude Codeをインストール済み
 - ターミナルまたはコマンドプロンプトの基本的な使い方の知識
 - インターネット接続
 - 15〜20分
 
 ## ステップ1: ターミナルを開く
 
-- **Windows**: Windowsキーを押し、`Terminal`または`PowerShell`と入力してEnterを押します
+- **Windows**: Windowsキーを押し、`Ubuntu`と入力してEnterを押し、WSLターミナルを開きます
 - **Mac**: `Cmd+Space`を押し、`Terminal`と入力してEnterを押します
-- **Linux**: `Ctrl+Alt+T`を押すか、アプリケーションメニューからTerminalを見つけます
 
 コマンドを入力できるテキストウィンドウが開きます。
 

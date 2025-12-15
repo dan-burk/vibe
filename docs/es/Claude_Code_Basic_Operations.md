@@ -13,16 +13,15 @@ Aprender a programar con asistencia de IA puede resultar abrumador al principio.
 
 ## Lo Que Necesitará
 
-- [Claude Code instalado](https://code.claude.com/docs/en/quickstart) con una suscripción activa a Claude Pro/Max o clave API
+- Claude Code instalado desde el tutorial de [Windows](Install_CLAUDE_Code_Win.md) o [Mac](Install_Claude_Code_MacOS.md)
 - Familiaridad básica con el uso de una terminal o símbolo del sistema
 - Conexión a Internet
 - 15-20 minutos
 
 ## Paso 1: Abra Su Terminal
 
-- **Windows**: Presione la tecla Windows, escriba `Terminal` o `PowerShell`, y presione Enter
+- **Windows**: Presione la tecla Windows, escriba `Ubuntu`, y presione Enter para abrir la terminal WSL
 - **Mac**: Presione `Cmd+Space`, escriba `Terminal`, y presione Enter
-- **Linux**: Presione `Ctrl+Alt+T` o encuentre Terminal en su menú de aplicaciones
 
 Se abrirá una ventana de texto donde puede escribir comandos.
 
