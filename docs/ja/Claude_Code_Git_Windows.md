@@ -115,7 +115,7 @@ Claudeが `timer.html` を作成します（10〜30秒かかります）。CSS�
 ## ステップ9：タイマーをテスト
 
 - Windowsのファイルエクスプローラーを開く
-- `Documents\timer` に移動
+- `Documents\test_claude` に移動
 - `timer.html` をダブルクリックしてブラウザで開く
 - タイマーを試します：
   - 入力フィールドに `1` と入力

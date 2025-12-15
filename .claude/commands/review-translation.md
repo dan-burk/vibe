@@ -43,6 +43,7 @@ Review the Japanese translation for quality, regardless of whether updates were 
 - [ ] UI element names match actual Japanese UI (if localized) or kept in English
 - [ ] URLs and links are correct
 
+
 ### Language Quality
 - [ ] Natural, fluent Japanese (not word-for-word translation)
 - [ ] Consistent terminology throughout
@@ -62,6 +63,7 @@ Review the Japanese translation for quality, regardless of whether updates were 
 - [ ] No mixed formal/informal language
 - [ ] Numbers and measurements in appropriate format
 - [ ] Dates in Japanese format if applicable
+- [ ] Prompts are in Japanese
 
 ## Phase 4: Report and Fix
 

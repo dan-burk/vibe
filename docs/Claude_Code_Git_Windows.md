@@ -115,7 +115,7 @@ Claude creates `timer.html` (takes 10-30 seconds) with the CSS and JavaScript co
 ## Step 9: Test the Timer
 
 - Open Windows File Explorer
-- Navigate to `Documents\timer`
+- Navigate to `Documents\test_claude`
 - Double-click `timer.html` to open it in your browser
 - Try the timer:
   - Type `1` in the input field
@@ -202,6 +202,7 @@ Claude throws away the new changes we don't like. The timer works again with jus
   ```
   Save these changes.
   ```
+
 ## Step 16: View Your Commit History
 
 - In Claude Code, type:
