@@ -41,7 +41,8 @@
       "Bash(claude doctor)",
       "SlashCommand(/review-translation:*)",
       "WebFetch(domain:github.com)",
-      "SlashCommand(/review-tutorial docs/Claude_Code_Basic_Operations.md)"
+      "SlashCommand(/review-tutorial docs/Claude_Code_Basic_Operations.md)",
+      "Bash(xargs:*)"
     ],
     "deny": [],
     "ask": []
