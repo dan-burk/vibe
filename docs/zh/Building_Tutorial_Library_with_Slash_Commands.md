@@ -51,7 +51,7 @@
 
 ### [`/translate-chinese`](../assets/commands/translate-chinese.md) & [`/translate-spanish`](../assets/commands/translate-spanish.md) - 本地化引擎
 
-有趣的是，日语翻译最先完成——且未使用斜杠命令。我让Claude Code将所有教程翻译成日语，Claude自动启动8个并行子代理同时处理。效果很好，这促使我将流程正式化为中文和西班牙语的斜杠命令。
+日语翻译最先完成——且未使用斜杠命令。我让Claude Code将所有教程翻译成日语，Claude自动启动8个并行子代理同时处理。效果很好，这促使我将流程正式化为中文和西班牙语的斜杠命令。
 
 同样，我只让Claude"创建一个翻译教程到中文的斜杠命令"——没给具体指南。Claude生成了六阶段流程：
 
