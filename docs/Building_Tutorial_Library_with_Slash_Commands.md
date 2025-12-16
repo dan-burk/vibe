@@ -22,7 +22,9 @@ The result was five specialized slash commands that handled the entire tutorial 
 
 Born from creating several tutorials interactively, this command captures the proven workflow. It follows a rigorous three-phase approach.
 
-First, Claude searches the web for current information before writing anything—no more outdated version numbers or deprecated installation methods. Then, before writing a single word, Claude presents a plan: what it learned from research, recommended approach for beginners, and outline of major steps. Only after I approve does Claude write the tutorial following strict formatting rules: home link at top, engaging hook, key concepts, step-by-step instructions with action verbs, troubleshooting section, and creation date.
+First, Claude searches the web for current information before writing anything—no more outdated version numbers or deprecated installation methods. Then, before writing a single word, Claude presents a plan: what it learned from research, recommended approach for beginners, and outline of major steps. 
+I then considered the plan carefully. Prompted Claude to revise it many times. 
+Only after I approve the plan does Claude write the tutorial following strict formatting rules: home link at top, engaging hook, key concepts, step-by-step instructions with action verbs, troubleshooting section, and creation date. I then test the steps myself in a separate terminal. Revise if I found issues. Sometimes I mannualy edit the tutorials. Sometimes I ask Claude to do it. 
 
 The command enforces consistent structure across all tutorials. Every tutorial feels like it came from the same author—because they followed the same systematic process. I generated 20+ tutorials covering topics from basic Git operations to advanced Docker workflows, all with consistent quality and structure.
 
