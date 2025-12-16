@@ -111,14 +111,14 @@ That's the power of systematic automation.
 ---
 
 **P.S.** This blog post was itself drafted by Claude Code through iterative prompting:
-1. "Review my commit history and write a blog post about how I created these tutorials, emphsizing my use of slash commands to automate."
+1. "Review my commit history and write a blog post about how I created these tutorials, emphasizing my use of slash commands to automate."
 2. "Reflect that the /tutorial command evolved from manual interactive prompting first."
 3. "Emphasize my tutorial style: hands-on, focused, step-by-step."
 4. "Add that Japanese translations came first without slash commands, and Claude used 8 subagents in parallel."
-5. "Add that Claude wrote the translation slash commands without specific guidelines, and 25 tutorials were translated in 15 minutes using subagents."
+5. "Add that Claude wrote the translation slash commands without specific guidelines, and the use of subagents."
 6. "Link to the saved commands in docs/assets/commands."
 7. "Rewrite with fewer bullet points."
 8. "Actually read the slash commands and add details."
-9. "Summarize our interaction at every turn. Add a P.S. about how this blog was generated."
+9. "Summarize our interaction. Add a P.S. about how this blog was generated."
 
 Created by [Steven Ge](https://www.linkedin.com/in/steven-ge-ab016947/) on December 15, 2025.
