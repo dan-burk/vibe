@@ -1,8 +1,8 @@
 [Home](./)
 
-# Claude Code with local version control for Windows
+# Claude Code with version control for Windows
 
-You're coding with AI assistance. It makes changes to your files. Sometimes the changes work perfectly. Sometimes they don't. **Version control is like an undo button for your entire project.** Every time you save a snapshot (called a "commit"), you create a restore point you can always go back to. Best of all, you can do this entirely on your computer and Claude Code does it for you.
+You're working with AI assistance. It makes changes to your files. Sometimes the changes are brilliant. Sometimes they aren't. **Version control is like an undo button for your entire project.** Every time you save a snapshot (called a "commit"), you create a restore point you can always go back to. Best of all, you can do this entirely on your computer and Claude Code does it for you.
 
 ## Key Concepts
 
@@ -13,9 +13,8 @@ You're coding with AI assistance. It makes changes to your files. Sometimes the 
 
 ## What You'll Need
 
-- Windows 10 or 11 with WSL installed ([installation guide](https://learn.microsoft.com/en-us/windows/wsl/install))
-- Ubuntu running in WSL
-- Claude Code installed ([installation guide](https://code.claude.com/docs/en/installation))
+- Finished [Installing Claude Code on Windows](./Install_CLAUDE_Code_Win)
+- WSL and Ubuntu installed
 - 20 minutes
 
 ## Step 1: Open Ubuntu Terminal
@@ -71,13 +70,13 @@ You should see `/mnt/c/Users/YOUR_USERNAME/Documents`.
 
 ## Step 5: Create Project Folder
 
-- Create a folder called `timer`:
+- Create a folder called `test_claude`:
   ```
-  mkdir timer
+  mkdir test_claude
   ```
 - Navigate into it:
   ```
-  cd timer
+  cd test_claude
   ```
 
 This is where your project will live.
@@ -116,7 +115,7 @@ Claude creates `timer.html` (takes 10-30 seconds) with the CSS and JavaScript co
 ## Step 9: Test the Timer
 
 - Open Windows File Explorer
-- Navigate to `Documents\timer`
+- Navigate to `Documents\test_claude`
 - Double-click `timer.html` to open it in your browser
 - Try the timer:
   - Type `1` in the input field
@@ -145,7 +144,7 @@ You've created your first save point! You can always return to this working vers
   ```
   Add two buttons on the top. If I click on them it automatically starts 1- and 5-minute timers.
   ```
-- Refresh your browser tab (or press `F5`)
+- Refresh your browser tab
 - Test: Click the **5 min** button
 - If it works, commit the changes:
   ```
@@ -161,7 +160,7 @@ We created a 2nd save point. This version has the two buttons working.
   ```
   Add a 15-minute button.
   ```
-- Refresh your browser tab (press `F5`)
+- Refresh your browser tab
 - Test: Click the **15 min** button
 
 **For this tutorial:** Pretend the 15-minute button doesn't work correctly. Don't commit yet—we'll practice discarding bad changes.
@@ -203,6 +202,7 @@ Claude throws away the new changes we don't like. The timer works again with jus
   ```
   Save these changes.
   ```
+
 ## Step 16: View Your Commit History
 
 - In Claude Code, type:
@@ -251,10 +251,10 @@ Remember: Test after each feature, commit after each success, discard failures.
 
 ## Troubleshooting
 
-- **"not a git repository" error:** Make sure you're in the timer folder (`cd /mnt/c/Users/YOUR_USERNAME/Documents/timer`)
-- **Can't find timer.html in Windows:** The file is at `C:\Users\YOUR_USERNAME\Documents\timer\timer.html`
+- **"not a git repository" error:** Make sure you're in the test_claude folder (`cd /mnt/c/Users/YOUR_USERNAME/Documents/test_claude`)
+- **Can't find timer.html in Windows:** The file is at `C:\Users\YOUR_USERNAME\Documents\test_claude\timer.html`
 - **Git asks for password:** You mistyped the `sudo` password—try again carefully
-- **Timer doesn't work:** Open browser console (press `F12`, click **Console** tab), copy any red error messages, paste them to Claude
+- **Timer doesn't work:** Open browser console (right-click the page, select **Inspect**, click **Console** tab), copy any red error messages, paste them to Claude
 
 ## What You Can Ask Claude
 
