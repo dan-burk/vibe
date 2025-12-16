@@ -178,21 +178,7 @@ Every slash command includes approval steps. This kept me in control while elimi
 
 By encoding formatting rules, style guidelines, and quality criteria into the slash commands, I ensured every tutorial met the same standards—even when generated weeks apart.
 
-## Try This Yourself
 
-The beauty of slash commands is that they're just markdown files. You can adapt this approach to any repetitive documentation task:
-
-- API documentation for multiple endpoints
-- Setup guides for different platforms
-- Changelog entries with consistent formatting
-- Code review checklists
-- Pull request templates with context-specific checks
-
-The pattern is always the same:
-1. Do the task manually with Claude first (like writing one API doc)
-2. Refine the process through a few iterations
-3. Ask Claude: "Create a slash command that captures this workflow"
-4. Use the command to handle the next 10, 20, or 100 instances
 
 ## Conclusion
 
