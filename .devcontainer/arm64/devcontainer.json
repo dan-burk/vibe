@@ -3,6 +3,10 @@
   "build": {
     "dockerfile": "Dockerfile"
   },
+//  "runArgs": [
+//    "--env-file",
+//    ".devcontainer/example_api.env"
+//  ],
   "customizations": {
     "vscode": {
       "extensions": [

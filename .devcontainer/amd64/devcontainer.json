@@ -3,11 +3,16 @@
   "build": {
     "dockerfile": "Dockerfile"
   },
+//  "runArgs": [
+//    "--env-file",
+//    ".devcontainer/example_api.env"
+//  ],
   "customizations": {
     "vscode": {
       "extensions": [
         "REditorSupport.r",
         "RDebugger.r-debugger",
+        "posit.shiny",
         "ms-azuretools.vscode-docker"
       ],
       "settings": {
