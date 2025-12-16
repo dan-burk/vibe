@@ -1,6 +1,6 @@
 [Home](./)
 
-# R Coding in VS Code
+# Run R in VS Code
 
 You want to write R code but RStudio feels heavy or you prefer VS Code's flexibility. Think of VS Code as a Swiss Army knife - it can handle R, Python, and many other languages in one lightweight editor. This tutorial shows you how to set up R in VS Code with smart features like code completion, interactive plots, and even Shiny apps.
 
@@ -12,10 +12,9 @@ You want to write R code but RStudio feels heavy or you prefer VS Code's flexibi
 
 ## What You'll Need
 
-- VS Code already installed
+- Finished [VS Code Basics](./VS_Code_Getting_Started)
 - Internet connection to download R and packages
 - 10-15 minutes
-- Basic familiarity with installing software
 
 ## Step 1: Install or Update R
 
@@ -274,6 +273,4 @@ VS Code provides a modern, lightweight alternative to RStudio with these key adv
 
 ---
 
-Estimated completion time: 15 minutes. Created by [Steven Ge](https://www.linkedin.com/in/steven-ge-ab016947/) on December 7, 2025.
-
-[Other tutorials](https://github.com/gexijin/vibe)
+Created by [Steven Ge](https://www.linkedin.com/in/steven-ge-ab016947/) on December 7, 2025.

@@ -1,6 +1,6 @@
 [Home](./)
 
-# Using GitHub Desktop with Claude Code
+# Use GitHub Desktop with Claude Code
 
 You're coding with AI assistance. It makes changes to your files. Sometimes the changes work perfectly. Sometimes they don't. **Version control is like an undo button for your entire project.** Every time you save a snapshot (called a "commit"), you create a restore point. You can always go back.
 
@@ -27,10 +27,8 @@ Build a simple timer app with Claude Code and track all changes with GitHub Desk
 
 ## What You'll Need
 
-- GitHub Desktop installed ([download](https://desktop.github.com))
-- Claude Code installed ([guide](https://code.claude.com/docs/en/installation))
-- GitHub account (free at [github.com](https://github.com))
-- Web browser
+- Finished [Installing Claude Code on Windows](./Install_CLAUDE_Code_Win) or [Installing Claude Code on Mac](./Install_Claude_Code_MacOS)
+- Finished [Getting Started with Version Control](./Github_desktop)
 - 20 minutes
 
 ## Step 1: Create Your Project
@@ -38,7 +36,7 @@ Build a simple timer app with Claude Code and track all changes with GitHub Desk
 - Open **GitHub Desktop**
 - Click **File** → **New Repository**
 - Fill in:
-  - **Name:** `simple-timer`
+  - **Name:** `test_claude`
   - **Description:** `A timer app built with Claude Code`
   - **Local Path:** Documents folder
   - **Check** "Initialize this repository with a README"
@@ -53,7 +51,7 @@ You now have a local project and cloud backup on GitHub.
 - Open your **terminal**
 - Navigate to your project:
   ```
-  cd ~/Documents/simple-timer
+  cd ~/Documents/test_claude
   ```
 - Start Claude Code:
   ```
@@ -86,14 +84,14 @@ Claude creates the `timer.html` file (takes 10-30 seconds).
 
 ## Step 4: Fix Errors (If Needed)
 
-- Open browser console (`F12` → **Console** tab)
+- Open browser console (right-click on page → **Inspect** → **Console** tab)
 - Copy any red error messages
 - Go back to Claude Code in your terminal
 - Paste the error:
   ```
   I'm seeing this error: [paste error]. Can you fix it?
   ```
-- Refresh browser (`F5`) and test again
+- Refresh browser (click the reload button or right-click → **Reload**) and test again
 
 ## Step 5: Review Changes
 
@@ -207,11 +205,11 @@ Notice the first failed sound attempt isn't there - you discarded it! Only worki
 
 **"Authentication failed":** GitHub Desktop → File/Preferences → Accounts → Sign out and sign in again
 
-**Claude says "not a git repository":** Make sure you're in the right folder (`cd ~/Documents/simple-timer`)
+**Claude says "not a git repository":** Make sure you're in the right folder (`cd ~/Documents/test_claude`)
 
-**Timer doesn't work:** Open browser console (`F12`), copy errors, paste to Claude
+**Timer doesn't work:** Open browser console (right-click → **Inspect** → **Console**), copy errors, paste to Claude
 
-**Need help?** [GitHub Desktop docs](https://docs.github.com/en/desktop) • [Claude Code docs](https://code.claude.com/docs)
+**Need help?** [GitHub Desktop docs](https://docs.github.com/en/desktop) • [Claude Code docs](https://docs.anthropic.com/en/docs/claude-code)
 
 ## The Complete Workflow
 

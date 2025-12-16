@@ -1,0 +1,232 @@
+[首页](./)
+
+# 将 GitHub Desktop 与 Claude Code 结合使用
+
+你正在使用 AI 辅助编程，它会修改你的文件。有时完美无缺，有时不尽如人意。**版本控制就像整个项目的撤销按钮。**每次保存快照(称为"提交")时，就创建了一个还原点，你随时可以回退。
+
+当你将 [GitHub Desktop](https://desktop.github.com) 与 [Claude Code](https://claude.com/claude-code) 结合使用时，就能获得 AI 加速开发与专业版本控制的完美组合。
+
+## 关键概念
+
+**Git** 在你的计算机上跟踪文件的每次更改。
+
+**GitHub** 将代码存储在云端作为备份。
+
+**GitHub Desktop** 让 Git 变得可视化 - 只需点击按钮，无需输入命令。
+
+**Claude Code** 是 AI 编程助手，可为你编写代码、修复错误并创建提交。
+
+## 你将要做的事情
+
+使用 Claude Code 构建一个简单的计时器应用，并使用 GitHub Desktop 跟踪所有更改：
+- 创建项目和计时器应用
+- 测试并修复错误
+- 提交并推送更改
+- 丢弃错误的更改并重新尝试
+- 让 Claude 自动化提交
+
+## 你需要准备的内容
+
+- 完成 [在 Windows 上安装 Claude Code](./Install_CLAUDE_Code_Win) 或 [在 Mac 上安装 Claude Code](./Install_Claude_Code_MacOS)
+- 完成 [版本控制入门](./Github_desktop)
+- 20 分钟
+
+## 步骤 1：创建你的项目
+
+- 打开 **GitHub Desktop**
+- 点击 **File** → **New Repository**
+- 填写：
+  - **Name：** `test_claude`
+  - **Description：** `A timer app built with Claude Code`
+  - **Local Path：** Documents 文件夹
+  - **勾选** "Initialize this repository with a README"
+- 点击 **Create Repository**
+- 点击顶部的 **Publish repository**
+- 点击 **Publish Repository**
+
+现在你已有本地项目和 GitHub 上的云端备份。
+
+## 步骤 2：让 Claude 创建计时器应用
+
+- 打开**终端**
+- 导航到你的项目：
+  ```
+  cd ~/Documents/test_claude
+  ```
+- 启动 Claude Code：
+  ```
+  claude
+  ```
+- 输入这个请求：
+  ```
+  创建一个简单的倒计时应用，保存为单个文件 timer.html。
+  需要包含：
+  - 输入框用于设置分钟数
+  - 开始和停止按钮
+  - 以 MM:SS 格式显示剩余时间
+  - 当计时器归零时，显示"时间到！"
+  使用内联 CSS 和 JavaScript 保持简单。
+  ```
+
+Claude 创建 `timer.html` 文件(需要 10-30 秒)。
+
+## 步骤 3：测试计时器
+
+- 在 GitHub Desktop 中，点击 **Repository** → **Show in Finder/Explorer**
+- **双击** `timer.html` 在浏览器中打开
+- 尝试使用计时器：
+  - 在输入字段中输入 `1`
+  - 点击 **Start**
+  - 观察倒计时
+
+**如果正常工作：** 跳到步骤 5。
+**如果出现问题：** 继续步骤 4。
+
+## 步骤 4：修复错误(如果需要)
+
+- 打开浏览器控制台(在页面上右键点击 → **检查** → **Console** 标签)
+- 复制任何红色错误消息
+- 返回终端中的 Claude Code
+- 粘贴错误：
+  ```
+  我看到这个错误：[粘贴错误信息]。你能修复它吗？
+  ```
+- 刷新浏览器(点击重新加载按钮或右键点击 → **重新加载**)并再次测试
+
+## 步骤 5：查看更改
+
+- 切换到 **GitHub Desktop**
+- **左侧面板：** 显示已更改的文件(`timer.html`)
+- **右侧面板：** 显示代码(绿色 = 添加的内容)
+- 通读以了解 Claude 创建了什么
+
+提交前始终要查看 AI 生成的代码。
+
+## 步骤 6：手动提交
+
+- 在左下角的 **Summary 字段**中，输入：
+  ```
+  Create initial timer app with start/stop functionality
+  ```
+- 点击 **Commit to main**
+
+你已创建了一个保存点！
+
+**好的提交消息：** "Create initial timer app"，"Fix start button"
+**差的提交消息：** "changes"，"update"，"asdf"
+
+## 步骤 7：推送到 GitHub
+
+- 点击顶部的 **Push origin** 按钮
+- 验证：**Repository** → **View on GitHub** 查看你的在线代码
+
+你的代码现在已备份到云端。
+
+## 步骤 8：添加声音通知
+
+- 在 Claude Code 终端中：
+  ```
+  当计时器归零时添加声音通知。使用浏览器内置的蜂鸣声或创建一个简单的音频提示。
+  ```
+- 测试：刷新浏览器，设置计时器为 0.1 分钟，点击 Start
+
+**对于本教程：** 假装声音效果不理想。先不要提交！
+
+## 步骤 9：丢弃错误的更改
+
+有时 AI 会让我们走上错误的道路，需要从上次提交(保存点)重新开始。
+
+- 打开 **GitHub Desktop**
+- 点击 **Branch** 菜单 → **Discard All Changes**
+- 点击 **Discard Changes** 确认
+- 刷新浏览器 - 计时器在没有声音的情况下正常工作！
+
+你刚刚丢弃了有问题的代码，回到了上一个保存点。
+
+## 步骤 10：从头开始重做
+
+- 在 Claude Code 中：
+  ```
+  当计时器归零时添加声音通知。这次使用 HTML5 audio 元素，配合 Web Audio API 生成简单的蜂鸣声。确保能优雅地处理浏览器自动播放限制。
+  ```
+- 立即测试(刷新浏览器，设置 0.1 分钟，Start)
+
+**如果正常工作：** 继续步骤 11。
+**如果不行：** 将错误粘贴给 Claude 或重试。
+
+## 步骤 11：让 Claude 提交并推送
+
+- 在 Claude Code 中：
+  ```
+  提交并推送我的更改
+  ```
+
+Claude 将检查更改、编写提交消息、提交并推送(10-20 秒)。
+
+**何时使用：**
+- 手动提交：学习时或想要控制时
+- Claude 提交：快速工作并想要好的提交消息时
+
+## 步骤 12：让 Claude 总结更改
+
+- 在 Claude Code 中：
+  ```
+  我修改了哪些文件？
+  ```
+
+Claude 用通俗易懂的语言解释你的更改。
+
+**尝试：** `解释音频代码的作用` 或 `显示最近 5 次提交`
+
+## 步骤 13：查看历史记录
+
+- 在 **GitHub Desktop** 中，点击 **History** 标签
+
+你将看到：
+- Initial commit(README)
+- Create initial timer app
+- Add improved sound notification
+
+注意第一次失败的声音尝试不在其中 - 你丢弃了它！只有可以工作的代码被提交了。
+
+## 挑战
+
+- 自定义声音：从 [freesound.org](https://freesound.org) 下载免费的 .mp3 文件，放到项目文件夹中，让 Claude 使用它
+- 多个计时器：`允许用户同时创建和运行多个计时器`
+- 进度条：`添加进度条，直观显示剩余时间`
+
+**记住：** 每个功能后测试，每次成功后提交，丢弃失败的尝试。
+
+**在 GitHub.com 上查看你的项目：** 在 GitHub Desktop 中点击 **Repository** → **View on GitHub** 查看你的完整提交历史和在线代码。
+
+## 故障排除
+
+**"Authentication failed"：** GitHub Desktop → File/Preferences → Accounts → 退出登录后重新登录
+
+**Claude 显示 "not a git repository"：** 确保你在正确的文件夹中(`cd ~/Documents/test_claude`)
+
+**计时器不工作：** 打开浏览器控制台(右键点击 → **检查** → **Console**)，复制错误，粘贴给 Claude
+
+**需要帮助？** [GitHub Desktop 文档](https://docs.github.com/en/desktop) • [Claude Code 文档](https://docs.anthropic.com/en/docs/claude-code)
+
+## 完整工作流程
+
+- 让 Claude 进行更改
+- 在浏览器中测试
+- 如果有效 → 查看并提交
+- 如果失败 → 丢弃并重试
+- 推送到 GitHub
+- 重复
+
+需要控制时手动提交。需要速度时让 Claude 提交。无需担心地丢弃更改 - 只提交可以工作的代码！
+
+## 下一步
+
+尝试向你的计时器添加功能：
+
+**快速实现：**
+- 预设按钮，用于 5、10、15 分钟：`添加三个预设按钮："5 分钟"、"10 分钟"和"15 分钟"`
+- 暂停按钮：`添加暂停/继续按钮，用于切换计时器状态`
+- 更好的样式：`使用现代配色方案改进视觉设计`
+
+由 [Steven Ge](https://www.linkedin.com/in/steven-ge-ab016947/) 创建于 2025 年 12 月 7 日。
