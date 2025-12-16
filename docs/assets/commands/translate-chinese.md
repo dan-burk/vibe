@@ -42,7 +42,7 @@ Create the Chinese translation following these guidelines:
 - Keep sentences clear and direct
 - Use natural Chinese phrasing, not word-for-word translation
 - Maintain a friendly but professional tone
-- Use "您" for formal address when appropriate
+- Use "你" for formal address when appropriate
 
 **Common Technical Translations:**
 - Click = 点击
@@ -60,7 +60,7 @@ Create the Chinese translation following these guidelines:
 - Window = 窗口
 - Next Steps = 下一步
 - Troubleshooting = 故障排除
-- What You'll Need = 您需要准备的内容
+- What You'll Need = 你需要准备的内容
 - Key Concepts = 核心概念
 - Prerequisites = 前提条件
 - Getting Started = 入门指南
