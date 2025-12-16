@@ -2,13 +2,13 @@
 
 # 通过 Docker 容器在 VS Code 中进行 R 编程
 
-是否曾经尝试与同事分享您的 R 代码，却花费数小时调试"但在我的机器上可以运行"的问题？Docker 容器就像代码的集装箱——它们将您的 R 环境、库和依赖项打包到一个密封的容器中，在任何地方都能以相同方式工作。此外，您还可以访问 [Docker Hub](https://hub.docker.com/) 上数万个预构建的镜像，软件开发人员在那里发布即用型环境，免去手动安装软件的痛苦。本教程向您展示如何使用 VS Code 和 Docker Desktop 在隔离的、可重现的环境中运行 R。
+是否曾经尝试与同事分享你的 R 代码，却花费数小时调试"但在我的机器上可以运行"的问题？Docker 容器就像代码的集装箱——它们将你的 R 环境、库和依赖项打包到一个密封的容器中，在任何地方都能以相同方式工作。此外，你还可以访问 [Docker Hub](https://hub.docker.com/) 上数万个预构建的镜像，软件开发人员在那里发布即用型环境，免去手动安装软件的痛苦。本教程向你展示如何使用 VS Code 和 Docker Desktop 在隔离的、可重现的环境中运行 R。
 
 ## 核心概念
 
-- **[Docker Desktop](https://www.docker.com/products/docker-desktop/)** - 在您的计算机上运行容器的应用程序，管理隔离的环境
-- **[Dev Container](https://code.visualstudio.com/docs/devcontainers/containers)** - VS Code 功能，允许您在 Docker 容器内编写代码，并具有完整的 IDE 支持
-- **容器隔离** - 您的代码在独立的 Linux 环境中运行，仅能看到您的项目文件夹，而非整个计算机
+- **[Docker Desktop](https://www.docker.com/products/docker-desktop/)** - 在你的计算机上运行容器的应用程序，管理隔离的环境
+- **[Dev Container](https://code.visualstudio.com/docs/devcontainers/containers)** - VS Code 功能，允许你在 Docker 容器内编写代码，并具有完整的 IDE 支持
+- **容器隔离** - 你的代码在独立的 Linux 环境中运行，仅能看到你的项目文件夹，而非整个计算机
 - **[Rocker](https://rocker-project.org/)** - 专门为 R 开发设计的预构建 Docker 镜像
 
 ## 准备工作
@@ -20,11 +20,11 @@
 ## 步骤 1：安装 Docker Desktop
 
 - 访问 [Docker Desktop 下载页面](https://www.docker.com/products/docker-desktop/)
-- 点击 **Download for Windows**（或根据您的系统选择 Mac/Linux）
+- 点击 **Download for Windows**（或根据你的系统选择 Mac/Linux）
 - 运行安装程序并按照安装向导操作
 - 出现提示时，启用 WSL 2（Windows 用户）或接受默认设置
 - 安装完成后，启动 Docker Desktop
-- 等待 Docker 引擎启动（您将在左下角看到绿色状态指示器）
+- 等待 Docker 引擎启动（你将在左下角看到绿色状态指示器）
 
 ## 步骤 2：安装 Dev Containers 扩展
 
@@ -42,14 +42,14 @@
 - 在 **Repository URL** 字段中粘贴：`https://github.com/gexijin/vibe`
 - 选择保存项目的位置（**Local Path** 字段）
 - 点击 **Clone**
-- GitHub Desktop 将把项目下载到您选择的位置
+- GitHub Desktop 将把项目下载到你选择的位置
 
 ## 步骤 4：在 VS Code 中打开项目
 
 - 在 VS Code 中，点击 **File > Open Folder**
 - 导航到刚刚克隆的 `vibe` 文件夹
 - 点击 **Select Folder**
-- 您将在资源管理器侧边栏中看到项目文件
+- 你将在资源管理器侧边栏中看到项目文件
 
 ## 步骤 5：在容器中重新打开
 
@@ -58,23 +58,23 @@
 - 如果没有看到通知，请点击左下角的绿色图标
 - 从菜单中选择 **Reopen in Container**
 - VS Code 将构建容器（第一次需要 5-10 分钟）
-- 您将看到显示构建步骤的进度通知
+- 你将看到显示构建步骤的进度通知
 - 完成后，绿色图标将显示 **Dev Container: R in Docker**
 
-**注意：**容器自动包含 R 扩展和 languageserver 包。Dockerfile 和 devcontainer.json 会为您处理这些。
+**注意：**容器自动包含 R 扩展和 languageserver 包。Dockerfile 和 devcontainer.json 会为你处理这些。
 
 ## 步骤 6：了解容器环境
 
-现在您正在 Linux 容器内编写代码。让我们探索一下这意味着什么。
+现在你正在 Linux 容器内编写代码。让我们探索一下这意味着什么。
 
 - 点击 **Terminal > New Terminal** 在容器内打开终端
-- 检查您的当前位置：
+- 检查你的当前位置：
 
 ```bash
 pwd
 ```
 
-您将看到 `/workspaces/vibe` - 这是容器内的项目文件夹。
+你将看到 `/workspaces/vibe` - 这是容器内的项目文件夹。
 
 - 列出文件：
 
@@ -82,7 +82,7 @@ pwd
 ls
 ```
 
-您将看到项目中的相同文件：`R/`、`.devcontainer/`、`README.md` 等。
+你将看到项目中的相同文件：`R/`、`.devcontainer/`、`README.md` 等。
 
 - 尝试向上移动一个目录：
 
@@ -91,7 +91,7 @@ cd ..
 ls
 ```
 
-您将只看到 `vibe/` - 容器是隔离的。您无法访问计算机的其他文件夹、桌面或文档。这种隔离确保您的 R 环境干净且可重现。
+你将只看到 `vibe/` - 容器是隔离的。你无法访问计算机的其他文件夹、桌面或文档。这种隔离确保你的 R 环境干净且可重现。
 
 - 返回项目文件夹：
 
@@ -105,15 +105,15 @@ cd vibe
 
 - 在 VS Code 资源管理器中，导航到 `R/iris_analysis.R`
 - 点击打开文件
-- 您将看到分析 iris 数据集的 R 代码
+- 你将看到分析 iris 数据集的 R 代码
 - 选择第一行：`data(iris)`
 - 按 `Ctrl+Enter`（Windows/Linux）或 `Cmd+Enter`（Mac）运行它
-- 如果您没有打开 R 终端，第一次会创建一个，第二次才运行代码
+- 如果你没有打开 R 终端，第一次会创建一个，第二次才运行代码
 - 继续逐行运行每一行
-- 当您运行 `head(iris)` 时，您将在终端中看到前 6 行
-- 当您运行 `summary(iris)` 时，您将看到统计摘要
-- 当您运行 `hist()` 命令时，直方图将在单独的窗口中打开
-- 您也可以选择多行并使用 `Ctrl+Enter` 或 `Cmd+Enter` 一起运行它们
+- 当你运行 `head(iris)` 时，你将在终端中看到前 6 行
+- 当你运行 `summary(iris)` 时，你将看到统计摘要
+- 当你运行 `hist()` 命令时，直方图将在单独的窗口中打开
+- 你也可以选择多行并使用 `Ctrl+Enter` 或 `Cmd+Enter` 一起运行它们
 
 ## 步骤 8：运行应用程序
 
@@ -121,13 +121,13 @@ cd vibe
 
 - 在 VS Code 资源管理器中，导航到 `R/app.R`
 - 点击打开文件
-- 您将看到 Shiny Web 应用程序的代码
+- 你将看到 Shiny Web 应用程序的代码
 - 查看编辑器窗口右上角的 **▶** 按钮
 - 点击旁边的下拉箭头并选择 **Run Shiny App**
 - 应用程序将启动，VS Code 将自动转发端口 3838
 - 出现通知：**Open in Browser**
 - 点击 **Open in Browser**
-- Shiny 应用程序在您的 Web 浏览器中打开
+- Shiny 应用程序在你的 Web 浏览器中打开
 - 移动滑块以更改直方图的区间数 - 图表会实时更新
 
 ## 步骤 9：进行简单更改
@@ -146,13 +146,13 @@ titlePanel("My First R Docker App")
 - 保存文件（**File > Save**）
 - Shiny 扩展将自动重新加载应用程序
 - 刷新浏览器（或可能自动刷新）
-- 标题现在显示您的自定义文本
+- 标题现在显示你的自定义文本
 
 ## 步骤 10：了解 Dockerfile（可选）
 
 - 在 VS Code 资源管理器中，导航到 `.devcontainer/Dockerfile`
 - 点击打开文件
-- 您将看到完整的配置：
+- 你将看到完整的配置：
 
 ```dockerfile
 # choose a Dockerhub base image
@@ -187,7 +187,7 @@ EXPOSE 3838
 - `RUN npm install -g @anthropic-ai/claude-code` - 全局安装 Claude Code 以获取 AI 辅助
 - `EXPOSE 3838` - 为 Shiny 应用程序打开端口 3838
 
-**您可以使用的其他 Rocker 镜像：**
+**你可以使用的其他 Rocker 镜像：**
 
 - `rocker/r-ver:4.5.3` - 仅 R（特定版本）
 - `rocker/rstudio:latest` - 带 RStudio Server 的 R
@@ -210,7 +210,7 @@ RUN R -q -e 'install.packages("data.table", repos="https://cloud.r-project.org")
 - 保存文件（**File > Save**）
 - 点击左下角的绿色图标
 - 从菜单中选择 **Rebuild Container**
-- VS Code 将使用您的新包重新构建容器（需要 2-5 分钟）
+- VS Code 将使用你的新包重新构建容器（需要 2-5 分钟）
 - 要验证，打开 R 终端并输入：
 
 ```r
@@ -228,29 +228,29 @@ library(data.table)
 ## 故障排除
 
 - **Docker Desktop 未运行** - 打开 Docker Desktop 并等待绿色状态指示器，然后再重新打开容器
-- **容器构建失败** - 检查您的互联网连接；首次构建会下载约 2GB 数据。点击 **Rebuild Container** 重试
+- **容器构建失败** - 检查你的互联网连接；首次构建会下载约 2GB 数据。点击 **Rebuild Container** 重试
 - **端口 3838 已被使用** - 停止使用该端口的其他应用程序，或在 `.devcontainer/devcontainer.json` 中更改端口
 
 ## 工作流程概述
 
-此设置为您提供专业的 R 开发环境：
+此设置为你提供专业的 R 开发环境：
 
 - **VS Code** 提供带语法高亮和智能感知的代码编辑器
 - **Docker 容器**运行隔离的 Linux 环境，包含 R 和所有依赖项
 - **Rocker 镜像**（`rocker/shiny-verse`）包含 R、Shiny、tidyverse 和开发工具
 - **Dev Container 配置**（`.devcontainer/`）自动安装 VS Code 扩展以支持 R 调试和语言支持
-- **端口转发**允许您从浏览器访问容器内运行的 Shiny 应用程序
+- **端口转发**允许你从浏览器访问容器内运行的 Shiny 应用程序
 
 ## 日常工作流程
 
-一旦一切设置完成，这是您的日常例程：
+一旦一切设置完成，这是你的日常例程：
 
 1. **启动 Docker Desktop** - 打开应用程序并等待绿色状态指示器（Docker 必须运行）
-2. **打开 VS Code** - 启动 VS Code 并打开您的项目文件夹
+2. **打开 VS Code** - 启动 VS Code 并打开你的项目文件夹
 3. **在容器中重新打开** - 如果尚未在容器中，点击绿色图标（左下角）并选择 **Reopen in Container**
 4. **编写和运行代码** - 编辑 `.R` 文件，使用 `Ctrl+Enter`/`Cmd+Enter` 逐行运行，或使用 **▶ Run Shiny App** 按钮运行 Shiny 应用程序
-5. **保存您的工作** - 您的代码文件（`.R`、`.Rmd`）保存到您的计算机，并在会话之间持久存在
-6. **提交和推送** - 使用 GitHub Desktop 提交您的更改并推送到仓库
+5. **保存你的工作** - 你的代码文件（`.R`、`.Rmd`）保存到你的计算机，并在会话之间持久存在
+6. **提交和推送** - 使用 GitHub Desktop 提交你的更改并推送到仓库
 
 ---
 

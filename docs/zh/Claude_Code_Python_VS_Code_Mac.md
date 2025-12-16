@@ -2,13 +2,13 @@
 
 # 在 Mac 的 VS Code 中使用 Claude Code 进行 Python 开发
 
-您已经在 VS Code 中设置好了 Python 环境，可以手动编写代码。现在您想让 AI 帮助编写、改进和调试您的 Python 代码，这样您就可以专注于分析工作。可以把 Claude Code 想象成一个住在 VS Code 里的编程伙伴——您描述想要什么，它就会编写或改进代码，而您始终在同一个窗口中工作。
+你已经在 VS Code 中设置好了 Python 环境，可以手动编写代码。现在你想让 AI 帮助编写、改进和调试你的 Python 代码，这样你就可以专注于分析工作。可以把 Claude Code 想象成一个住在 VS Code 里的编程伙伴——你描述想要什么，它就会编写或改进代码，而你始终在同一个窗口中工作。
 
 ## 核心概念
 
 - **[Claude Code Extension](https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code)** - VS Code 扩展，将 Claude AI 助手直接集成到编辑器中，提供内联代码编辑功能
-- **Chat Panel（聊天面板）** - VS Code 中的侧边面板，您可以在这里与 Claude 讨论代码
-- **Inline Edits（内联编辑）** - Claude 建议的代码更改直接显示在文件中，以差异对比形式呈现，您可以接受或拒绝
+- **Chat Panel（聊天面板）** - VS Code 中的侧边面板，你可以在这里与 Claude 讨论代码
+- **Inline Edits（内联编辑）** - Claude 建议的代码更改直接显示在文件中，以差异对比形式呈现，你可以接受或拒绝
 
 ## 准备工作
 
@@ -21,7 +21,7 @@
 
 - 打开 **Visual Studio Code**
 - 点击菜单栏中的 **File**，然后点击 **Open Folder**
-- 导航到您的 **Documents** 文件夹
+- 导航到你的 **Documents** 文件夹
 - 点击对话框底部的 **New Folder**
 - 将文件夹命名为 `claude_python_test`
 - 点击 **Open** 打开新文件夹
@@ -35,11 +35,11 @@
 - 安装完成后，左侧边栏会出现 Claude 图标（闪光图标）
 - 点击 Claude 图标打开聊天面板
 - 点击聊天面板中的 **Sign in to Claude Code**
-- 选择您的身份验证方式：
+- 选择你的身份验证方式：
   - **Claude Pro/Max 用户**：点击 **Sign in with Claude.ai**，在浏览器中授权，然后将代码复制回 VS Code
-  - **API 密钥用户**：点击 **Use API Key** 并粘贴您的 Anthropic API 密钥
+  - **API 密钥用户**：点击 **Use API Key** 并粘贴你的 Anthropic API 密钥
 - 详细的身份验证步骤，请参阅 [Installing Claude Code on Mac](./Install_Claude_Code_MacOS) 指南（步骤 5）
-- 登录成功后，您会在聊天面板中看到"Ready to help"
+- 登录成功后，你会在聊天面板中看到"Ready to help"
 
 ## 步骤 3：手动创建初始 Python 脚本
 
@@ -66,7 +66,7 @@ print(iris_df.describe())
 - 点击 **File > Save** 保存文件
 - 打开 Python Terminal：点击菜单栏中的 **View**，然后点击 **Terminal**
 - 在 Terminal 中运行：`python iris_analysis.py`
-- 您应该在 Terminal 中看到数据集结构和汇总统计信息
+- 你应该在 Terminal 中看到数据集结构和汇总统计信息
 
 ## 步骤 4：让 Claude 添加散点图
 
@@ -78,10 +78,10 @@ Add code to iris_analysis.py to create a scatter plot of sepal length vs. width,
 ```
 
 - 按 Enter 发送
-- Claude 会读取您的文件并提出更改建议——您会看到显示要添加的新代码的差异对比
+- Claude 会读取你的文件并提出更改建议——你会看到显示要添加的新代码的差异对比
 - 点击 **Accept** 应用更改
-- seaborn/matplotlib 代码会出现在您的文件中
-- 如果您没有安装所需的包，在 Terminal 中运行：
+- seaborn/matplotlib 代码会出现在你的文件中
+- 如果你没有安装所需的包，在 Terminal 中运行：
   ```
   pip install seaborn matplotlib scikit-learn pandas
   ```
@@ -90,7 +90,7 @@ Add code to iris_analysis.py to create a scatter plot of sepal length vs. width,
 
 - 在 Terminal 中运行：`python iris_analysis.py`
 - 会出现一个散点图窗口
-- 您应该看到按物种（setosa、versicolor、virginica）着色的点
+- 你应该看到按物种（setosa、versicolor、virginica）着色的点
 - 关闭图表窗口继续
 
 ## 步骤 6：让 Claude 优化图表
@@ -117,7 +117,7 @@ Add code to perform PCA on the numeric variables and plot the samples using the 
 ```
 
 - 按 Enter
-- Claude 会向您的脚本添加 PCA 代码
+- Claude 会向你的脚本添加 PCA 代码
 - 点击 **Accept**
 - 运行代码：在 Terminal 中输入 `python iris_analysis.py`
 - 会出现一个 PCA 图表，显示投影到 PC1 和 PC2 上的样本，按物种着色
@@ -134,7 +134,7 @@ Review the entire script for correctness. Add comments when necessary.
 - 按 Enter
 - Claude 会审查代码并建议添加解释每个部分的注释
 - 点击 **Accept**
-- 您的脚本现在有了清晰的注释，解释了数据加载、可视化和 PCA 分析
+- 你的脚本现在有了清晰的注释，解释了数据加载、可视化和 PCA 分析
 
 ## 下一步
 
@@ -147,18 +147,18 @@ Review the entire script for correctness. Add comments when necessary.
 ## 故障排除
 
 - **Claude Extension 未显示** - 安装后重启 VS Code。点击 **View > Extensions** 验证是否已安装。
-- **"Cannot read Python file" 错误** - 确保您保存的文件使用了 `.py` 扩展名。Claude 需要读取已保存的文件。
-- **身份验证失败** - 验证您的 Claude Pro/Max 订阅是否有效或您的 API 密钥是否正确。身份验证故障排除请参阅 [Installing Claude Code on Mac](./Install_Claude_Code_MacOS)。
+- **"Cannot read Python file" 错误** - 确保你保存的文件使用了 `.py` 扩展名。Claude 需要读取已保存的文件。
+- **身份验证失败** - 验证你的 Claude Pro/Max 订阅是否有效或你的 API 密钥是否正确。身份验证故障排除请参阅 [Installing Claude Code on Mac](./Install_Claude_Code_MacOS)。
 - **找不到包错误** - 在 Terminal 中安装所需的包：`pip install seaborn matplotlib scikit-learn pandas`。在运行代码之前等待安装完成。
 - **代码更改未应用** - 确保在差异对比上点击了 **Accept**。如果不起作用，尝试手动复制 Claude 建议的代码。
-- **图表未显示** - 确保您有显示器。在某些系统上，您可能需要在末尾添加 `plt.show()` 或在 Jupyter 中使用 `%matplotlib inline`。
+- **图表未显示** - 确保你有显示器。在某些系统上，你可能需要在末尾添加 `plt.show()` 或在 Jupyter 中使用 `%matplotlib inline`。
 
 ## 工作流程总结
 
 - **Claude Code Extension** 直接在 VS Code 中提供 AI 助手，带有聊天面板和内联差异对比
 - **迭代优化** - 从基础代码开始，让 Claude 增强，立即测试，然后进一步优化
-- **上下文感知** - Claude 会读取您的 Python 文件并理解您的项目结构
-- **内联编辑** - 建议的更改以差异对比形式显示在您的实际文件中，而不是单独的聊天响应
+- **上下文感知** - Claude 会读取你的 Python 文件并理解你的项目结构
+- **内联编辑** - 建议的更改以差异对比形式显示在你的实际文件中，而不是单独的聊天响应
 - **保持流畅** - 无需在浏览器和编辑器之间切换——所有操作都在 VS Code 中完成
 
 ---
