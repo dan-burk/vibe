@@ -48,8 +48,9 @@
   },
   
   "remoteUser": "shiny",
-  "forwardPorts": [3838],
+  "forwardPorts": [3838, 54545],
   "portsAttributes": {
-    "3838": { "label": "Shiny app", "onAutoForward": "openBrowser" }
+    "3838": { "label": "Shiny app", "onAutoForward": "openBrowser" },
+    "54545": { "label": "Claude OAuth", "onAutoForward": "silent" }
   }
 }
