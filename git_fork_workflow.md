@@ -2,28 +2,43 @@
 
 Merge upstream changes while preserving your `.devcontainer`.
 
+## 0. Install GitHub CLI (one-time setup)
+
+```bash
+sudo apt install gh   # Install GitHub CLI
+gh auth login         # Authenticate with GitHub
+```
+
 ## 1. Reconnaissance
 
 ```bash
+gh auth status      # Check GitHub authentication
 git branch -a       # List all branches
 git remote -v       # Show remotes
 ```
+## 2. Line Ending Issue
 
-## 2. Configure Remotes (one-time setup)
+Look into adding the code into a .gitattributes for repo wide configuration
+```bash
+git config core.autocrlf input
+git checkout -- .
+```
+
+## 3. Configure Remotes (one-time setup)
 
 ```bash
 git remote rename origin upstream                       # Boss's repo becomes 'upstream'
 git remote add origin https://github.com/dan-burk/vibe.git   # Your fork becomes 'origin'
 ```
 
-## 3. Set Branch Tracking (one-time setup)
+## 4. Set Branch Tracking (one-time setup)
 
 ```bash
 git branch --set-upstream-to=origin/main main   # Track your fork, not upstream
 git branch -vv                                   # Verify: should show [origin/main]
 ```
 
-## 4. Sync and Restore .devcontainer
+## 5. Sync and Restore .devcontainer
 
 ```bash
 git fetch origin                           # Download latest
@@ -31,7 +46,7 @@ git checkout main                          # Switch to main
 git checkout temp -- .devcontainer/        # Copy .devcontainer from temp branch
 ```
 
-## 5. Commit and Push
+## 6. Commit and Push
 
 ```bash
 git add .devcontainer/
