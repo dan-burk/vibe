@@ -2,9 +2,17 @@
 
 Merge upstream changes while preserving your `.devcontainer`.
 
+## 0. Install GitHub CLI (one-time setup)
+
+```bash
+sudo apt install gh   # Install GitHub CLI
+gh auth login         # Authenticate with GitHub
+```
+
 ## 1. Reconnaissance
 
 ```bash
+gh auth status      # Check GitHub authentication
 git branch -a       # List all branches
 git remote -v       # Show remotes
 ```
