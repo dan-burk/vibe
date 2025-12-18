@@ -1,15 +1,16 @@
 # Claude Code Authentication in Docker Containers
 
-Claude Code's standard OAuth flow does not work in Docker containers. There are two options:
+Claude Code's standard OAuth flow does not work in Docker containers. There are three workarounds:
 
-1. **The Hack** - Use `CLAUDE_CODE_OAUTH_TOKEN` + `hasCompletedOnboarding` flag (uses your Claude Pro/Max subscription)
-2. **API Key** - Use `ANTHROPIC_API_KEY` (pay-as-you-go API credits)
+1. **Mount Credentials** (Recommended) - Mount `~/.claude` from host + `hasCompletedOnboarding` flag (uses your Claude Pro/Max subscription)
+2. **Environment Variable** - Use `CLAUDE_CODE_OAUTH_TOKEN` + `hasCompletedOnboarding` flag (uses your Claude Pro/Max subscription)
+3. **API Key** - Use `ANTHROPIC_API_KEY` (pay-as-you-go API credits)
 
 ## Related Issue
 
 - [GitHub Issue #7100: OAuth doesn't work in devcontainers](https://github.com/anthropics/claude-code/issues/7100)
 
-## What We Tried (And Why It Failed)
+## What We Tried
 
 ### Attempt 1: OAuth Flow in Container
 
@@ -63,50 +64,61 @@ http://localhost:43627/callback?code=...
    - The OAuth callback to actually use that port (which it doesn't)
 3. **The callback hits the host, not the container** - When the browser redirects to `localhost:43627`, that request goes to your Windows host machine. The container is listening on a different network interface entirely.
 
-### Attempt 2: Mount OAuth Credentials from Host
+### Mount OAuth Credentials from Host (This Works!)
 
-We tried mounting the `~/.claude` directory from the host into the container:
+Mount the `~/.claude` directory from the host into the container, combined with the `hasCompletedOnboarding` flag:
 
 ```json
 {
   // Creates ~/.claude on host if missing (prevents mount failure)
   "initializeCommand": "powershell -Command \"if (!(Test-Path $env:USERPROFILE\\.claude)) { New-Item -ItemType Directory -Path $env:USERPROFILE\\.claude }\"",
 
-  // Mount Claude credentials from host
+  // Mount Claude credentials from host (adjust target path based on container user)
   "mounts": [
     "source=${localEnv:USERPROFILE}/.claude,target=/home/shiny/.claude,type=bind,consistency=cached"
-  ]
+  ],
+
+  // Skip onboarding wizard - REQUIRED for credentials to be recognized
+  "postCreateCommand": "echo '{\"hasCompletedOnboarding\": true}' > ~/.claude.json"
 }
 ```
 
-**Why it fails:**
+**Important:** The mount target must match the container user's home directory:
+- Running as `shiny` (typically AMD64): `target=/home/shiny/.claude`
+- Running as `root` (typically ARM64): `target=/root/.claude`
 
-There's a fundamental incompatibility between how Claude Code stores credentials on different platforms:
-
-- **Mac/Windows**: Credentials are stored in the system keychain, not in `~/.claude/`
-- **Linux (containers)**: Credentials are stored in `~/.claude/.credentials.json`
-
-Worse, there's a [known bug](https://github.com/anthropics/claude-code/issues/10039) where Mac's Claude Code **deletes** the `.credentials.json` file that Linux Claude creates. So mounting from a Mac/Windows host to a Linux container results in empty or deleted credentials.
-
-### Attempt 3: Environment Variable for OAuth Token
-
-We tried passing the OAuth token via environment variable:
+The credentials file (`~/.claude/.credentials.json`) on the host contains valid OAuth tokens:
 
 ```json
-{
-  "remoteEnv": {
-    "CLAUDE_CODE_OAUTH_TOKEN": "${localEnv:CLAUDE_CODE_OAUTH_TOKEN}"
-  }
-}
+{"claudeAiOauth":{"accessToken":"sk-ant-oat01-...","refreshToken":"sk-ant-ort01-...","expiresAt":1766114769655,"scopes":["user:inference","user:profile","user:sessions:claude_code"],...}}
 ```
 
-To generate this token, you can run `claude setup-token` on a machine where you're already authenticated.
+**Why it works now:** Without `hasCompletedOnboarding`, Claude Code runs the onboarding wizard which ignores existing credentials. With the flag set, it recognizes and uses the mounted credentials.
 
-**Why it fails:**
+**Optional: Pull additional fields from host config**
 
-`CLAUDE_CODE_OAUTH_TOKEN` IS actually a valid environment variable, but it's [not enough on its own](https://github.com/anthropics/claude-code/issues/8938). Claude Code also checks for an **onboarding completion flag** in `~/.claude.json`. Without this flag, Claude still runs the full onboarding wizard even with a valid token.
+The minimal `{"hasCompletedOnboarding": true}` is sufficient for authentication, but you can optionally pass additional fields from your host's `~/.claude.json` (like `oauthAccount`, `userID`, etc.) using `setup-claude-config.js`:
 
-**The Hack (This Actually Works!):**
+1. Add a second mount for the host's config file:
+   ```json
+   {
+     "mounts": [
+       "source=${localEnv:USERPROFILE}/.claude,target=/home/shiny/.claude,type=bind,consistency=cached",
+       "source=${localEnv:USERPROFILE}/.claude.json,target=/tmp/host-claude.json,type=bind,readonly"
+     ],
+     "postCreateCommand": "node /workspaces/vibe/.devcontainer/setup-claude-config.js /tmp/host-claude.json ~/.claude.json"
+   }
+   ```
+
+2. The script extracts specified fields and writes a clean `~/.claude.json` in the container. Edit `FIELDS_TO_COPY` in the script to customize which fields are passed.
+
+**Note:** This does NOT change the "Claude API" UI label - that's determined by the authentication method internally, not by config fields.
+
+**Note for Mac users:** There's a [known bug](https://github.com/anthropics/claude-code/issues/10039) where Mac's Claude Code **deletes** the `.credentials.json` file, which may break this approach.
+
+### Alternative: Environment Variable for OAuth Token
+
+If mounting credentials doesn't work for you (e.g., Mac users affected by [Issue #10039](https://github.com/anthropics/claude-code/issues/10039)), you can pass the token via environment variable instead:
 
 1. Generate token on host: `claude setup-token`
 2. Set the environment variable on your host:
@@ -125,14 +137,14 @@ To generate this token, you can run `claude setup-token` on a machine where you'
    ```
 4. Rebuild your container
 
-The `postCreateCommand` creates the missing `~/.claude.json` file with the onboarding flag, which is the piece that [GitHub Issue #8938](https://github.com/anthropics/claude-code/issues/8938) identified as missing.
+The `postCreateCommand` is required because `CLAUDE_CODE_OAUTH_TOKEN` alone is [not enough](https://github.com/anthropics/claude-code/issues/8938) - Claude Code also needs the onboarding flag to skip the wizard.
 
-**Note:** This uses your Claude Pro/Max subscription rather than API credits.
+## Known Quirks (Both Methods)
 
-**Known Quirks:**
+Both the mount and environment variable approaches have the same quirks:
 
 - **UI shows "Claude API"** - This is misleading. You ARE using your Pro/Max subscription, not pay-as-you-go API credits. The label just indicates non-interactive authentication.
-- **`/usage` command fails** - You'll see an error: `OAuth token does not meet scope requirement user:profile`. The token from `setup-token` lacks the scope needed to query usage statistics, but this doesn't affect your ability to use Claude.
+- **`/usage` command fails** - You'll see an error: `OAuth token does not meet scope requirement user:profile`. This doesn't affect your ability to use Claude.
 - **To verify you're not being charged API credits:**
   - Check [console.anthropic.com](https://console.anthropic.com) - no new API charges should appear
   - Your usage counts against your Pro/Max subscription at [claude.ai/settings](https://claude.ai/settings)

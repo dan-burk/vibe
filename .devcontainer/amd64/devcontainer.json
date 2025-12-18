@@ -7,19 +7,21 @@
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
 
-  // === Claude Code Authentication Options ===
-  // Two methods available (in priority order):
-  //
-  // Option 1: .env file - Uncomment runArgs below, copy example_api.env to api.env
+  // === Claude Code Authentication ===
+  // Mounts credentials directory from host
+  "initializeCommand": "powershell -Command \"if (!(Test-Path $env:USERPROFILE\\.claude)) { New-Item -ItemType Directory -Path $env:USERPROFILE\\.claude }\"",
+  "mounts": [
+    "source=${localEnv:USERPROFILE}/.claude,target=/home/shiny/.claude,type=bind,consistency=cached"
+  ],
+
+  // Option 2: .env file - Uncomment runArgs below, copy example_api.env to api.env
   // "runArgs": ["--env-file", ".devcontainer/api.env"],
   //
-  // Option 2: Environment variable from host (automatically passed if set)
-  // Set CLAUDE_CODE_OAUTH_TOKEN on your host machine
-
-  // Pass auth from host environment (ignored if not set)
-  "remoteEnv": {
-    "CLAUDE_CODE_OAUTH_TOKEN": "${localEnv:CLAUDE_CODE_OAUTH_TOKEN}"
-  },
+  // Option 3: Environment variable from host (THE HACK - KNOWN TO WORK)
+  // Set CLAUDE_CODE_OAUTH_TOKEN on your host machine via: claude setup-token
+  // "remoteEnv": {
+  //   "CLAUDE_CODE_OAUTH_TOKEN": "${localEnv:CLAUDE_CODE_OAUTH_TOKEN}"
+  // },
 
   "customizations": {
     "vscode": {
@@ -41,5 +43,7 @@
   "portsAttributes": {
     "3838": { "label": "Shiny app", "onAutoForward": "openBrowser" }
   },
+  // Creates minimal config to skip onboarding wizard
+  // Optional: Use setup-claude-config.js to pull additional fields from host's ~/.claude.json
   "postCreateCommand": "echo '{\"hasCompletedOnboarding\": true}' > ~/.claude.json"
 }
