@@ -25,3 +25,41 @@ git commit -m "Restore .devcontainer from temp branch"
 git status
 git push
 
+
+
+
+
+###############################################################################################################
+
+wsl --list --verbose
+wsl --set-default Ubuntu-24.04
+
+
+
+Ha! Good question. You're not wrong that Docker can run on Ubuntu - but Docker Desktop does its own thing.
+
+  Docker Desktop's distro is a custom minimal Linux built specifically for running Docker. It's based on LinuxKit (a toolkit for building minimal Linux distros) - not Ubuntu, Debian, or Alpine. It's stripped down to just what Docker needs to function.
+
+  You actually have two options on Windows:
+
+  1. Docker Desktop (what you have) - Brings its own minimal Linux distros, separate from your Ubuntu
+  2. Docker Engine installed directly in Ubuntu WSL - Then it would run on Ubuntu like you originally thought
+
+  Many people do option 2 for a lighter setup - just install Docker inside their Ubuntu WSL distro and skip Docker Desktop entirely.
+
+  So your original intuition wasn't wrong - it's just that Docker Desktop chose to be self-contained rather than piggyback on whatever Linux distro you have installed. This way it works even if you don't have Ubuntu installed at all.
+
+
+
+
+
+  For a standard container: Yes, only the mounted paths are at risk. If you mount -v C:\mydata:/data, the container can only touch files in C:\mydata. The rest of your Windows filesystem is not accessible.
+
+  But watch out for:
+
+  1. Privileged mode (--privileged) - Gives the container nearly full host access. Avoid unless absolutely necessary.
+  2. Docker socket mounts (-v /var/run/docker.sock:/var/run/docker.sock) - If you mount this, the container can control Docker itself and spin up new containers with any mounts it wants. Game over.
+  3. Container escape exploits - Rare, but kernel vulnerabilities could allow breakout. This is why keeping Docker updated matters.
+  4. Network attacks - The container can still make network requests, so it could attack other machines or exfiltrate data it does have access to.
+
+  Bottom line: For a normal container with just a data volume mounted, yes - your risk is scoped to that mounted folder. That's the whole point of containers. Just be careful what you mount and avoid --privileged and socket mounts unless you trust the image completely.
