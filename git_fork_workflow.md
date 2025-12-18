@@ -18,6 +18,7 @@ git remote -v       # Show remotes
 ```
 ## 2. Line Ending Issue
 
+Look into adding the code into a .gitattributes for repo wide configuration
 ```bash
 git config core.autocrlf input
 git checkout -- .
