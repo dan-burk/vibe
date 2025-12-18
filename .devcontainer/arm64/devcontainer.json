@@ -16,6 +16,10 @@
   // Option 2: API key - Uncomment runArgs below, copy example_api.env to api.env
   // "runArgs": ["--env-file", ".devcontainer/api.env"],
 
+  "containerEnv": {
+    "CLAUDE_CODE_OAUTH_PORT": "54545"
+  },
+
   "customizations": {
     "vscode": {
       "extensions": [
