@@ -1,0 +1,27 @@
+
+
+
+
+echo 'export CLAUDE_CODE_USE_FOUNDRY=1' >> ~/.bashrc
+echo 'export ANTHROPIC_FOUNDRY_RESOURCE=<your_resource>' >> ~/.bashrc
+echo 'export ANTHROPIC_DEFAULT_OPUS_MODEL=claude-opus-4-5' >> ~/.bashrc
+echo 'export ANTHROPIC_DEFAULT_SONNET_MODEL=claude-sonnet-4-5' >> ~/.bashrc
+echo 'export ANTHROPIC_DEFAULT_HAIKU_MODEL=claude-haiku-4-5' >> ~/.bashrc
+echo 'export ANTHROPIC_FOUNDRY_API_KEY=<your-api-key>' >> ~/.bashrc
+
+
+git branch -a
+git remote -v
+git remote rename origin upstream
+git remote add origin https://github.com/dan-burk/vibe.git
+git branch --set-upstream-to=origin/main main
+git branch -vv
+git fetch origin
+git checkout main
+git ls-tree temp .devcontainer/
+git checkout temp -- .devcontainer/
+git add .devcontainer/
+git commit -m "Restore .devcontainer from temp branch"
+git status
+git push
+
