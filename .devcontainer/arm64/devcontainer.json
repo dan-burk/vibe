@@ -32,10 +32,6 @@
     "ANTHROPIC_API_KEY": "${localEnv:ANTHROPIC_API_KEY}"
   },
 
-  "containerEnv": {
-    "CLAUDE_CODE_OAUTH_PORT": "54545"
-  },
-
   "customizations": {
     "vscode": {
       "extensions": [
