@@ -6,10 +6,32 @@
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
-//  "runArgs": [
-//    "--env-file",
-//    ".devcontainer/example_api.env"
-//  ],
+
+  // === Claude Code Authentication Options ===
+  // Three methods available (in priority order):
+  //
+  // Option 1: .env file - Uncomment runArgs below, copy example_api.env to api.env
+  // "runArgs": ["--env-file", ".devcontainer/api.env"],
+  //
+  // Option 2: API key from host environment (automatically passed if set)
+  // Set ANTHROPIC_API_KEY on your host machine
+  //
+  // Option 3: Mount credentials from host (default, requires one-time setup)
+  // Run "claude /login" on your host machine first
+
+  // Creates ~/.claude on host if missing (prevents mount failure)
+  "initializeCommand": "powershell -Command \"if (!(Test-Path $env:USERPROFILE\\.claude)) { New-Item -ItemType Directory -Path $env:USERPROFILE\\.claude }\"",
+
+  // Mount Claude credentials from host (note: ARM64 runs as root by default)
+  "mounts": [
+    "source=${localEnv:USERPROFILE}/.claude,target=/root/.claude,type=bind,consistency=cached"
+  ],
+
+  // Pass API key from host environment (ignored if not set)
+  "remoteEnv": {
+    "ANTHROPIC_API_KEY": "${localEnv:ANTHROPIC_API_KEY}"
+  },
+
   "customizations": {
     "vscode": {
       "extensions": [
